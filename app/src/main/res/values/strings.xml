@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">HearViaAndroidSpeech</string>
+    <string name="buttonText">Start recording</string>
+</resources>

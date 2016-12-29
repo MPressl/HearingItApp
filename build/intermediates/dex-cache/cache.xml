@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="389489228f66ff555c96a639fd08e162e92ab003">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/instant-run_2168cad878cab8b8d2615f12e108bf433a669b79.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_722ae20e3c7511863710c14071dfb45e36813a17.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.1/support-annotations-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/support-annotations-25.0.1_3aa7eb4996156145ef37cf2cf82ad04f14a64018.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.0.1_72469eb726faafabac4d8d9afc5b7b0d695e9547.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.0.1_03a9d410ec4137ac40c192b0c29c607bf390e681.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="27696165bf3be581a1465708134c95e90c897444">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_2f140128745c0fbaafba00afbf490d3601ecc21a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="fef2b3e4b6b1b0e5fe7b69fa137a5fa55a3182ab">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-8.4.0_5c4e5f104738eb28d29e9c6faca65cfbbc948338.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.0.1_72a4ecc1e1de15d2fa0749be4d82b96f225b4f7f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.0.1_50d7a74ca0266f4e0901000a1e8e03919d0490bd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.0.1_4fce63f94849a8f8fdcc52b1542f38d74acb2e2e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_a32c55479f7de8851efcfe07bd614af3938af3d8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_b6a187e93bd312007f98b04825f45df4801e4ccf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.0.1_52ac672c2ba29eb0c01a12a4f34ee7d46b13f304.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.0.1_4694544fe5daf988f76ff096e760e8b3e70ce72b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_7af48a9289a7b70eb63eb66028d155d0baa42c0d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="8e673cdfadd8f2d98fdb2fda2285c30f6e449782">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-8.4.0_0808a8d76465fb92ff3e2248143ead9d8bf9d4a6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/internal_impl-25.0.1_4beb4a1affab097fc5baf61a5369ccee311cc1bb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/libs/glassuplib.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="68ad3e7a49fae83bf34df4d3e72d8ece8910dd47">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/glassuplib_0651a0be869654afd6b03d9d9df833503df0cd80.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.0.1_2d7f2584cd08eada772ce0b170110b2d7c12afd2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.0.1_9689fc72f3654b98124fc414b9bfed1237ac7c67.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.4.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="65d086ee9daaf87b5af62ad24471edafa433354c">
+        <dex dex="/root/Android/StudioProjects/HearViaAndroidSpeech/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-appindexing-8.4.0_ddd54564c3f0db6c73a68bc0822ffcbc5560eb13.jar" />
+    </item>
+
+</items>
