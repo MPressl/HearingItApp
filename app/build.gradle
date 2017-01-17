@@ -11,11 +11,20 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.0'
+    }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/io.netty.versions.properties'
+        exclude 'META-INF/INDEX.LIST'
     }
 }
 repositories {
@@ -23,20 +32,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.google.apis:google-api-services-speech:v1beta1-rev21-1.22.0'
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
     compile 'com.android.support:appcompat-v7:25.0.1'
-    testCompile 'junit:junit:4.12'
-    compile 'com.google.android.gms:play-services-appindexing:8.4.0'
-    compile files('libs/glassuplib.jar')
-    compile files('libs/google-api-client-android-1.22.0-sources.jar')
-    compile files('libs/google-http-client-android-1.22.0-sources.jar')
-    compile files('libs/google-oauth-client-1.22.0-sources.jar')
-    compile files('libs/google-oauth-client-appengine-1.22.0-sources.jar')
-    compile 'com.google.api.grpc:grpc-google-cloud-speech-v1beta1:0.1.5'
-    compile 'com.google.cloud:google-cloud-speech:0.8.0'
-    compile 'com.google.api.grpc:grpc-google-cloud-speech-v1:0.0.7'
+    compile 'com.google.android.gms:play-services:10.0.1'
 }
