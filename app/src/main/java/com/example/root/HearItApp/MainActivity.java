@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume(){
         super.onResume();
-        this.gPrinter.onResume();
+       // this.gPrinter.onResume();
     }
 
     public void receiveResult(ArrayList<String> result){
@@ -121,7 +121,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean initialize_Components(){
 
         generate_Menu();
-        recorder = RecorderFactory.generate(RECORD_MODE, this);
+       // this.gPrinter = new GlassUpPrinter(this);
+        this.recorder = RecorderFactory.generate(RECORD_MODE, this);
         this.txtField = (EditText) findViewById(R.id.editText);
         //textview
         this.txt = (TextView) findViewById(R.id.textView);

@@ -3,156 +3,471 @@
 
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.api.grpc/grpc-google-common-protos/0.1.5/5e6d042703a2d88ad868ffdd5479c361d5ee4595/grpc-google-common-protos-0.1.5.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="5e6d042703a2d88ad868ffdd5479c361d5ee4595">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/grpc-google-common-protos-0.1.5_e8772f045106ea96d12db8c9a45c578ce7f594aa/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/io.grpc/grpc-protobuf-lite/1.0.1/b28a07b56ed2e66088221cbaf1228fa4e9669166/grpc-protobuf-lite-1.0.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="b28a07b56ed2e66088221cbaf1228fa4e9669166">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/grpc-protobuf-lite-1.0.1_e2e58e4b2fd628d78943790cf256cead41dae032/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="c1c77313519ab5f37e7878b2111a3bec475e4a67">
+        sha1="cb8f54320759e3b71df1366f1f11d9cde9a55790">
         <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_a71e8c289e728744a5447e880e41d5b5daa01910/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.protobuf/protobuf-java-util/3.0.0/b2828be88b6346489300069a052a1fe63f6a5dc5/protobuf-java-util-3.0.0.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="b2828be88b6346489300069a052a1fe63f6a5dc5">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/protobuf-java-util-3.0.0_3cf3c389b0ebca8e6f5178f12b4a47f0a5d8cc15/classes.dex" />
+        sha1="8308ed003522a2ee8958311afcc4cfd0470377cd">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-gcm-10.0.1_da7f8d0d4bba80db42572e1fe3e86de05d2d95e6/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/io.grpc/grpc-stub/1.0.1/a875969bf700b0d25dc8b7febe42bfb253ca5b3b/grpc-stub-1.0.1.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="a875969bf700b0d25dc8b7febe42bfb253ca5b3b">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/grpc-stub-1.0.1_7ad387a1553b70181938f1aedd4693a79b8625b1/classes.dex" />
+        sha1="eb0d830e3eabb9deb9ec44869cf7ac7ea1ad794c">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-common-10.0.1_a466c32eea70e71be6acdc3c09f0e9060babde19/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.0.1/support-annotations-25.0.1.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.0.1_3aa7eb4996156145ef37cf2cf82ad04f14a64018/classes.dex" />
+        sha1="27777b3cad3c20b1acab19f6e37fe3e03371bf6e">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-maps-10.0.1_118f968e7625ca69e81a8443031e84c6e64d53b4/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3/5fc52c41ef0239d1093a1eb7c3697036183677ce/gson-2.3.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-clearcut/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="5fc52c41ef0239d1093a1eb7c3697036183677ce">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/gson-2.3_827b03ac466eea69671b5d185ef3cd2b47aa3b11/classes.dex" />
+        sha1="1d193729baf37df3d902a423291423a0df7e3779">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-clearcut-10.0.1_adf4483b616fb440b1411f78c73c2c5d81d5cd9a/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.http-client/google-http-client-jdo/1.21.0/b02781a4605935597e017e4b2f50d48e7c2d5f2c/google-http-client-jdo-1.21.0.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-config/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="b02781a4605935597e017e4b2f50d48e7c2d5f2c">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/google-http-client-jdo-1.21.0_096e38701adcd8b6b53519f44f31bd37fbe3b0b5/classes.dex" />
+        sha1="ffc15e965a9e8c28f24455eedd4cac215c45d1fc">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-config-10.0.1_4e207a3cd47aa43fb630be89b34ee3be0a5781a0/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.api-client/google-api-client/1.22.0/244350c0c845c583717ade13f5666a452fd0cfa/google-api-client-1.22.0.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/jars/libs/internal_impl-24.0.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="0244350c0c845c583717ade13f5666a452fd0cfa">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/google-api-client-1.22.0_a92ce6dc8d0ef9e348b07899ff5ff62ce107a1eb/classes.dex" />
+        sha1="b6763651ec29b4c95e7bbe63fc393ffcc8c4c2c5">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0_dc44de3f954cb48bfc33ad8d68e298708c5e4f84/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.http-client/google-http-client-appengine/1.21.0/7244bd3c110b15066f4288baa61e350d6a14120c/google-http-client-appengine-1.21.0.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database-connection/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="7244bd3c110b15066f4288baa61e350d6a14120c">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/google-http-client-appengine-1.21.0_9f139f8c3bcea1814e86813764de8ea35c403504/classes.dex" />
+        sha1="8010ae6ed32828a145b25ec97bc07b7a83c6318f">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-connection-10.0.1_ad6ebc2e7be07ae669457ee3faec0406e5a82b62/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/io.grpc/grpc-protobuf-nano/1.0.1/a0881f36976030d2b5a573677e7dd4752cedf760/grpc-protobuf-nano-1.0.1.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="a0881f36976030d2b5a573677e7dd4752cedf760">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/grpc-protobuf-nano-1.0.1_ec6eb5462a389da2199306d58a668a273ed71a4e/classes.dex" />
+        sha1="ba6aa5e69ef31dee57208125323cee958fc67565">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-vision-10.0.1_26211ac7b8fef9753e5c6006e4849fe77e337d1a/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/classes.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.0.1_a90c6a88824acf8354e7427a25e80f487edcb95e/classes.dex" />
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.1.0_a75cba0c067f2138a5fe6553b1a2bad36d0be7a3/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.api-client/google-api-client-appengine/1.21.0/b4246cf952f6c536465bb58727a4037176003602/google-api-client-appengine-1.21.0.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-storage/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="b4246cf952f6c536465bb58727a4037176003602">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/google-api-client-appengine-1.21.0_f06446b4acf292c2896a19fccff4d7222aa649e9/classes.dex" />
+        sha1="dd39827d2067497e60e21da48a7926000b6d4b0c">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-storage-10.0.1_f11714c6bdfe2b1ae268ac9691f79b8be6f623c2/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.api.grpc/grpc-google-cloud-speech-v1beta1/0.1.5/556a637af8a29bbb2b09416ea3f359add0dca8f7/grpc-google-cloud-speech-v1beta1-0.1.5.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gass/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="556a637af8a29bbb2b09416ea3f359add0dca8f7">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/grpc-google-cloud-speech-v1beta1-0.1.5_90b426853b04b6103d4a3ee93fb334c9b1a52aba/classes.dex" />
+        sha1="57c2eceb8548de84509d1ebc293fedec53231f6c">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-gass-10.0.1_eec907720f8502a12a5169bd83e0101f826f96f4/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_365acd940d34271b20175ea97b5d963204edcdeb/classes.dex" />
+        sha1="408a599ac77cd17fe8e8919326bec617b3d005bd">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wearable-10.0.1_6865df131f1a9d0518f03bc18525921cce05c610/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/io.grpc/grpc-okhttp/1.0.1/d7ae3d79e073916ed9732b5768585ecfc2edc669/grpc-okhttp-1.0.1.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-appindexing/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="d7ae3d79e073916ed9732b5768585ecfc2edc669">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/grpc-okhttp-1.0.1_8aefd4bc891eaecef41efba230d2c858bb0052ea/classes.dex" />
+        sha1="ae80d328a8548b4610ead6c624bab8c6a6984f5b">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-appindexing-10.0.1_ac48c8591b1e84fd54cc5da517f4ea37bedbfdd9/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/io.netty/netty-common/4.1.3.Final/620faa6dd83a08eb607c9d5c077a9b4edde3056b/netty-common-4.1.3.Final.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="620faa6dd83a08eb607c9d5c077a9b4edde3056b">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/netty-common-4.1.3.Final_7adc0610c67e1b875affadc070f72dc02e261f41/classes.dex" />
+        sha1="b327fbe2fad414bc38cf0ce8f7efe1a38f572837">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-mediarouter-v7-24.0.0_3144197a8565698b4d3f2773d9ccead06de4c9fb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f02263e35e52668dd17b73bf961437e3d562b35f">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.1.0_58e962472a0d3822703d1c18bd09ffc635bf1cae/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-crash/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="de29a39f9260f88151b1ef453140e71c76b6c415">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-crash-10.0.1_946795d7f50586545f610f6768f64058aaec5d69/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c6e1f361e9d61aece9dac39b77fcc98a337a144d">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-nearby-10.0.1_ef33ca598bf5e0d76ace86d183a60930bc24bd6a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="0a0ef86b7fa568a52bf6214a0326ca1f1d618da7">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.1.0_1833f613b087e9feb58aa04e0b443a3c75d1a8e4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads-lite/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="b955cb3a1ad6f1b6ff728ce1e0cd592c1717b440">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-ads-lite-10.0.1_40c12b7c1e2f6f3872e58ba9290ad8beaa735f36/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="df1cb17511aabbb63264a0024949d1e42502a512">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-cast-framework-10.0.1_3649ec9ac1e2fb85bded26728703a731f6f71c9e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-awareness/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="4385ccc0a88b33d182a836eadb47be55c8eb1107">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-awareness-10.0.1_decf17daa3be84dd4ec4ad10ff3fe575b576547f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-places/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f3e51e9c5233b8897f61e08a6a27bc36283c2724">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-places-10.0.1_5ed2b7e30dbc7435bfe8e76412d7a68c701f28ea/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="4c829ff0ccfecb28a999ee46d9e75948dfc777a4">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-analytics-10.0.1_7cd241c10d6bce290db20f3b445173907cee8648/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="39907d5c8f5902fffef30160ca7447c93b82405c">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appinvite-10.0.1_f490d3d01a8d02e4d88ef1d2b7c69dd194da5a60/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="44a694d4095be84c2888764b1f7256b385c030ad">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-location-10.0.1_81316c5213a36860d8e92014af67e62acc781005/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="7a64bf6dc775198eed9db9468a133adf7dfe6562">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-fitness-10.0.1_d4dac3e27140942d5bd88bc739749c345c4b127e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-instantapps/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="45305e6af414dab5aba6c3225081c2f15c3bdd1e">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-instantapps-10.0.1_f2e727d6eb1f2be565dc539fd362830b1d335950/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tagmanager/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="971509bbe30bb7b971fc1c49d7b23d0d818830ac">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tagmanager-10.0.1_6635596e509bfc3c986eb0a768df83dedce3b5d1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.0/support-annotations-25.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="64cb6b229a8bdfd907bc8dd46839a0053e4c018d">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.0_22f1890dd73f663d1135ba6ea830f89cd7b5c4c8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="2911454e55949c76299f7c3e96d3c4c38041f76b">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_5dcc3450d4cacd409a072e63739021603b9ddc12/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth-base/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e96c6974cf924e7ee3b230e6847d5731423388c9">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-base-10.0.1_55cfcbb1a80fd75343d405c6fcb4468dea5b0409/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="9cca2818594cc5348806d6662133491e7ea0fa8d">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-auth-10.0.1_15b0b1e3dc224cb3f12a3f036e05ac245cf98ada/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6116e0e7069de7fc259aac8e08b84f32c2038231">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-impl-10.0.1_048db672f950f386ef3f949eff5565798a8c76c0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6fb6ac3e8d3b9013819920d9ea11f3803c4c0033">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.1.0_4fb898d635548a4e3af43f78eb3b595691fcfb8d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="a48dc0b148059764d32500be558702d5ff932058">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-identity-10.0.1_4f6d01c93f9c584ed4b44d5b2cb98ab22382b4fd/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="25438f55fc6d906a0e72f30b21487541430ede43">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-base-10.0.1_e32803c3189303a63204b5a3c9d5ac40f9d91648/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e2185aff89caeb337b1ffc36d5e525d8318e7cfe">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-auth-10.0.1_eff82073aff5a10a1b158fd363c373bb2d1f2aa4/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="8f128aeeb7e31271b28a7adb9dac1f3a6ed9f5e7">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-database-10.0.1_d0758687914880aafd3ef761a485df36c74edaee/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tagmanager-v4-impl/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f23ad0f8e58713ff4b55f61c0bbde3830378347c">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tagmanager-v4-impl-10.0.1_26325cceb820ad8867b37507c4b1d6325a231a6e/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="028f8255cb977b29cdffbfcf05caa0459686120c">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-drive-10.0.1_0eed4c6d874f62eab12434bbe8be55693c556f05/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="ca3c7aa31e2726a400a6e552b93cb9f63c9a1e6d">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.1.0_b6708f1f1f2142fac5ec66a5ae32594bf619f8ab/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-10.0.1_3de8dcb8c56279585eb75dee8d76fe4f5b522e12/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="2d5d113b0352ab60946fc44c518cf68fd26cbb79">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-wallet-10.0.1_626b521dd08a108797e712f4533071548745ef25/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="1e11c68fec92a17c84dd8d1dd80e74c4e67b12e2">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-games-10.0.1_b59bfc89b151f825e78564a4b6dda5e4b836f7d8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-messaging/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="4b17463c814bdc562fb0392fa3494063623a0904">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-messaging-10.0.1_27d4b15fe5d5e25c8d01f28fa7388a3e046e1b21/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e79aa3d9a16f8c9f16377c0608de70a8f31e5d80">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.0_5c8a26a3e809f845b4a4fd3fe4f0030120470eae/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/palette-v7/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="734e80dffea7bd76c18ae256822a124c30d85850">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-palette-v7-24.0.0_a6d7387379d51d92e4073dd806e488820cfdeeb8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="1630658fbc2d222b988603c27b4a4249586fbfe7">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.1.0_33ff71b4061e201052d9ded32b77c1a105a12719/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f6cf557be4dbd0282ea2388633e5378634423226">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-safetynet-10.0.1_b4fde6851155c2fc82116450a541de220731848b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="aee64634871d88a419d59eb743c1258a60f19700">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.1.0_b33099f239b00d9c61814f24af199349caefd898/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/10.0.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="433f4d6aa5f21f19552afe0e6c5eff0fedba73ad">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-analytics-10.0.1_e4a91c4df72fd99f679a456d6c64af4d2eadbacb/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -165,120 +480,102 @@
     </item>
     <item
         is-multidex="true"
-        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.1/jars/classes.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.0.1_facfbd3573477e5a94ddee63f5e5d01dd7576824/classes.dex" />
+        sha1="92c871a22463a247e8a77a9f3fd231c278788c4a">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-panorama-10.0.1_42c978fc050a6d9153be4ea9f77312567c650c1f/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/io.netty/netty-tcnative-boringssl-static/1.1.33.Fork19/e2f46b114a7a0fcaac3a9538ef03da8d7bf43aa8/netty-tcnative-boringssl-static-1.1.33.Fork19.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="e2f46b114a7a0fcaac3a9538ef03da8d7bf43aa8">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/netty-tcnative-boringssl-static-1.1.33.Fork19_4e6f79b2a7c7238b6502ed2ed789f52cde39e138/classes.dex" />
+        sha1="6addaba208e21c6da776d0ca75b6b23a6ccd5499">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tasks-10.0.1_9455fcaccba4010761074e41125a73c8f14cbf1f/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/com.fasterxml.jackson.core/jackson-core/2.1.3/f6c3aed1cdfa21b5c1737c915186ea93a95a58bd/jackson-core-2.1.3.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="f6c3aed1cdfa21b5c1737c915186ea93a95a58bd">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/jackson-core-2.1.3_ad43fcbdc84f005715a6849ad4df637188bf4fa1/classes.dex" />
+        sha1="2a53c4f3518116b8c6aee0e477233f0f7da8616f">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.1.0_8aa626ddb6d31824f232a2fe1dbc1730a996e884/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.auth/google-auth-library-oauth2-http/0.6.0/8f25e25c8638976fe1d106f665d2b03089fe8c6e/google-auth-library-oauth2-http-0.6.0.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tagmanager-api/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="8f25e25c8638976fe1d106f665d2b03089fe8c6e">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/google-auth-library-oauth2-http-0.6.0_48f2b1b81a99eca46814cdf7623db7ef3703b9c4/classes.dex" />
+        sha1="b1df8fa3d372a27e4e969ce00b00689ee1eed031">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-tagmanager-api-10.0.1_71b0f67d3a7228d75c178547064be3ce1ee453ab/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.1/jars/classes.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics-impl/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.0.1_d337e02c5c6081b9d268b10a4cd7f8c940f242f7/classes.dex" />
+        sha1="e871881b36b32e6bfd271a830c6eeb54ff0fc185">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-analytics-impl-10.0.1_b3cc0466d818374b5f70c8df5935181aec5cc550/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.guava/guava-jdk5/17.0/463f8378feba44df7ba7cd9272d01837dad62b36/guava-jdk5-17.0.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="463f8378feba44df7ba7cd9272d01837dad62b36">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/guava-jdk5-17.0_7a214f7e51684caeb611f8ed1f54c6c1a04265d2/classes.dex" />
+        sha1="6bb5d347ebc0c6ef3c83a905222a688da5d2f7b4">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-iid-10.0.1_ff6c285b44fd0e72ef5dbd53aec681db4c6d22dd/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.1/jars/libs/internal_impl-25.0.1.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.1_5b6824bf320ddbe5e55ca5a8fc56f0d17fdcd80f/classes.dex" />
+        sha1="771267c5b0c7a5b348d3205dcfa1f871af7e0177">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-cast-10.0.1_8a96689491505b49716d05e06cd7beba37a04e20/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/io.netty/netty-resolver/4.1.3.Final/fe4ba2ed19e4e8667068e917665f5725ee0290ea/netty-resolver-4.1.3.Final.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="fe4ba2ed19e4e8667068e917665f5725ee0290ea">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/netty-resolver-4.1.3.Final_bb2bbb56b08d266047745a2de4d51c88c37860b7/classes.dex" />
+        sha1="486371f97baad8e607f332f20fee1d3dd00a731a">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-iid-10.0.1_e7a537d925f85ec7c0f99d862f6d1998eb0a06c2/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/io.grpc/grpc-netty/1.0.1/1e4628b96434fcd6fbe519e7a3dbcc1ec5ac2c14/grpc-netty-1.0.1.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="1e4628b96434fcd6fbe519e7a3dbcc1ec5ac2c14">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/grpc-netty-1.0.1_4f20c61af98abb02afcace5a91fbc8ee4c510de6/classes.dex" />
+        sha1="c14f0c89f28cf782e42581ab0aba5f63af39b3d2">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-plus-10.0.1_6a27613cc4c7fb5daf5c86c472eda052329a3938/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.firebase/firebase-storage-common/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="344d4857dd84b5ffd6890ecc036e46a4b3054ae1">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_5dcc3450d4cacd409a072e63739021603b9ddc12/classes.dex" />
+        sha1="09cf6aa1390f95157e8295d02be7868f568825fc">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-storage-common-10.0.1_44dd295dbe47398e8e10504309b1b55c4f38ec80/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jar="/root/Android/StudioProjects/HearItApp/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/10.0.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/jsr305-3.0.0_456beae1bfbef6196546d4c957b5e9b726c256ac/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.auto.value/auto-value/1.2/6873fed014fe1de1051aae2af68ba266d2934471/auto-value-1.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="6873fed014fe1de1051aae2af68ba266d2934471">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/auto-value-1.2_f63f7e91c69928f820c3956c3187b0f08cffa8fb/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/root/.gradle/caches/modules-2/files-2.1/com.google.http-client/google-http-client-jackson/1.21.0/5a8b90f8e128d28f88a301a4c5ff7c2336dcc725/google-http-client-jackson-1.21.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="5a8b90f8e128d28f88a301a4c5ff7c2336dcc725">
-        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/google-http-client-jackson-1.21.0_361c51fcdec29724c3882de28c8abdd3252b1f06/classes.dex" />
+        sha1="d0460bf07cc3657e0be518ca01c174493951c6b8">
+        <dex dex="/root/Android/StudioProjects/HearItApp/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-ads-10.0.1_59721a6017374246d4d0e3346865b3cefd96ce0d/classes.dex" />
     </item>
 
 </items>

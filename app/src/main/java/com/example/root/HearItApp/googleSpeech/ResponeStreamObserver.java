@@ -1,7 +1,5 @@
 package com.example.root.HearItApp.googleSpeech;
 
-import com.google.cloud.speech.v1beta1.StreamingRecognizeResponse;
-
 /**
  * ResponseStreamObserver
  * listens to the ResponeStream of the SpeechRecognitionRequests
@@ -9,9 +7,9 @@ import com.google.cloud.speech.v1beta1.StreamingRecognizeResponse;
  * Created by root on 12/28/16.
  */
 
-public class ResponeStreamObserver
-        implements io.grpc.stub.StreamObserver<StreamingRecognizeResponse>{
-
+public class ResponeStreamObserver{
+        //implements io.grpc.stub.StreamObserver<StreamingRecognizeResponse>{
+/*
     private GoogleSpeechStreamer client;
 
     public ResponeStreamObserver(GoogleSpeechStreamer client){
@@ -36,4 +34,5 @@ public class ResponeStreamObserver
         client.makeToast( "recognize complete");
         client.countDownFinishLatch();
     }
+    */
 }
