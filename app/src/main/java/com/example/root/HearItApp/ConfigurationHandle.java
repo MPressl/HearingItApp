@@ -3,8 +3,6 @@ package com.example.root.HearItApp;
 import android.os.Handler;
 import android.os.Message;
 
-import glassup.service.GlassUpAgent;
-
 /**
  * Created by root on 12/11/16.
  */
@@ -12,9 +10,9 @@ import glassup.service.GlassUpAgent;
 public class ConfigurationHandle extends Handler {
     public static final int	MSG_WHAT_SEND_CONFIG	= 1;
 
-    private GlassUpAgent agent;
+    private GlassUpAgentVersionSupport agent;
 
-    public ConfigurationHandle(GlassUpAgent agent){
+    public ConfigurationHandle(GlassUpAgentVersionSupport agent){
         this.agent = agent;
     }
 

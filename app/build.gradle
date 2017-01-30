@@ -1,11 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
+    defaultConfig
+            {
+        multiDexEnabled true
+    }
     compileSdkVersion 25
     buildToolsVersion '25.0.1'
     defaultConfig {
         applicationId "com.example.root.hearviaandroidspeech"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"

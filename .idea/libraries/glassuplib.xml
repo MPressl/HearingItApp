@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="glassuplib">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/libs/glassuplib.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

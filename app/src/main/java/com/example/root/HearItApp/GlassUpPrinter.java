@@ -5,7 +5,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import glassup.service.GlassUpAgent;
 import glassup.service.GlassUpAgentInterface;
 import glassup.service.GlassUpEvent;
 
@@ -30,7 +29,7 @@ public class GlassUpPrinter {
 
     public int CONTENT_ID = 0;
 
-    public static GlassUpAgent glassAgent;
+    public static GlassUpAgentVersionSupport glassAgent;
 
     private ConfigurationHandle configHandler;
 
@@ -42,7 +41,7 @@ public class GlassUpPrinter {
     public GlassUpPrinter(MainActivity activity){
         mainView = activity;
         //GlassUp Agent
-        glassAgent = new GlassUpAgent();
+        glassAgent = new GlassUpAgentVersionSupport();
         glassAgent.onCreate(mainView);
         glassAgent.setEventListener(new GlassUpAgentInterface.EventListener() {
             @Override

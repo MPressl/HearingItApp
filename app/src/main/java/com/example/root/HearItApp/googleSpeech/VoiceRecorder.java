@@ -34,7 +34,7 @@ public class VoiceRecorder {
         androidRecord = new AudioRecord(MediaRecorder.AudioSource.MIC,
                 GoogleRecorder.SAMPLING, RECORDER_CHANNELS,
                 RECORDER_AUDIO_ENCODING, GoogleRecorder.BYTES_PER_BUFFER * GoogleRecorder.BYTES_PER_SAMPLE);
-
+        
         androidRecord.startRecording();
         isRecording = true;
 
