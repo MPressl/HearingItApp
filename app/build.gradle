@@ -39,5 +39,5 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:+'
     compile 'com.google.android.gms:play-services:10.0.1'
-
+    compile 'com.google.api.grpc:grpc-google-cloud-speech-v1beta1:0.1.5'
 }
