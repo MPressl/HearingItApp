@@ -1,5 +1,6 @@
 package de.dhbw.studienarbeit.hearItApp.printer;
 
+import de.dhbw.studienarbeit.hearItApp.Constants;
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
 import de.dhbw.studienarbeit.hearItApp.printer.glassUpARPrinter.GlassUpPrinter;
 
@@ -13,9 +14,8 @@ public class PrinterFactory {
     public static IPrinter generate(int printerMode, MainActivity mainActivity) {
 
         switch(printerMode){
-            case MainActivity.GLASSUP_AR_PRINTER:
+            case Constants.PRINTER_GLASSUP_AR:
                 return new GlassUpPrinter(mainActivity);
-
             default:
                 return null;
         }

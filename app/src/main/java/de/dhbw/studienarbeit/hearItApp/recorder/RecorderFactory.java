@@ -1,5 +1,6 @@
 package de.dhbw.studienarbeit.hearItApp.recorder;
 
+import de.dhbw.studienarbeit.hearItApp.Constants;
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
 
 import de.dhbw.studienarbeit.hearItApp.recorder.androidSpeechRecognition.AndroidVoiceRecorder;
@@ -16,10 +17,10 @@ public class RecorderFactory {
     public static IRecorder generate(int type, MainActivity mainView){
         switch (type) {
 
-            case MainActivity.GOOGLE_CLOUD_CLIENT:
+            case Constants.RECORDER_GOOGLE_CLOUD_CLIENT:
                 return new GoogleRecorder(mainView);
 
-            case MainActivity.ANDROID_VOICE_CLIENT:
+            case Constants.RECORDER_ANDROID_VOICE_CLIENT:
                 return new AndroidVoiceRecorder();
 
             default:

@@ -82,7 +82,7 @@ public class GlassUpPrinter implements IPrinter {
             this.configHandler.sendEmptyMessage(1);
         }else{
             /*Already configured*/
-            Log.d("TAG","App Already configured");
+            Log.d(MainActivity.LOG_TAF,"App Already configured");
             Toast.makeText(this.mainView.getApplicationContext(), "App already configured", Toast.LENGTH_LONG).show();
         }
     }
@@ -92,6 +92,11 @@ public class GlassUpPrinter implements IPrinter {
         this.sendAsMessageFlow(message);
     }
 
+    @Override
+    public void shutdown() {
+        this.glassAgent.onDestroy();
+
+    }
 
 
     public void destroy() {

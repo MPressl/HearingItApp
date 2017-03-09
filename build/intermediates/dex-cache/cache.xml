@@ -3,15 +3,6 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="1e11c68fec92a17c84dd8d1dd80e74c4e67b12e2">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-games-10.0.1_6510b5dbaa7d0c00d637f470892120ff05ec8b49\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -27,24 +18,6 @@
         revision="25.0.1"
         sha1="1e4628b96434fcd6fbe519e7a3dbcc1ec5ac2c14">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\grpc-netty-1.0.1_8e11c4bb2633075303317c317babfee416a40342\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="6addaba208e21c6da776d0ca75b6b23a6ccd5499">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tasks-10.0.1_972ae8aa57c6bb4d2ff230f25834293f63fb4711\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="408a599ac77cd17fe8e8919326bec617b3d005bd">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wearable-10.0.1_753a240a22b278d5a4916df406e9fb11ce3c3616\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -84,48 +57,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.2.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.2.0_9565981a9bc418f416af57a3e10a5b129ddd6597\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\libs\glassuplib.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="68ad3e7a49fae83bf34df4d3e72d8ece8910dd47">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\2\glassuplib_13adc207909acdd0d744db1c91cfd62d951afe3e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mpressl\.gradle\caches\modules-2\files-2.1\io.netty\netty-common\4.1.3.Final\620faa6dd83a08eb607c9d5c077a9b4edde3056b\netty-common-4.1.3.Final.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
         sha1="620faa6dd83a08eb607c9d5c077a9b4edde3056b">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\netty-common-4.1.3.Final_1e642981e8e699e2de453879b64f7cc979cfc332\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="d0460bf07cc3657e0be518ca01c174493951c6b8">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-10.0.1_94c82c0e810e8311982d49660d7782f55ef52a61\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.2.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="cb454b52545859ed2f24a6c01366805b0fa04b22">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.2.0_5564ac5473636216ce84a1503f14529242ff12c2\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -147,21 +84,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\10.0.1\jars\classes.jar"
-        jumboMode="false"
+        jar="C:\Users\mpressl\.gradle\caches\modules-2\files-2.1\com.google.oauth-client\google-oauth-client\1.22.0\1d63f369ac78e4838a3197147012026e791008cb\google-oauth-client-1.22.0.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="756f6297eef79784f5e356dcd4f39865028b2bd0">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-basement-10.0.1_ad99ded7da3899d08ecd946ca5775d2b84c17309\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.2.0\support-annotations-25.2.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="4a5a82a027706397fff621b22fd6fa796e91d7c5">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.2.0_e289a1c3166543a2fff54df735f0947117f70b5b\classes.dex" />
+        sha1="1d63f369ac78e4838a3197147012026e791008cb">
+        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\google-oauth-client-1.22.0_7cb67f7513876b8e4ff75d66b299588a4627bf77\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -183,57 +111,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth-base\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="e96c6974cf924e7ee3b230e6847d5731423388c9">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-base-10.0.1_2c7da5fad82255a1fa350ced91f858c3d3ce7d20\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-clearcut\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="1d193729baf37df3d902a423291423a0df7e3779">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-clearcut-10.0.1_635f8f1765f179a0b0f2ce22b1c6921a588c1cdf\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.2.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="67eb33110dbacb46a48175b08ae0c96761d2c17d">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.2.0_fac3275f386f7877094570916117bc675b7d9af2\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="25438f55fc6d906a0e72f30b21487541430ede43">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-base-10.0.1_fd09c021c53275d9323486fe098329ffd76c9e3b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mpressl\.gradle\caches\modules-2\files-2.1\io.netty\netty-codec-http2\4.1.3.Final\4e68c878d8ae6988eb3425d4fc2c8d3eea69ff39\netty-codec-http2-4.1.3.Final.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
         sha1="4e68c878d8ae6988eb3425d4fc2c8d3eea69ff39">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\netty-codec-http2-4.1.3.Final_95af0127054d7e114a13160a7b968f80476a0444\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads-lite\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="b955cb3a1ad6f1b6ff728ce1e0cd592c1717b440">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-ads-lite-10.0.1_646957b98f37ace7bd0716c89f7761b59d8c3782\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -264,30 +147,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="44a694d4095be84c2888764b1f7256b385c030ad">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-location-10.0.1_c974d64c9a2f2cf81d0ff6f0a794b5126eba1b6e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.2.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
         sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.2.0_9565981a9bc418f416af57a3e10a5b129ddd6597\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.2.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="810f41e5b7fd99f196ebeabe865ba2c54e7e76dc">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.2.0_719442e35cdcfdbd3b20b5a2445bbd329af4558d\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -315,15 +180,6 @@
         revision="25.0.1"
         sha1="9cca2818594cc5348806d6662133491e7ea0fa8d">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-10.0.1_ac2f9cdd2b059cd4aea7982dc594ef6b9b45c6ac\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.firebase\firebase-messaging\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="4b17463c814bdc562fb0392fa3494063623a0904">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-messaging-10.0.1_aa53f4891d183eca66a8036d3113677972c9ace9\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -363,21 +219,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\10.0.1\jars\classes.jar"
-        jumboMode="false"
+        jar="C:\Users\mpressl\.gradle\caches\modules-2\files-2.1\com.google.http-client\google-http-client-jackson2\1.22.0\cc014d64ae11117e159d334c99d9c246d9b36f44\google-http-client-jackson2-1.22.0.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="028f8255cb977b29cdffbfcf05caa0459686120c">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-drive-10.0.1_61cb0d85380b4d4b43a8e2dc10b048f93f09e744\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.firebase\firebase-common\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="eb0d830e3eabb9deb9ec44869cf7ac7ea1ad794c">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-common-10.0.1_95110d77b992f7221a72776f7e58001abaee4d01\classes.dex" />
+        sha1="cc014d64ae11117e159d334c99d9c246d9b36f44">
+        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\google-http-client-jackson2-1.22.0_b9b761757c1a5a41753a8830a68485b0e6fe07f6\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -385,7 +232,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="4931bbf8023af10a7e8c14b10b5e6af9c06fdbe4">
+        sha1="4a28c43d32e3496a92383bd069d7a533a3e683f6">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_3deb3b8787dd946c5835d7e877bf51f170d2ad77\classes.dex" />
     </item>
     <item
@@ -444,12 +291,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.2.0\jars\classes.jar"
-        jumboMode="false"
+        jar="C:\Users\mpressl\.gradle\caches\modules-2\files-2.1\com.google.auth\google-auth-library-credentials\0.6.0\2f22d2cb659087aaa190990fa28854439b08b4e9\google-auth-library-credentials-0.6.0.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.2.0_0f8c63039a394c03838afe6d6e60c2bc96a584ee\classes.dex" />
+        sha1="2f22d2cb659087aaa190990fa28854439b08b4e9">
+        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\google-auth-library-credentials-0.6.0_c7bbb9c576ea2703cbcf918aebdd785f6d64fcc7\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -468,15 +315,6 @@
         revision="25.0.1"
         sha1="2d5d113b0352ab60946fc44c518cf68fd26cbb79">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wallet-10.0.1_fd60d24e86a4256ba063fac7e788084241ff5507\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\jars\libs\internal_impl-24.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="b6763651ec29b4c95e7bbe63fc393ffcc8c4c2c5">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_d097f7372b3503de7c0f3a28376028891d85b312\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -561,24 +399,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.firebase\firebase-auth\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="9cca2818594cc5348806d6662133491e7ea0fa8d">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-auth-10.0.1_ac2f9cdd2b059cd4aea7982dc594ef6b9b45c6ac\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast-framework\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="df1cb17511aabbb63264a0024949d1e42502a512">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-framework-10.0.1_a90ac245707d408b1a240aedc93c45a257a9171c\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mpressl\.gradle\caches\modules-2\files-2.1\io.grpc\grpc-protobuf\1.0.1\17222b03c64a65eb05de5ab266c920fca8c90fab\grpc-protobuf-1.0.1.jar"
         jumboMode="true"
         optimize="true"
@@ -597,48 +417,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="b1df8fa3d372a27e4e969ce00b00689ee1eed031">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-api-10.0.1_146d65a5db5145ce53f21c8cfcdfecc81c6683ef\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.android.support\palette-v7\24.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="734e80dffea7bd76c18ae256822a124c30d85850">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-palette-v7-24.0.0_7a73f1470608c319b8855d8d07f9940198910e64\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="92c871a22463a247e8a77a9f3fd231c278788c4a">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-panorama-10.0.1_4c1abba9b7d2173dc978a03d65ab7d0d06251987\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mpressl\.gradle\caches\modules-2\files-2.1\io.netty\netty-resolver\4.1.3.Final\fe4ba2ed19e4e8667068e917665f5725ee0290ea\netty-resolver-4.1.3.Final.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
         sha1="fe4ba2ed19e4e8667068e917665f5725ee0290ea">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\netty-resolver-4.1.3.Final_20c84e85a6e93057c59d0f8428a9ce7ce34518be\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics-impl\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="6116e0e7069de7fc259aac8e08b84f32c2038231">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-impl-10.0.1_6f6f369d8e5879277dd6c0a0e1ce10994e43c075\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -651,30 +435,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.2.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.2.0_6045a905157834d821e8ea80734bfe57a471f836\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
         sha1="028f8255cb977b29cdffbfcf05caa0459686120c">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-drive-10.0.1_61cb0d85380b4d4b43a8e2dc10b048f93f09e744\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\.gradle\caches\modules-2\files-2.1\com.google.auth\google-auth-library-credentials\0.4.0\171da91494a1391aef13b88bd7302b29edb8d3b3\google-auth-library-credentials-0.4.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="171da91494a1391aef13b88bd7302b29edb8d3b3">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\google-auth-library-credentials-0.4.0_4f8ff10e0c2706303f1dd21c0ba94578846668c8\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -687,15 +453,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="2d5d113b0352ab60946fc44c518cf68fd26cbb79">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-wallet-10.0.1_fd60d24e86a4256ba063fac7e788084241ff5507\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast-framework\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -705,12 +462,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.firebase\firebase-analytics\10.0.1\jars\classes.jar"
-        jumboMode="false"
+        jar="C:\Users\mpressl\.gradle\caches\modules-2\files-2.1\com.google.http-client\google-http-client\1.22.0\d441fc58329c4a4c067acec04ac361627f66ecc8\google-http-client-1.22.0.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="433f4d6aa5f21f19552afe0e6c5eff0fedba73ad">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-analytics-10.0.1_88de53d29c740e3eced4d5864de65545106bb8d8\classes.dex" />
+        sha1="d441fc58329c4a4c067acec04ac361627f66ecc8">
+        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\google-http-client-1.22.0_1c22b0d455121688d3de562d95cb5de55938ce06\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -750,48 +507,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="a48dc0b148059764d32500be558702d5ff932058">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-identity-10.0.1_a6a3f4896a5cde1e8c4b1fbfc743cbeed2214709\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.firebase\firebase-iid\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="486371f97baad8e607f332f20fee1d3dd00a731a">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-iid-10.0.1_424813fb5db9d5e5a843260239cd0c3fd5598675\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="8308ed003522a2ee8958311afcc4cfd0470377cd">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gcm-10.0.1_6ec79fd9dddb708632031c9bba2c2dbb619b6fca\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-api\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
         sha1="b1df8fa3d372a27e4e969ce00b00689ee1eed031">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-api-10.0.1_146d65a5db5145ce53f21c8cfcdfecc81c6683ef\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-auth\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="e2185aff89caeb337b1ffc36d5e525d8318e7cfe">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-auth-10.0.1_956cbd38d377680eb79677a88a85041823cba2ca\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -858,39 +579,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-awareness\10.0.1\jars\classes.jar"
-        jumboMode="false"
+        jar="C:\Users\mpressl\.gradle\caches\modules-2\files-2.1\com.google.api-client\google-api-client\1.22.0\244350c0c845c583717ade13f5666a452fd0cfa\google-api-client-1.22.0.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="4385ccc0a88b33d182a836eadb47be55c8eb1107">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-awareness-10.0.1_48efdf67e09a273890fc1a29532a4bf8471b67b8\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-instantapps\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="45305e6af414dab5aba6c3225081c2f15c3bdd1e">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-instantapps-10.0.1_5fbbea95f204e5d6bc085b7ddcc7682f2e3f0859\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="f6cf557be4dbd0282ea2388633e5378634423226">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-safetynet-10.0.1_0c411ff034c437df5f1ac22ccefe7fca5a53ca05\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.firebase\firebase-config\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="ffc15e965a9e8c28f24455eedd4cac215c45d1fc">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-config-10.0.1_26898209220470ef868c7849c8829ed0bb15b711\classes.dex" />
+        sha1="0244350c0c845c583717ade13f5666a452fd0cfa">
+        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\google-api-client-1.22.0_faa6a7cd20957a532d00d5bd03fdda8609e299af\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -984,84 +678,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database-connection\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="8010ae6ed32828a145b25ec97bc07b7a83c6318f">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-connection-10.0.1_8f79cd8f88195940ece14dc285422fe5caa3bd4b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="4c829ff0ccfecb28a999ee46d9e75948dfc777a4">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-10.0.1_b06634f5d467f63c7b9625143c6d2bdddd191be0\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="7a64bf6dc775198eed9db9468a133adf7dfe6562">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-fitness-10.0.1_d8618008b623b9efe47b08bf779f82f42ed0dcc4\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="39907d5c8f5902fffef30160ca7447c93b82405c">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-appinvite-10.0.1_a597e999b9a3eb4647ac034301afc449a4fc0ea3\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="c14f0c89f28cf782e42581ab0aba5f63af39b3d2">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-plus-10.0.1_d4ab57cfb3277ff50a4543545bf2ab4855fa4473\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="b327fbe2fad414bc38cf0ce8f7efe1a38f572837">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-mediarouter-v7-24.0.0_967c211cff999b444985b41722e622e0e6025139\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\24.0.0\jars\libs\internal_impl-24.0.0.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
         sha1="b6763651ec29b4c95e7bbe63fc393ffcc8c4c2c5">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-24.0.0_d097f7372b3503de7c0f3a28376028891d85b312\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="dd39827d2067497e60e21da48a7926000b6d4b0c">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-10.0.1_0d86db345a08fec1541cf7803ca4e27196ad5a2f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.2.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.2.0_59365997c4de646a7179e0fb71f27c3a8e82d733\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -1074,21 +696,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\10.0.1\jars\classes.jar"
-        jumboMode="false"
+        jar="C:\Users\mpressl\.gradle\caches\modules-2\files-2.1\com.google.auth\google-auth-library-oauth2-http\0.6.0\8f25e25c8638976fe1d106f665d2b03089fe8c6e\google-auth-library-oauth2-http-0.6.0.jar"
+        jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="771267c5b0c7a5b348d3205dcfa1f871af7e0177">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-cast-10.0.1_b17172caa3f9941ff639c862b451d3c3cd018548\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="c6e1f361e9d61aece9dac39b77fcc98a337a144d">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-nearby-10.0.1_0e066e928e20c0bbf7a59e11a2b1bc0782824c09\classes.dex" />
+        sha1="8f25e25c8638976fe1d106f665d2b03089fe8c6e">
+        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\google-auth-library-oauth2-http-0.6.0_0ac0c4338d3ce8e04ff72a94a07a3b9dc9b6383c\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -1101,48 +714,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.firebase\firebase-appindexing\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="ae80d328a8548b4610ead6c624bab8c6a6984f5b">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-appindexing-10.0.1_25c111b22395a2fe78487f138ff245396d4fc20e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
         sha1="8f128aeeb7e31271b28a7adb9dac1f3a6ed9f5e7">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-10.0.1_ec12a17895a02a4b3376a4c8b7f731c0962086df\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-iid\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="6bb5d347ebc0c6ef3c83a905222a688da5d2f7b4">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-iid-10.0.1_f173b7175aba08132842886a631cf30b712143a9\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gass\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="57c2eceb8548de84509d1ebc293fedec53231f6c">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-gass-10.0.1_74a18e62a09e8d7db6b4bb1b7b84366cdaf3ffac\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.firebase\firebase-storage-common\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="09cf6aa1390f95157e8295d02be7868f568825fc">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-storage-common-10.0.1_d925bbbcbc6a334fe5145c15c519d3580358df7c\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -1173,15 +750,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.2.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.2.0_17946232959ca4d8cf935b436c1893119fc9b530\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mpressl\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
         jumboMode="true"
         optimize="true"
@@ -1195,8 +763,17 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="5b9cc65988916929dfbe1a4a39626a3459e37ad0">
+        sha1="4c6435d22280422228d34807af6b2aea2a29046c">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_5166f452a708b62d2edb2a97c20d094338df6227\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\mpressl\.gradle\caches\modules-2\files-2.1\com.fasterxml.jackson.core\jackson-core\2.1.3\f6c3aed1cdfa21b5c1737c915186ea93a95a58bd\jackson-core-2.1.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f6c3aed1cdfa21b5c1737c915186ea93a95a58bd">
+        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\jackson-core-2.1.3_92db3ee0cb3375dc582482b54933b46ddc29a460\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -1206,24 +783,6 @@
         revision="25.0.1"
         sha1="810f41e5b7fd99f196ebeabe865ba2c54e7e76dc">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.2.0_719442e35cdcfdbd3b20b5a2445bbd329af4558d\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="27777b3cad3c20b1acab19f6e37fe3e03371bf6e">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-maps-10.0.1_c3de55c9492f636d9d3b5d94d859d2d9c1086e16\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.2.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="702d339bc0a81d21354cd7e2cf2b67225fa4a16c">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.2.0_2c8571cfd257f581ffe3fd72ff6daa8be3ffb21d\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -1245,39 +804,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-places\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="f3e51e9c5233b8897f61e08a6a27bc36283c2724">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-places-10.0.1_367e71f3de8f515d7388dfdc7500479b5f56b3a5\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager-v4-impl\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="f23ad0f8e58713ff4b55f61c0bbde3830378347c">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-v4-impl-10.0.1_4ab465b9c27df4e6ad7961f327ce656aa780a6c2\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mpressl\.gradle\caches\modules-2\files-2.1\io.netty\netty-codec\4.1.3.Final\790174576b97ab75a4edafd320f9a964a5473cdb\netty-codec-4.1.3.Final.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
         sha1="790174576b97ab75a4edafd320f9a964a5473cdb">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\netty-codec-4.1.3.Final_2daaea478327949b67074ff59144cef67758cdca\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="ba6aa5e69ef31dee57208125323cee958fc67565">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-vision-10.0.1_ac62e88fba9db01808f1c5cb6254cb9fb485fcfa\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -1305,15 +837,6 @@
         revision="25.0.1"
         sha1="6ce200f6b23222af3d8abb6b6459e6c44f4bb0e9">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\guava-19.0_91ea8505afe9aaf52b1689cce1fbcf502c27aa65\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.firebase\firebase-database\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="8f128aeeb7e31271b28a7adb9dac1f3a6ed9f5e7">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-database-10.0.1_ec12a17895a02a4b3376a4c8b7f731c0962086df\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -1380,15 +903,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.firebase\firebase-crash\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="de29a39f9260f88151b1ef453140e71c76b6c415">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.firebase-firebase-crash-10.0.1_714842201cc27ad1d02b6ca0a6a9e3bf71481e3f\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mpressl\.gradle\caches\modules-2\files-2.1\io.netty\netty-transport\4.1.3.Final\2f17fe8c5c3b3f90908ed2d0649631a11beb3904\netty-transport-4.1.3.Final.jar"
         jumboMode="true"
         optimize="true"
@@ -1416,15 +930,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics-impl\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="e871881b36b32e6bfd271a830c6eeb54ff0fc185">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-analytics-impl-10.0.1_222377fea432bd740eee7f9776328a6a46fab865\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\10.0.1\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -1440,15 +945,6 @@
         revision="25.0.1"
         sha1="d27c24204c5e507b16fec01006b3d0f1ec42aed4">
         <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\joda-time-2.8.2_0d45c0ee231a17c127a75a018a96408d1d5b94de\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tagmanager\10.0.1\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="25.0.1"
-        sha1="971509bbe30bb7b971fc1c49d7b23d0d818830ac">
-        <dex dex="C:\Users\mpressl\Documents\studium\Sem5\Studienarbeit\HearingItApp\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.google.android.gms-play-services-tagmanager-10.0.1_363f6e0f8aeea0593f2142e5375a9ade7976b243\classes.dex" />
     </item>
 
 </items>

@@ -6,17 +6,20 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.root.HearItApp.R;
-
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import de.dhbw.studienarbeit.hearItApp.printer.IPrinter;
 import de.dhbw.studienarbeit.hearItApp.printer.PrinterFactory;
@@ -28,20 +31,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public static final String APP_NAME = "Hearing";
     public static final String LOG_TAF = "HearItApp";
-    public static final int RESULT_SPEECH = 1;
 
-    /** Factory options for speech recognition **/
-    public static final int GOOGLE_CLOUD_CLIENT = 0;
-    public static final int ANDROID_VOICE_CLIENT = 1;
-    public static final int TEXT_FIELD_INPUT = 999;
 
-    /** Factory options for AR printer variants **/
-    public static final int GLASSUP_AR_PRINTER = 0;
-
-    private static final int RECORD_MODE = GOOGLE_CLOUD_CLIENT;
-    private static final int PRINTER_MODE = GLASSUP_AR_PRINTER;
-
-    private static final int REQUEST_APP_PERMISSIONS = 100;
+    private int RECORD_MODE;
+    private int PRINTER_MODE;
 
     private final String[] permissions = {Manifest.permission.RECORD_AUDIO,
             Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -57,8 +50,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ArrayAdapter<String> adaptMenu;
 
     private Button btnSpeech;
-    private TextView txt;
-    private EditText txtField;
+    private Spinner spinner_recorder;
+    private Spinner spinner_printer;
     
 
     @Override
@@ -68,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setContentView(R.layout.activity_main);
         //request permissions
-        ActivityCompat.requestPermissions(this, permissions, REQUEST_APP_PERMISSIONS);
+        ActivityCompat.requestPermissions(this, permissions, Constants.REQUEST_APP_PERMISSIONS);
         initialize_Components();
     }
     /**
@@ -78,14 +71,56 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean initialize_Components(){
 
         generate_Menu();
-        // this.gPrinter = new GlassUpPrinter(this);
-        this.arPrinter = PrinterFactory.generate(MainActivity.PRINTER_MODE, this);
-        this.recorder = RecorderFactory.generate(MainActivity.RECORD_MODE, this);
-        this.txtField = (EditText) findViewById(R.id.editText);
-        this.txtField.setVisibility(View.INVISIBLE);
 
-        //textview
-        this.txt = (TextView) findViewById(R.id.textView);
+        ((EditText) findViewById(R.id.edit_printer)).setVisibility(View.INVISIBLE);
+        ((TextView)findViewById(R.id.label_text_printer)).setVisibility(View.INVISIBLE);
+
+        ((EditText) findViewById(R.id.edit_recorder)).setVisibility(View.INVISIBLE);
+        ((TextView) findViewById(R.id.label_text_recorder)).setVisibility(View.INVISIBLE);
+
+        this.spinner_printer = (Spinner) findViewById(R.id.spinner_printer);
+
+        final String[] printerArray = Constants.PRINTER_MAP.keySet().toArray(
+                new String[Constants.PRINTER_MAP.keySet().size()]);
+
+        ArrayAdapter adapt_printer = new ArrayAdapter(
+                this,android.R.layout.simple_spinner_item,  printerArray);
+
+        this.spinner_printer.setAdapter(adapt_printer);
+
+        this.spinner_printer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selected = parent.getItemAtPosition(position).toString();
+                int mode = Constants.PRINTER_MAP.get(selected);
+                setPrinterMode( mode, selected );
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        this.spinner_recorder = (Spinner) findViewById(R.id.spinner_recorder);
+        final String[] recorderArray = Constants.RECORDER_MAP.keySet().toArray(
+                new String[Constants.RECORDER_MAP.keySet().size()]);
+        ArrayAdapter adapt_recorder = new ArrayAdapter(
+                this,android.R.layout.simple_spinner_item,  recorderArray);
+        this.spinner_recorder.setAdapter(adapt_recorder);
+        this.spinner_recorder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                setRecorderMode(Constants.RECORDER_MAP.get(parent.getItemAtPosition(position).toString()),
+                        parent.getItemAtPosition(position).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         //button to start recording
         this.btnSpeech = (Button) findViewById(R.id.btnStartSpeech);
@@ -100,6 +135,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             showToast("Agent not configured");
         }
         */
+        this.setRecorderMode(Constants.RECORDER_MAP.get(
+                Constants.RECORDER_TEXT_FIELD_CLIENT_TEXT), Constants.RECORDER_TEXT_FIELD_CLIENT_TEXT);
+
+        this.setPrinterMode(
+                Constants.PRINTER_MAP.get(Constants.PRINTER_GLASSUP_AR_TEXT),
+                Constants.PRINTER_GLASSUP_AR_TEXT);
+
         return true;
     }
     //generates the side menu
@@ -110,12 +152,41 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.lstVSideMenu.setAdapter(adaptMenu);
     }
 
+    private void setRecorderMode(int mode, String name){
+        if(this.isRecording){
+            Log.e(LOG_TAF, "Cannot change recorder while recording. Stop the record first.");
+            return;
+        }
+        this.RECORD_MODE = mode;
+        if(recorder != null) {
+            this.recorder.shutdown();
+        }
+        this.recorder = RecorderFactory.generate(mode, this);
+        Log.i(LOG_TAF, "Selected recorder: id: " + RECORD_MODE +
+                " Name: " + name);
+    }
+
+    private void setPrinterMode(int mode, String name){
+        if(this.isRecording){
+            Log.e(LOG_TAF, "Cannot change printer while recording. Stop the record first.");
+            return;
+        }
+        this.PRINTER_MODE = mode;
+        if(arPrinter != null) {
+            this.arPrinter.shutdown();
+        }
+        this.arPrinter = PrinterFactory.generate(mode, this);
+        Log.i(LOG_TAF, "Selected printer: id: " + PRINTER_MODE +
+                " Name: " + name);
+
+    }
+
    @Override
    public void onRequestPermissionsResult(int requestCode,
                                           @NonNull String[] permissions,
                                           @NonNull int[] grantResults) {
        switch(requestCode){
-           case REQUEST_APP_PERMISSIONS:
+           case Constants.REQUEST_APP_PERMISSIONS:
                if(grantResults[0] == PackageManager.PERMISSION_GRANTED &&
                        grantResults[1] == PackageManager.PERMISSION_GRANTED){
 
@@ -165,7 +236,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void receiveResult(ArrayList<String> result){
-        this.txt.setText(result.get(0));
         this.arPrinter.printMessage(result.get(0));
     }
 
@@ -176,49 +246,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         t.show();
     }
 
-    public TextView getTxt(){
-        return this.txt;
-    }
+   // public TextView getTxt(){
+   //     return this.txt;
+   // }
 
-    public EditText getTextField(){return this.txtField;}
+   // public EditText getTextField(){return this.edit_printer;}
 
     public Button getSpeechBtn(){return this.btnSpeech;}
-
-
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-
-    public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("Main Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
-    }
-    */
 }

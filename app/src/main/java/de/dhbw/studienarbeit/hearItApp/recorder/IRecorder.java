@@ -9,4 +9,6 @@ public interface IRecorder {
     void startRecording();
 
     void stopRecording();
+
+    void shutdown();
 }

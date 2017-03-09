@@ -170,6 +170,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="play-services-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-cast-10.0.1" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="ant-1.7.0" level="project" />
     <orderEntry type="library" exported="" name="glassuplib" level="project" />
     <orderEntry type="library" exported="" name="firebase-config-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="grpc-stub-1.0.1" level="project" />
@@ -200,8 +201,11 @@
     <orderEntry type="library" exported="" name="play-services-games-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-analytics-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-tasks-10.0.1" level="project" />
+    <orderEntry type="library" exported="" name="google-auth-library-oauth2-http-0.6.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-identity-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-appindexing-10.0.1" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="jcommander-1.48" level="project" />
+    <orderEntry type="library" exported="" name="google-oauth-client-1.22.0" level="project" />
     <orderEntry type="library" exported="" name="aopalliance-1.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-awareness-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-clearcut-10.0.1" level="project" />
@@ -216,19 +220,24 @@
     <orderEntry type="library" exported="" name="firebase-analytics-impl-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-messaging-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="netty-transport-4.1.3.Final" level="project" />
+    <orderEntry type="library" exported="" name="google-http-client-jackson2-1.22.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-instantapps-10.0.1" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="testng-6.9.6" level="project" />
     <orderEntry type="library" exported="" name="guice-4.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-25.2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-panorama-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="support-compat-25.2.0" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="hamcrest-core-1.3" level="project" />
     <orderEntry type="library" exported="" name="support-media-compat-25.2.0" level="project" />
-    <orderEntry type="library" exported="" name="google-auth-library-credentials-0.4.0" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="hamcrest-core-1.1" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="snakeyaml-1.15" level="project" />
     <orderEntry type="library" exported="" name="auto-value-1.1" level="project" />
     <orderEntry type="library" exported="" name="mediarouter-v7-24.0.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-nearby-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="okio-1.6.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-tagmanager-v4-impl-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-auth-base-10.0.1" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="ant-launcher-1.7.0" level="project" />
     <orderEntry type="library" exported="" name="protobuf-java-util-3.0.0" level="project" />
     <orderEntry type="library" exported="" name="okhttp-2.5.0" level="project" />
     <orderEntry type="library" exported="" name="grpc-google-common-protos-0.1.5" level="project" />
@@ -240,6 +249,8 @@
     <orderEntry type="library" exported="" name="grpc-protobuf-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="protobuf-lite-3.0.1" level="project" />
     <orderEntry type="library" exported="" name="netty-handler-4.1.3.Final" level="project" />
+    <orderEntry type="library" exported="" name="google-api-client-1.22.0" level="project" />
+    <orderEntry type="library" exported="" name="jackson-core-2.1.3" level="project" />
     <orderEntry type="library" exported="" name="firebase-common-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="protobuf-javanano-3.0.0-alpha-5" level="project" />
     <orderEntry type="library" exported="" name="play-services-analytics-impl-10.0.1" level="project" />
@@ -257,16 +268,22 @@
     <orderEntry type="library" exported="" name="grpc-netty-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-iid-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-storage-10.0.1" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="guice-4.0-no_aop" level="project" />
     <orderEntry type="library" exported="" name="grpc-auth-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="gson-2.3" level="project" />
     <orderEntry type="library" exported="" name="play-services-tagmanager-10.0.1" level="project" />
+    <orderEntry type="library" exported="" name="google-http-client-1.22.0" level="project" />
     <orderEntry type="library" exported="" name="javax.inject-1" level="project" />
     <orderEntry type="library" exported="" name="play-services-ads-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="netty-buffer-4.1.3.Final" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="bsh-2.0b4" level="project" />
     <orderEntry type="library" exported="" name="play-services-drive-10.0.1" level="project" />
+    <orderEntry type="library" exported="" name="google-auth-library-credentials-0.6.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-analytics-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="play-services-safetynet-10.0.1" level="project" />
     <orderEntry type="library" exported="" name="netty-codec-http-4.1.3.Final" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="junit-4.12" level="project" />
+    <orderEntry type="library" exported="" scope="TEST" name="junit-4.10" level="project" />
     <orderEntry type="library" exported="" name="protobuf-java-3.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-25.2.0" level="project" />
     <orderEntry type="library" exported="" name="support-vector-drawable-25.2.0" level="project" />

@@ -15,9 +15,9 @@ import com.google.protobuf.TextFormat;
 public class ResponeStreamObserver
         implements io.grpc.stub.StreamObserver<StreamingRecognizeResponse>{
 
-//    private RequestStreamClient client;
+//    private SpeechStreamClient client;
 
-    public ResponeStreamObserver(RequestStreamClient client){
+    public ResponeStreamObserver(SpeechStreamClient client){
 //        this.client = client;
     }
 

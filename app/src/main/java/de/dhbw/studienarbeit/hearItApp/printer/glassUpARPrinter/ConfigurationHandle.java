@@ -3,7 +3,7 @@ package de.dhbw.studienarbeit.hearItApp.printer.glassUpARPrinter;
 import android.os.Handler;
 import android.os.Message;
 
-import com.example.root.HearItApp.R;
+import de.dhbw.studienarbeit.hearItApp.R;
 
 import de.dhbw.studienarbeit.hearItApp.printer.glassUpARPrinter.GlassUpAgentVersionSupport;
 

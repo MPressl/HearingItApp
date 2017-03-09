@@ -8,7 +8,7 @@ android {
     compileSdkVersion 25
     buildToolsVersion '25.0.1'
     defaultConfig {
-        applicationId "com.example.root.hearviaandroidspeech"
+        applicationId "de.dhbw.studienarbeit.hearItApp"
         minSdkVersion 21
         targetSdkVersion 25
         versionCode 1
@@ -39,5 +39,26 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:+'
     compile 'com.google.android.gms:play-services:10.0.1'
-    compile 'com.google.api.grpc:grpc-google-cloud-speech-v1beta1:0.1.5'
+    compile ('com.google.api.grpc:grpc-google-cloud-speech-v1beta1:0.1.5'){
+        exclude module: 'guava-jdk5'
+    }
+    compile ('com.google.api-client:google-api-client:1.22.0')
+            {
+                exclude module: 'guava-jdk5'
+            }
+    compile ('com.google.auth:google-auth-library-oauth2-http:0.6.0'){
+        exclude module: 'guava-jdk5'
+    }
+    testCompile 'junit:junit:4.12'
+    androidTestCompile 'org.testng:testng:6.9.6'
+    androidTestCompile ('com.google.api.grpc:grpc-google-cloud-speech-v1beta1:0.1.5'){
+        exclude module: 'guava-jdk5'
+    }
+    androidTestCompile ('com.google.api-client:google-api-client:1.22.0')
+            {
+                exclude module: 'guava-jdk5'
+            }
+    androidTestCompile ('com.google.auth:google-auth-library-oauth2-http:0.6.0'){
+        exclude module: 'guava-jdk5'
+    }
 }

@@ -7,4 +7,6 @@ package de.dhbw.studienarbeit.hearItApp.printer;
 public interface IPrinter {
 
     void printMessage(String message);
+
+    void shutdown();
 }
