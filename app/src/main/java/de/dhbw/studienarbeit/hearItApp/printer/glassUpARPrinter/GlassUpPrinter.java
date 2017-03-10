@@ -3,10 +3,9 @@ package de.dhbw.studienarbeit.hearItApp.printer.glassUpARPrinter;
 import android.util.Log;
 import android.widget.Toast;
 
-import de.dhbw.studienarbeit.hearItApp.MainActivity;
-
 import java.util.ArrayList;
 
+import de.dhbw.studienarbeit.hearItApp.MainActivity;
 import de.dhbw.studienarbeit.hearItApp.printer.IPrinter;
 import glassup.service.GlassUpAgentInterface;
 import glassup.service.GlassUpEvent;
@@ -75,7 +74,7 @@ public class GlassUpPrinter implements IPrinter {
         //configurate glass up
         this.configHandler = new ConfigurationHandle(glassAgent);
 
-        if(this.glassAgent.isConfigured()){
+        if(!this.glassAgent.isConfigured()){
             /*Not configured*/
             Log.d("TAG","App not configured, Scheduling send configure");
             /*Send the configuration message*/

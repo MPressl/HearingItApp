@@ -158,6 +158,7 @@ public class GlassUpAgentVersionSupport {
                 Log.d("GlassUpAgent", "sendGraphicsAndText ---:> THE APPs is !NOT! configured, can\'t send text!!!");
             } else {
                 Intent intent = new Intent("glassup.service.action.SEND_AGENT_CONTENT");
+                intent.setPackage("glassup.service");
                 intent.putExtra("appId", this.context.getPackageName());
                 intent.putExtra("contentId", contentId);
                 intent.putExtra("layoutId", layoutId);
