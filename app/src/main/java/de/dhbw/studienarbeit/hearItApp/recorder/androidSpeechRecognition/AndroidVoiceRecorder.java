@@ -13,40 +13,21 @@ import de.dhbw.studienarbeit.hearItApp.MainActivity;
  * Created by root on 12/14/16.
  */
 
-public class AndroidVoiceRecorder extends AppCompatActivity implements IRecorder {
+public class AndroidVoiceRecorder implements IRecorder {
 
-    private MainActivity parent;
+    private MainActivity context;
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-
-        super.onActivityResult(requestCode, resultCode, data);
-
-        switch(requestCode){
-
-            case Constants.RESULT_SPEECH:
-
-                if(resultCode == RESULT_OK && data != null){
-                    parent.receiveResult(data
-                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS));
-
-                }else{
-                    parent.showToast("couldn't parse speech to text");
-                }
-                break;
-            default:
-                parent.showToast("didn't expect that intent result");
-                break;
-        }
+    public AndroidVoiceRecorder(MainActivity context){
+        this.context = context;
     }
 
     public void startRecording() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "de");
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "de-DE");
         try {
-            startActivityForResult(intent,Constants.RESULT_SPEECH);
+            this.context.startActivityForResult(intent,Constants.RESULT_SPEECH);
         } catch (ActivityNotFoundException a) {
-            parent.showToast("Opps! Your device doesn't support Speech to Text");
+            this.context.showToast("Opps! Your device doesn't support Speech to Text");
         }
     }
 

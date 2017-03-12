@@ -21,7 +21,7 @@ public class RecorderFactory {
                 return new GoogleRecorder(mainView);
 
             case Constants.RECORDER_ANDROID_VOICE_CLIENT:
-                return new AndroidVoiceRecorder();
+                return new AndroidVoiceRecorder(mainView);
 
             default:
                 return new TextRecorder(mainView);

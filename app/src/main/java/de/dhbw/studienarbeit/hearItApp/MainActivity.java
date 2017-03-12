@@ -1,8 +1,10 @@
 package de.dhbw.studienarbeit.hearItApp;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -43,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean isRecording;
 
     private IPrinter arPrinter;
-    private GlassUpPrinter gPrinter;
     private IRecorder recorder;
 
     private ListView lstVSideMenu;
@@ -181,7 +182,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-   @Override
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch(requestCode){
+
+            case Constants.RESULT_SPEECH:
+
+                if(resultCode == RESULT_OK && data != null){
+                    this.receiveResult(data
+                        .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS));
+
+                }else{
+                    this.showToast("couldn't parse speech to text");
+                }
+                break;
+            default:
+                this.showToast("Intent request code unknown");
+                break;
+        }
+    }
+
+    @Override
    public void onRequestPermissionsResult(int requestCode,
                                           @NonNull String[] permissions,
                                           @NonNull int[] grantResults) {
@@ -221,13 +245,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onDestroy(){
         super.onDestroy();
-        this.gPrinter.destroy();
+       // this.arPrinter.destroy();
 
     }
     @Override
     protected  void onPause(){
         super.onPause();
-       this.gPrinter.onPause();
+      // this.arPrinter.onPause();
     }
     @Override
     protected void onResume(){
