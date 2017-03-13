@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final String[] permissions = {Manifest.permission.RECORD_AUDIO,
             Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
-
     private boolean isRecording;
 
     private IPrinter arPrinter;
@@ -127,15 +126,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.btnSpeech = (Button) findViewById(R.id.btnStartSpeech);
         this.btnSpeech.setOnClickListener(this);
 
-        /*
-        if(!glassAgent.isConnected()){
-            showToast("Could not connect to Agent");
-            return false;
-        }
-        if(!glassAgent.isConfigured()){
-            showToast("Agent not configured");
-        }
-        */
         this.setRecorderMode(Constants.RECORDER_MAP.get(
                 Constants.RECORDER_TEXT_FIELD_CLIENT_TEXT), Constants.RECORDER_TEXT_FIELD_CLIENT_TEXT);
 
@@ -184,17 +174,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
-
         super.onActivityResult(requestCode, resultCode, data);
 
         switch(requestCode){
-
+            //Result of android recognition intent requested by AndroidVoiceRecorder
             case Constants.RESULT_SPEECH:
 
                 if(resultCode == RESULT_OK && data != null){
                     this.receiveResult(data
-                        .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS));
-
+                        .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
+                    this.isRecording = false;
                 }else{
                     this.showToast("couldn't parse speech to text");
                 }
@@ -259,8 +248,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
        // this.gPrinter.onResume();
     }
 
-    public void receiveResult(ArrayList<String> result){
-        this.arPrinter.printMessage(result.get(0));
+    public void receiveResult(String result){
+        this.arPrinter.printMessage(result);
     }
 
     public void showToast(String msg){

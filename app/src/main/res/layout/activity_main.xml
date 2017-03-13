@@ -17,7 +17,8 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:weightSum="1">
 
         <TextView
             android:text="Please enter a Text to display through printer"
@@ -43,11 +44,10 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:text="Name"
+            android:inputType="textMultiLine"
             android:ems="10"
             android:id="@+id/edit_printer"
-            android:focusable="false" />
+            android:layout_weight="0.88" />
 
         <Button
             android:text="Start Speech recording"

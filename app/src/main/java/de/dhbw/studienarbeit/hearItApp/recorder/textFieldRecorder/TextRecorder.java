@@ -40,8 +40,7 @@ public class TextRecorder implements IRecorder {
     @Override
     public void stopRecording() {
         this.parent.getSpeechBtn().setText("Start Speech recording");
-        ArrayList<String> result = new ArrayList<String>();
-        result.add( this.edit_recorder_input.getText().toString());
+        String result = this.edit_recorder_input.getText().toString();
         this.parent.receiveResult(result);
     }
 

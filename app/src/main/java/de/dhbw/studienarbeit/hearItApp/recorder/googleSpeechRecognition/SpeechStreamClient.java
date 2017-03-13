@@ -9,14 +9,19 @@ import com.google.android.gms.security.ProviderInstaller;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.speech.v1beta1.RecognitionConfig;
 import com.google.cloud.speech.v1beta1.SpeechGrpc;
+import com.google.cloud.speech.v1beta1.SpeechRecognitionAlternative;
 import com.google.cloud.speech.v1beta1.StreamingRecognitionConfig;
+import com.google.cloud.speech.v1beta1.StreamingRecognitionResult;
 import com.google.cloud.speech.v1beta1.StreamingRecognizeRequest;
 import com.google.cloud.speech.v1beta1.StreamingRecognizeResponse;
 import com.google.protobuf.ByteString;
+import com.google.protobuf.CodedOutputStream;
+import com.google.protobuf.TextFormat;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -36,17 +41,15 @@ import io.grpc.stub.StreamObserver;
  * Created by root on 1/13/17.
  */
 
-public class SpeechStreamClient {
+public class SpeechStreamClient implements io.grpc.stub.StreamObserver<StreamingRecognizeResponse>{
 
 
     private static final List<String> OAUTH2_SCOPES =
             Arrays.asList("https://www.googleapis.com/auth/cloud-platform");
 
-    private GoogleRecorder manager;
+    private VoiceRecorder recorder;
 
     private SpeechGrpc.SpeechStub speechRPCStub;
-
-    private StreamObserver<StreamingRecognizeResponse> responseObserver;
 
     private StreamObserver<StreamingRecognizeRequest> requestObserver;
 
@@ -58,20 +61,20 @@ public class SpeechStreamClient {
 
     private boolean isInititalized;
 
-    public SpeechStreamClient(GoogleRecorder parent)
+    public SpeechStreamClient(VoiceRecorder recorder)
             throws InterruptedException, IOException, GeneralSecurityException {
 
-        this.manager = parent;
+        this.recorder = recorder;
         // Required to support Android 4.x.x (patches for OpenSSL from Google-Play-Services)
         try {
-            ProviderInstaller.installIfNeeded(parent.getMainView().getApplicationContext());
+            ProviderInstaller.installIfNeeded(recorder.getMainView().getApplicationContext());
         } catch (GooglePlayServicesRepairableException e) {
 
             // Indicates that Google Play services is out of date, disabled, etc.
             e.printStackTrace();
             // Prompt the user to install/update/enable Google Play services.
             GooglePlayServicesUtil.showErrorNotification(
-                    e.getConnectionStatusCode(), parent.getMainView().getApplicationContext());
+                    e.getConnectionStatusCode(), recorder.getMainView().getApplicationContext());
             return;
 
         } catch (GooglePlayServicesNotAvailableException e) {
@@ -95,7 +98,7 @@ public class SpeechStreamClient {
      */
     private Channel createChannel() throws IOException, GeneralSecurityException {
 
-        InputStream credentials = this.manager.getMainView().getAssets().open(authentication_key);
+        InputStream credentials = this.recorder.getMainView().getAssets().open(authentication_key);
         GoogleCredentials creds = GoogleCredentials.fromStream(credentials)
                 .createScoped(this.OAUTH2_SCOPES);
         OkHttpChannelProvider provider = new OkHttpChannelProvider();
@@ -109,27 +112,25 @@ public class SpeechStreamClient {
         return channel;
     }
 
-    public void initializeStreaming() {
-        this.responseObserver =
-                new ResponeStreamObserver();
+    private void initializeStreaming() {
 
         //create a request stream with the just created respone observer as answer stream
         this.requestObserver =
-                this.speechRPCStub.streamingRecognize(this.responseObserver);
+                this.speechRPCStub.streamingRecognize(this);
         try {
             // Build and send a StreamingRecognizeRequest containing the parameters for
             // processing the audio.
             RecognitionConfig audioConfig =
                     RecognitionConfig.newBuilder()
                             .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
-                            .setSampleRate(GoogleRecorder.SAMPLING)
+                            .setSampleRate(VoiceRecorder.SAMPLING)
                             .build();
 
             StreamingRecognitionConfig streamingConfig =
                     StreamingRecognitionConfig.newBuilder()
                             .setConfig(audioConfig)
-                            .setInterimResults(true)
-                            .setSingleUtterance(true)
+                            .setInterimResults(false)
+                            .setSingleUtterance(false)
                             .build();
 
             StreamingRecognizeRequest initialRequest =
@@ -165,4 +166,31 @@ public class SpeechStreamClient {
         }
     }
 
+    @Override
+    public void onNext(StreamingRecognizeResponse response) {
+        Log.e("RESPONSESTREAM: ","Received response: " + TextFormat.printToString(response));
+        List<StreamingRecognitionResult> results = response.getResultsList();
+        if(results.size() > 0){
+            List<SpeechRecognitionAlternative> alternatives = results.get(0).getAlternativesList();
+            if(alternatives.size() > 0 ){
+                SpeechRecognitionAlternative alternative = alternatives.get(0);
+                this.recorder.getMainView().receiveResult(alternative.getTranscript());
+            }
+        }
+    }
+
+    @Override
+    public void onError(Throwable error) {
+        Log.e("RESPONSESTREAM: ","Received response: " + error.getMessage());
+    }
+
+    @Override
+    public void onCompleted() {
+        Log.e("RESPONSESTREAM: ","completed");
+    }
+
+
+    public void setStreamInitialized(boolean streamInitialized) {
+        this.isInititalized = streamInitialized;
+    }
 }

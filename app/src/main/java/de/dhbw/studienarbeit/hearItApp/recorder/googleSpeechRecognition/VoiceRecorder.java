@@ -3,16 +3,14 @@ package de.dhbw.studienarbeit.hearItApp.recorder.googleSpeechRecognition;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
-import android.os.AsyncTask;
 import android.util.Log;
-
-import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
+import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 
 /**
  * Records audio and saves it to audio file
@@ -21,7 +19,23 @@ import de.dhbw.studienarbeit.hearItApp.MainActivity;
  * Created by root on 12/29/16.
  */
 
-public class VoiceRecorder {
+public class VoiceRecorder implements IRecorder{
+
+    /** Recording properties**/
+    public static final int ELEMENTS_PER_BUFFER = 1024;
+
+    public static final int BYTES_PER_ELEMENT = 2; // 2 bytes in 16bit format
+
+    public static final int SAMPLING = 16000;
+
+    public static final int RECORDER_AUDIO_ENCODING = AudioFormat.ENCODING_PCM_16BIT;
+
+    public static final int RECORDER_CHANNELS = AudioFormat.CHANNEL_IN_MONO;
+
+    public static int MIN_BUFFER_SIZE;
+
+    /** parent activity**/
+    private MainActivity mainView;
 
     private AudioRecord androidRecord;
 
@@ -33,14 +47,18 @@ public class VoiceRecorder {
 
     private boolean initialized = false;
 
-    public VoiceRecorder(GoogleRecorder man){
-        final GoogleRecorder manager = man;
+    public VoiceRecorder(MainActivity mainView){
+
+        this.mainView = mainView;
+        VoiceRecorder.MIN_BUFFER_SIZE = AudioRecord.getMinBufferSize(VoiceRecorder.SAMPLING,
+                VoiceRecorder.RECORDER_CHANNELS,VoiceRecorder.RECORDER_AUDIO_ENCODING) * 2;
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
 
-                    streamingClient = new SpeechStreamClient(manager);
+                    streamingClient = new SpeechStreamClient(VoiceRecorder.this);
                     initialized = true;
 
                 } catch (InterruptedException e) {
@@ -50,7 +68,8 @@ public class VoiceRecorder {
                     Log.e(MainActivity.LOG_TAF, e.getMessage());
                 } catch (IOException e) {
                     if (e.getClass() == FileNotFoundException.class) {
-                        Log.e(MainActivity.LOG_TAF, "No authentication key for google Cloud found, channel not created");
+                        Log.e(MainActivity.LOG_TAF, "No authentication key for google " +
+                                "Cloud found, channel not created");
                     } else {
                         Log.e(MainActivity.LOG_TAF, e.getMessage());
                     }
@@ -59,42 +78,18 @@ public class VoiceRecorder {
         }).start();
 
         this.androidRecord = new AudioRecord(MediaRecorder.AudioSource.MIC,
-                GoogleRecorder.SAMPLING, GoogleRecorder.RECORDER_CHANNELS,
-                GoogleRecorder.RECORDER_AUDIO_ENCODING, GoogleRecorder.MIN_BUFFER_SIZE);
+                VoiceRecorder.SAMPLING, VoiceRecorder.RECORDER_CHANNELS,
+                VoiceRecorder.RECORDER_AUDIO_ENCODING, VoiceRecorder.MIN_BUFFER_SIZE);
     }
 
 
-    public boolean startRecording() {
+    @Override
+    public void startRecording() {
         if(!initialized){
             Log.e(MainActivity.LOG_TAF, "Recorder not initialized. Cannot start recording");
-            return false;
+            return;
         }
-        Log.i(MainActivity.LOG_TAF, "IRecorder Channels: " + GoogleRecorder.RECORDER_CHANNELS);
-        Log.i(MainActivity.LOG_TAF, "Encoding: " + GoogleRecorder.RECORDER_AUDIO_ENCODING);
-        Log.i(MainActivity.LOG_TAF, "Sampling: " + GoogleRecorder.SAMPLING);
-
-        Log.i(MainActivity.LOG_TAF, "Elements per buffer: " + GoogleRecorder.ELEMENTS_PER_BUFFER);
-        Log.i(MainActivity.LOG_TAF, "Bytes per element: " + GoogleRecorder.BYTES_PER_ELEMENT);
-               // GoogleRecorder.BYTES_PER_ELEMENT * GoogleRecorder.ELEMENTS_PER_BUFFER;
-        Log.i(MainActivity.LOG_TAF, "MinBufferSize: " + GoogleRecorder.MIN_BUFFER_SIZE);
-
-
-//FIXME: This is the media recorder solution
-//       this.androidRecord = new MediaRecorder();
-//        androidRecord.setAudioSource(MediaRecorder.AudioSource.MIC);
-//        this.androidRecord.setAudioSamplingRate(GoogleRecorder.SAMPLING);
-//        this.androidRecord.setAudioEncodingBitRate(AudioFormat.ENCODING_PCM_16BIT);
-//       // this.androidRecord.setAudioChannels(GoogleRecorder.RECORDER_CHANNELS);
-//       this.androidRecord.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-//       this.androidRecord.setOutputFile(GoogleRecorder.AUDIO_FILE.getAbsolutePath());
-//        this.androidRecord.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
-//        try {
-//            this.androidRecord.prepare();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        this.androidRecord.start();
-//        this.isRecording = true;
+        this.mainView.getSpeechBtn().setText("Recording... Please Speak Now.");
 
         //initialize stream
         this.writeFileThread = new Thread(new Runnable() {
@@ -108,23 +103,26 @@ public class VoiceRecorder {
             }
         }, "AudioRecorder Thread");
        this.writeFileThread.start();
-        return true;
     }
 
+    @Override
     public void stopRecording() {
+        if(!this.isRecording){
+            return;
+        }
+        this.mainView.getSpeechBtn().setText("Start Speech Recording");
         // stops the recording activity
         Log.i(MainActivity.LOG_TAF, "VoiceRecorder Stopping the record.");
         if (null != this.androidRecord) {
             this.isRecording = false;
             this.androidRecord.stop();
-            this.androidRecord.release();
             this.writeFileThread = null;
+            this.streamingClient.setStreamInitialized(false);
         }
     }
     private void readAudioInput() {
 
-        byte[] buffer = new byte[GoogleRecorder.MIN_BUFFER_SIZE];
-             //   GoogleRecorder.ELEMENTS_PER_BUFFER * GoogleRecorder.BYTES_PER_ELEMENT];
+        byte[] buffer = new byte[VoiceRecorder.MIN_BUFFER_SIZE];
 
         this.androidRecord.startRecording();
         this.isRecording = true;
@@ -148,8 +146,12 @@ public class VoiceRecorder {
     }
 
     public void shutdown(){
+        this.androidRecord.release();
         this.androidRecord = null;
         return;
     }
 
+    public MainActivity getMainView() {
+        return this.mainView;
+    }
 }
