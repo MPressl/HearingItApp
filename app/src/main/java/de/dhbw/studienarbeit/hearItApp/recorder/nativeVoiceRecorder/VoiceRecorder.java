@@ -1,8 +1,10 @@
-package de.dhbw.studienarbeit.hearItApp.recorder.googleSpeechRecognition;
+package de.dhbw.studienarbeit.hearItApp.recorder.nativeVoiceRecorder;
 
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 
 import java.io.FileNotFoundException;
@@ -11,20 +13,16 @@ import java.security.GeneralSecurityException;
 
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
 import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
+import de.dhbw.studienarbeit.hearItApp.recorder.ISpeechToTextConverter;
+import de.dhbw.studienarbeit.hearItApp.recorder.googleSpeechRecognition.GoogleSpeechConverter;
 
 /**
- * Records audio and saves it to audio file
- * GoogleRecorder.AUDIO_FILE_PATH
- *
- * Created by root on 12/29/16.
+ * Native Voice Recorder
+ * Uses the AndroidRecord to record bytes from the microphone and sends the recorded bytes
+ * to a ISpeechToTextConverter implementation to convert the speech to text
  */
 
 public class VoiceRecorder implements IRecorder{
-
-    /** Recording properties**/
-    public static final int ELEMENTS_PER_BUFFER = 1024;
-
-    public static final int BYTES_PER_ELEMENT = 2; // 2 bytes in 16bit format
 
     public static final int SAMPLING = 16000;
 
@@ -43,7 +41,7 @@ public class VoiceRecorder implements IRecorder{
 
     private Thread writeFileThread;
 
-    private SpeechStreamClient streamingClient;
+    private ISpeechToTextConverter streamingClient;
 
     private boolean initialized = false;
 
@@ -53,33 +51,45 @@ public class VoiceRecorder implements IRecorder{
         VoiceRecorder.MIN_BUFFER_SIZE = AudioRecord.getMinBufferSize(VoiceRecorder.SAMPLING,
                 VoiceRecorder.RECORDER_CHANNELS,VoiceRecorder.RECORDER_AUDIO_ENCODING) * 2;
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-
-                    streamingClient = new SpeechStreamClient(VoiceRecorder.this);
-                    initialized = true;
-
-                } catch (InterruptedException e) {
-                    Log.e(MainActivity.LOG_TAF, "Interrupted while initializing " +
-                            "the channel to google speech api");
-                } catch (GeneralSecurityException e) {
-                    Log.e(MainActivity.LOG_TAF, e.getMessage());
-                } catch (IOException e) {
-                    if (e.getClass() == FileNotFoundException.class) {
-                        Log.e(MainActivity.LOG_TAF, "No authentication key for google " +
-                                "Cloud found, channel not created");
-                    } else {
-                        Log.e(MainActivity.LOG_TAF, e.getMessage());
-                    }
-                }
-            }
-        }).start();
+        initializeSpeechConverter();
 
         this.androidRecord = new AudioRecord(MediaRecorder.AudioSource.MIC,
                 VoiceRecorder.SAMPLING, VoiceRecorder.RECORDER_CHANNELS,
                 VoiceRecorder.RECORDER_AUDIO_ENCODING, VoiceRecorder.MIN_BUFFER_SIZE);
+    }
+
+    private void initializeSpeechConverter() {
+
+            ConnectivityManager connManager = (ConnectivityManager) this.mainView
+                    .getSystemService(MainActivity.CONNECTIVITY_SERVICE);
+
+            NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+
+            if (!mWifi.isConnected()) {
+                mainView.showToast("Sorry. You need a working WIFI connection, " +
+                        "to use the Google Conversion Service.");
+                this.initialized = false;
+                return;
+
+            }
+        try{
+            streamingClient = new GoogleSpeechConverter(VoiceRecorder.this);
+            initialized = true;
+
+        } catch (InterruptedException e) {
+            Log.e(MainActivity.LOG_TAF, "Interrupted while initializing " +
+                    "the channel to google speech api");
+        } catch (GeneralSecurityException e) {
+            Log.e(MainActivity.LOG_TAF, e.getMessage());
+        } catch (IOException e) {
+            if (e.getClass() == FileNotFoundException.class) {
+                Log.e(MainActivity.LOG_TAF, "No authentication key for google " +
+                        "Cloud found, channel not created");
+            } else {
+                Log.e(MainActivity.LOG_TAF, e.getMessage());
+            }
+        }
+
     }
 
 
@@ -110,14 +120,17 @@ public class VoiceRecorder implements IRecorder{
         if(!this.isRecording){
             return;
         }
-        this.mainView.getSpeechBtn().setText("Start Speech Recording");
         // stops the recording activity
         Log.i(MainActivity.LOG_TAF, "VoiceRecorder Stopping the record.");
+        this.isRecording = false;
         if (null != this.androidRecord) {
-            this.isRecording = false;
             this.androidRecord.stop();
             this.writeFileThread = null;
             this.streamingClient.setStreamInitialized(false);
+        }
+        //notify the main activity that recording stopped (if the call came from the conversion client
+        if(this.mainView.notifyStopRecord()){
+            Log.d(MainActivity.LOG_TAF, "Notified main activity about unexpected recorder stop");
         }
     }
     private void readAudioInput() {
@@ -154,4 +167,6 @@ public class VoiceRecorder implements IRecorder{
     public MainActivity getMainView() {
         return this.mainView;
     }
+
+    public boolean isInitialize(){ return this.initialized; }
 }

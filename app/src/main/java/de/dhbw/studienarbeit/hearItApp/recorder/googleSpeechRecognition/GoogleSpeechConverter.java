@@ -15,22 +15,21 @@ import com.google.cloud.speech.v1beta1.StreamingRecognitionResult;
 import com.google.cloud.speech.v1beta1.StreamingRecognizeRequest;
 import com.google.cloud.speech.v1beta1.StreamingRecognizeResponse;
 import com.google.protobuf.ByteString;
-import com.google.protobuf.CodedOutputStream;
 import com.google.protobuf.TextFormat;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.GeneralSecurityException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executors;
 
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
 
+import de.dhbw.studienarbeit.hearItApp.recorder.ISpeechToTextConverter;
+import de.dhbw.studienarbeit.hearItApp.recorder.nativeVoiceRecorder.VoiceRecorder;
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
 import io.grpc.auth.ClientAuthInterceptor;
 import io.grpc.okhttp.OkHttpChannelBuilder;
 import io.grpc.okhttp.OkHttpChannelProvider;
@@ -41,7 +40,9 @@ import io.grpc.stub.StreamObserver;
  * Created by root on 1/13/17.
  */
 
-public class SpeechStreamClient implements io.grpc.stub.StreamObserver<StreamingRecognizeResponse>{
+public class GoogleSpeechConverter implements
+        io.grpc.stub.StreamObserver<StreamingRecognizeResponse>,
+        ISpeechToTextConverter {
 
 
     private static final List<String> OAUTH2_SCOPES =
@@ -61,7 +62,7 @@ public class SpeechStreamClient implements io.grpc.stub.StreamObserver<Streaming
 
     private boolean isInititalized;
 
-    public SpeechStreamClient(VoiceRecorder recorder)
+    public GoogleSpeechConverter(VoiceRecorder recorder)
             throws InterruptedException, IOException, GeneralSecurityException {
 
         this.recorder = recorder;
@@ -147,6 +148,7 @@ public class SpeechStreamClient implements io.grpc.stub.StreamObserver<Streaming
      * recognizeSpeech()
      *
      */
+    @Override
     public void recognizeBytes(byte[] buffer, int size){
 
         if (!this.isInititalized) {
@@ -168,7 +170,9 @@ public class SpeechStreamClient implements io.grpc.stub.StreamObserver<Streaming
 
     @Override
     public void onNext(StreamingRecognizeResponse response) {
-        Log.e("RESPONSESTREAM: ","Received response: " + TextFormat.printToString(response));
+        Log.d(MainActivity.LOG_TAF,"Received response from google speech: " +
+                TextFormat.printToString(response));
+
         List<StreamingRecognitionResult> results = response.getResultsList();
         if(results.size() > 0){
             List<SpeechRecognitionAlternative> alternatives = results.get(0).getAlternativesList();
@@ -181,7 +185,9 @@ public class SpeechStreamClient implements io.grpc.stub.StreamObserver<Streaming
 
     @Override
     public void onError(Throwable error) {
-        Log.e("RESPONSESTREAM: ","Received response: " + error.getMessage());
+        Log.e(MainActivity.LOG_TAF,"Error while Google Speech Conversion. Details: "
+                + error.getMessage());
+        this.recorder.stopRecording();
     }
 
     @Override
@@ -190,6 +196,7 @@ public class SpeechStreamClient implements io.grpc.stub.StreamObserver<Streaming
     }
 
 
+    @Override
     public void setStreamInitialized(boolean streamInitialized) {
         this.isInititalized = streamInitialized;
     }

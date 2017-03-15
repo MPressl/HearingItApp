@@ -34,15 +34,13 @@ public class TextRecorder implements IRecorder {
 
     @Override
     public void startRecording() {
-        this.parent.getSpeechBtn().setText("Recording.. enter in textfield");
-    }
-
-    @Override
-    public void stopRecording() {
-        this.parent.getSpeechBtn().setText("Start Speech recording");
+        this.parent.getSpeechBtn().setText("Printing Text...");
         String result = this.edit_recorder_input.getText().toString();
         this.parent.receiveResult(result);
     }
+
+    @Override
+    public void stopRecording() {}
 
     @Override
     public void shutdown() {

@@ -21,6 +21,11 @@ public class Constants {
 
     public static final LinkedHashMap<String, Integer> RECORDER_MAP = createRecorderMap();
 
+    /**
+     * creates a map out of all recorders in this class ( nameString -> id )
+     *
+     * @return map of recorders
+     */
     private static LinkedHashMap<String, Integer> createRecorderMap()
     {
         LinkedHashMap<String, Integer> map = new LinkedHashMap<String, Integer>();
@@ -39,6 +44,11 @@ public class Constants {
 
     public static final LinkedHashMap<String, Integer> PRINTER_MAP = createPrinterMap();
 
+    /**
+     * creates a map out of all printers in this class ( nameString -> id )
+     *
+     * @return map of printers
+     */
     private static LinkedHashMap<String, Integer> createPrinterMap()
     {
         LinkedHashMap<String, Integer> map = new LinkedHashMap<String, Integer>();
@@ -46,7 +56,5 @@ public class Constants {
         map.put(PRINTER_TEXT_FIELD_TEXT, PRINTER_TEXT_FILED);
         return map;
     }
-
-    public static final int REQUEST_APP_PERMISSIONS = 100;
 
 }

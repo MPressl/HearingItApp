@@ -6,13 +6,14 @@ import android.widget.TextView;
 
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
 import de.dhbw.studienarbeit.hearItApp.R;
-import de.dhbw.studienarbeit.hearItApp.printer.IPrinter;
+import de.dhbw.studienarbeit.hearItApp.printer.AbstractPrinter;
 
 /**
- * Created by mpressl on 3/13/2017.
+ * TextFieldPrinter, prints conversion result from Speech to Text Recorder
+ * to a sinmple TextField within the MainActivity
  */
 
-public class TextFieldPrinter implements IPrinter {
+public class TextFieldPrinter extends AbstractPrinter {
 
     private MainActivity mainView;
 
@@ -21,6 +22,7 @@ public class TextFieldPrinter implements IPrinter {
     private TextView label;
 
     public TextFieldPrinter(MainActivity mainView){
+        super();
         this.mainView = mainView;
         this.printerField = (EditText) mainView.findViewById(R.id.edit_printer);
         this.label = (TextView) mainView.findViewById(R.id.label_text_printer);
@@ -29,7 +31,7 @@ public class TextFieldPrinter implements IPrinter {
     }
 
     @Override
-    public void printMessage(String message) {
+    public boolean printMessage(String message) {
         String old = this.printerField.getText().toString();
         final String newMessage = old + message;
         this.mainView.runOnUiThread(new Runnable() {
@@ -38,7 +40,9 @@ public class TextFieldPrinter implements IPrinter {
                 printerField.setText(newMessage);
             }
         });
+        return true;
     }
+
 
     @Override
     public void shutdown() {

@@ -1,12 +1,28 @@
 package de.dhbw.studienarbeit.hearItApp.printer;
 
 /**
- * Created by mpressl on 3/2/2017.
+ * Interface for a AR Printer
+ * to implement a new printer use AbstractPrinter instead of this interface itself
  */
 
-public interface IPrinter {
+interface IPrinter {
 
-    void printMessage(String message);
+    /**
+     * method adds a String to the queue of messages to be printer
+     * @param message
+     */
+    void addToMessageBuffer(String message);
 
+    /**
+     * method strts a thread which waits until a new message appears in the queue
+     * and prints it
+     */
+    void startPrinting();
+
+    void stopPrinting();
+
+    /**
+     * method closes the connection to the AR device
+     */
     void shutdown();
 }

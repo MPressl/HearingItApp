@@ -12,7 +12,7 @@ import de.dhbw.studienarbeit.hearItApp.printer.textFieldPrinter.TextFieldPrinter
 public class PrinterFactory {
 
 
-    public static IPrinter generate(int printerMode, MainActivity mainActivity) {
+    public static AbstractPrinter generate(int printerMode, MainActivity mainActivity) {
 
         switch(printerMode){
             case Constants.PRINTER_GLASSUP_AR:

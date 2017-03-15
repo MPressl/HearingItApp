@@ -1,12 +1,8 @@
 package de.dhbw.studienarbeit.hearItApp;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -19,16 +15,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import de.dhbw.studienarbeit.hearItApp.printer.IPrinter;
+import de.dhbw.studienarbeit.hearItApp.printer.AbstractPrinter;
 import de.dhbw.studienarbeit.hearItApp.printer.PrinterFactory;
-import de.dhbw.studienarbeit.hearItApp.printer.glassUpARPrinter.GlassUpPrinter;
 import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 import de.dhbw.studienarbeit.hearItApp.recorder.RecorderFactory;
 
+/**
+ * Main Activity controlling the user interaction. Selecting a recorder and printer
+ * and setting other options is controlled from here
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static final String APP_NAME = "Hearing";
@@ -38,12 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int RECORD_MODE;
     private int PRINTER_MODE;
 
-    private final String[] permissions = {Manifest.permission.RECORD_AUDIO,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE};
-
     private boolean isRecording;
 
-    private IPrinter arPrinter;
+    private AbstractPrinter arPrinter;
     private IRecorder recorder;
 
     private ListView lstVSideMenu;
@@ -56,16 +48,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
-        //request permissions
-        ActivityCompat.requestPermissions(this, permissions, Constants.REQUEST_APP_PERMISSIONS);
         initialize_Components();
     }
     /**
-     * initializing gui components, including GUI, AR Printer and SpeechRecognition Client
+     * initializing gui components
      * @return success
      */
     private boolean initialize_Components(){
@@ -78,8 +66,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ((EditText) findViewById(R.id.edit_recorder)).setVisibility(View.INVISIBLE);
         ((TextView) findViewById(R.id.label_text_recorder)).setVisibility(View.INVISIBLE);
 
+        //init the spinner to select a printer. take entries from map in Constants
         this.spinner_printer = (Spinner) findViewById(R.id.spinner_printer);
-
         final String[] printerArray = Constants.PRINTER_MAP.keySet().toArray(
                 new String[Constants.PRINTER_MAP.keySet().size()]);
 
@@ -87,22 +75,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 this,android.R.layout.simple_spinner_item,  printerArray);
 
         this.spinner_printer.setAdapter(adapt_printer);
-
         this.spinner_printer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selected = parent.getItemAtPosition(position).toString();
                 int mode = Constants.PRINTER_MAP.get(selected);
                 setPrinterMode( mode, selected );
-
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
 
+        //init the spinner to select a recorder. take entries from map in Constants
         this.spinner_recorder = (Spinner) findViewById(R.id.spinner_recorder);
         final String[] recorderArray = Constants.RECORDER_MAP.keySet().toArray(
                 new String[Constants.RECORDER_MAP.keySet().size()]);
@@ -117,25 +102,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
 
         //button to start recording
         this.btnSpeech = (Button) findViewById(R.id.btnStartSpeech);
         this.btnSpeech.setOnClickListener(this);
 
-        this.setRecorderMode(Constants.RECORDER_MAP.get(
-                Constants.RECORDER_TEXT_FIELD_CLIENT_TEXT), Constants.RECORDER_TEXT_FIELD_CLIENT_TEXT);
-
-        this.setPrinterMode(
-                Constants.PRINTER_MAP.get(Constants.PRINTER_GLASSUP_AR_TEXT),
-                Constants.PRINTER_GLASSUP_AR_TEXT);
-
         return true;
     }
-    //generates the side menu
+
+    /**
+     * generates the side menu
+     */
     private void generate_Menu(){
         String[] menuItems = {"Language..."};
         this.lstVSideMenu = (ListView) findViewById(R.id.navList);
@@ -143,20 +122,57 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.lstVSideMenu.setAdapter(adaptMenu);
     }
 
+    /**
+     * Select the recorder mode. This method is called when the user selects a recorder
+     * through the spinner. The method calls the RecorderFactory. If the Recorder cannot be created
+     * the standard textRecorder is selected
+     *
+     * @param mode
+     * @param name
+     */
     private void setRecorderMode(int mode, String name){
+
         if(this.isRecording){
+            //if recording at the moment the recorder cannot be changed
             Log.e(LOG_TAF, "Cannot change recorder while recording. Stop the record first.");
             return;
         }
         this.RECORD_MODE = mode;
+
         if(recorder != null) {
             this.recorder.shutdown();
         }
+
         this.recorder = RecorderFactory.generate(mode, this);
-        Log.i(LOG_TAF, "Selected recorder: id: " + RECORD_MODE +
-                " Name: " + name);
+
+        if(this.recorder == null) {
+            //if null is record (because recorder cannot be initialized, the standard text recorder
+            // is selected
+            String[] recorders = Constants.RECORDER_MAP.keySet()
+                    .toArray(new String[Constants.RECORDER_MAP.keySet().size()]);
+            int textFieldIndex = 0;
+            for(int i = 0 ; i < recorders.length ; ++i){
+                //get the index of the text recorder within the array
+                if(recorders[i].equals(Constants.RECORDER_TEXT_FIELD_CLIENT_TEXT)){
+                    textFieldIndex = i;
+                    break;
+                }
+            }
+            this.spinner_recorder.setSelection(textFieldIndex);
+
+        }else {
+            Log.i(LOG_TAF, "Selected recorder: id: " + RECORD_MODE +
+                    " Name: " + name);
+        }
     }
 
+    /**
+     * Select the printer mode. This method is called when the user selects a printer
+     * through the spinner. The method calls the PrinterFactory.
+     *
+     * @param mode
+     * @param name
+     */
     private void setPrinterMode(int mode, String name){
         if(this.isRecording){
             Log.e(LOG_TAF, "Cannot change printer while recording. Stop the record first.");
@@ -184,6 +200,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     this.receiveResult(data
                         .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
                     this.isRecording = false;
+                    this.arPrinter.stopPrinting();
                 }else{
                     this.showToast("couldn't parse speech to text");
                 }
@@ -195,34 +212,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-   public void onRequestPermissionsResult(int requestCode,
-                                          @NonNull String[] permissions,
-                                          @NonNull int[] grantResults) {
-       switch(requestCode){
-           case Constants.REQUEST_APP_PERMISSIONS:
-               if(grantResults[0] == PackageManager.PERMISSION_GRANTED &&
-                       grantResults[1] == PackageManager.PERMISSION_GRANTED){
-
-               }else{
-                   Toast.makeText(this, "Permissions not grante", Toast.LENGTH_LONG);
-               }
-
-       }
-   }
-    @Override
     public void onClick(View view) {
             if(this.arPrinter == null ){
-                this.showToast("Could not find a device to print");
+                this.showToast("Please select a printer first.");
+                return;
+            }
+            if(this.recorder == null){
+                this.showToast("Please select a recorder first.");
                 return;
             }
             switch(view.getId()){
                 case R.id.btnStartSpeech:
                     if(this.isRecording){
-                        this.isRecording = false;
-                        recorder.stopRecording();
+                        this.notifyStopRecord();
                     }else {
                         this.isRecording = true;
-                        recorder.startRecording();
+                        this.recorder.startRecording();
+                        this.arPrinter.startPrinting();
                     }
                     break;
                 default:
@@ -234,8 +240,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onDestroy(){
         super.onDestroy();
-       // this.arPrinter.destroy();
-
     }
     @Override
     protected  void onPause(){
@@ -248,22 +252,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
        // this.gPrinter.onResume();
     }
 
+    /**
+     * method calls the selected printer to print out the received result
+     *
+     * @param result
+     */
     public void receiveResult(String result){
-        this.arPrinter.printMessage(result);
+        this.arPrinter.addToMessageBuffer(result);
     }
 
+    /**
+     * method displays a Toast message to the user
+     */
     public void showToast(String msg){
-        Toast t = Toast.makeText(this.getApplicationContext(),
-                msg,
-                Toast.LENGTH_SHORT);
-        t.show();
+        final String message = msg;
+        this.runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                //Toast can only be shown from UI Thread
+                Toast.makeText(getApplicationContext(),
+                        message,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
-   // public TextView getTxt(){
-   //     return this.txt;
-   // }
-
-   // public EditText getTextField(){return this.edit_printer;}
-
+    /**
+     * getter for the start and stop speech button
+     * @return start/stop speech button
+     */
     public Button getSpeechBtn(){return this.btnSpeech;}
+
+    /**
+     * method is called when the stopp button is pressed
+     * and also when the stopRecording method of the recorder is called from the
+     * conversion client to notify this activity
+     * if the stopRecording method of the recorder is called from here, then this.isRecording
+     * is already false and the method will return without doing anything
+     */
+    public boolean notifyStopRecord() {
+        if(this.isRecording) {
+            this.isRecording = false;
+            this.btnSpeech.setText("Start Speech Recording");
+            this.recorder.stopRecording();
+            this.arPrinter.stopPrinting();
+            return true;
+        }
+        return false;
+    }
 }
