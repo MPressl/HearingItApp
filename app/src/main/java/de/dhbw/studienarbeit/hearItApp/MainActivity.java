@@ -293,7 +293,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean notifyStopRecord() {
         if(this.isRecording) {
             this.isRecording = false;
-            this.btnSpeech.setText("Start Speech Recording");
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    btnSpeech.setText("Start Speech Recording");
+                }
+            });
             this.recorder.stopRecording();
             this.arPrinter.stopPrinting();
             return true;
