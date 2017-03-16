@@ -16,6 +16,9 @@ import de.dhbw.studienarbeit.hearItApp.MainActivity;
 
 public abstract class AbstractPrinter implements  IPrinter{
 
+    /**
+     * If recording, conversion and printing is ongoing this.isProcessing = true
+     */
     protected boolean isProcessing;
 
     protected LinkedBlockingDeque<String> messageBuffer;
@@ -44,6 +47,10 @@ public abstract class AbstractPrinter implements  IPrinter{
         this.isProcessing = false;
     }
 
+    /**
+     * Waits for a new message to appear in the message buffer to process it using
+     * this.printMessage(String message) method
+     */
     private void doPrinterJob(){
         while(this.isProcessing || !this.messageBuffer.isEmpty()){
             try {
@@ -61,6 +68,11 @@ public abstract class AbstractPrinter implements  IPrinter{
         Log.d(MainActivity.LOG_TAF, "Done printing messages");
     }
 
+    /**
+     * Prints out a single message to an AR device. Must be implemented device specific.
+     * @param message
+     * @return success
+     */
     protected abstract boolean printMessage(String message);
 
 }

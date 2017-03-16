@@ -23,12 +23,14 @@ import java.security.GeneralSecurityException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
 
 import de.dhbw.studienarbeit.hearItApp.recorder.ISpeechToTextConverter;
 import de.dhbw.studienarbeit.hearItApp.recorder.nativeVoiceRecorder.VoiceRecorder;
 import io.grpc.Channel;
+import io.grpc.Deadline;
 import io.grpc.ManagedChannel;
 import io.grpc.auth.ClientAuthInterceptor;
 import io.grpc.okhttp.OkHttpChannelBuilder;
@@ -37,7 +39,8 @@ import io.grpc.stub.StreamObserver;
 
 
 /**
- * Created by root on 1/13/17.
+ * GoogleSpeechConverter uses the Google Cloud Speech api
+ * for synchronus live speech to text conversion
  */
 
 public class GoogleSpeechConverter implements
@@ -62,6 +65,15 @@ public class GoogleSpeechConverter implements
 
     private boolean isInititalized;
 
+    /**
+     * Constructor:
+     * creates a channel to the google cloud service account
+     * and then creates a rpc stub to call cloud functions for speech recognition
+     * @param recorder
+     * @throws InterruptedException
+     * @throws IOException
+     * @throws GeneralSecurityException
+     */
     public GoogleSpeechConverter(VoiceRecorder recorder)
             throws InterruptedException, IOException, GeneralSecurityException {
 
@@ -87,6 +99,7 @@ public class GoogleSpeechConverter implements
         //create channel and speech stub
         Channel channel = createChannel();
         this.speechRPCStub = SpeechGrpc.newStub(channel);
+        this.speechRPCStub.withDeadline(Deadline.after(2, TimeUnit.HOURS));
     }
 
     /**
@@ -113,8 +126,11 @@ public class GoogleSpeechConverter implements
         return channel;
     }
 
+    /**
+     * sends a initial request to the speech api containing general information
+     * about the following audio stream
+     */
     private void initializeStreaming() {
-
         //create a request stream with the just created respone observer as answer stream
         this.requestObserver =
                 this.speechRPCStub.streamingRecognize(this);
@@ -161,6 +177,7 @@ public class GoogleSpeechConverter implements
                             .setAudioContent(ByteString.copyFrom(buffer, 0, size))
                             .build();
             requestObserver.onNext(request);
+            requestObserver.onCompleted();
         } catch (RuntimeException e) {
             Log.e(MainActivity.LOG_TAF, "Error while recognizing speech. Stopping." + e.getMessage());
             requestObserver.onError(e);
@@ -192,7 +209,7 @@ public class GoogleSpeechConverter implements
 
     @Override
     public void onCompleted() {
-        Log.e("RESPONSESTREAM: ","completed");
+        Log.e(MainActivity.LOG_TAF,"Speech Streaming Client Completed.");
     }
 
 

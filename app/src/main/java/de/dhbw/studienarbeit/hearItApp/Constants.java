@@ -3,7 +3,7 @@ package de.dhbw.studienarbeit.hearItApp;
 import java.util.LinkedHashMap;
 
 /**
- * Created by mpressl on 3/6/2017.
+ * Global Project Constatnts
  */
 
 public class Constants {

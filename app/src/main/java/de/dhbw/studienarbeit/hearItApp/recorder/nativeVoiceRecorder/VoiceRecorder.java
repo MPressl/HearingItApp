@@ -45,6 +45,11 @@ public class VoiceRecorder implements IRecorder{
 
     private boolean initialized = false;
 
+    /**
+     * Constructor initializing recorder's components such as the AndroidRecord instance
+     * and the conversion client
+     * @param mainView
+     */
     public VoiceRecorder(MainActivity mainView){
 
         this.mainView = mainView;
@@ -58,6 +63,9 @@ public class VoiceRecorder implements IRecorder{
                 VoiceRecorder.RECORDER_AUDIO_ENCODING, VoiceRecorder.MIN_BUFFER_SIZE);
     }
 
+    /**
+     * Method initializes a new Speech to Text conversion client
+     */
     private void initializeSpeechConverter() {
 
             ConnectivityManager connManager = (ConnectivityManager) this.mainView
@@ -133,12 +141,19 @@ public class VoiceRecorder implements IRecorder{
             Log.d(MainActivity.LOG_TAF, "Notified main activity about unexpected recorder stop");
         }
     }
+
+    /**
+     * method reads audio data from selected resource (microphone)
+     * and calls the selected conversion client to convert the partial audio data
+     * into text
+     */
     private void readAudioInput() {
 
         byte[] buffer = new byte[VoiceRecorder.MIN_BUFFER_SIZE];
 
         this.androidRecord.startRecording();
         this.isRecording = true;
+        int recordingTime = 0;
         while (this.isRecording) {
             long start = System.currentTimeMillis();
             // gets the voice output from microphone to byte format
@@ -152,6 +167,13 @@ public class VoiceRecorder implements IRecorder{
                 streamingClient.recognizeBytes(buffer, read);
                 long stop = System.currentTimeMillis() - start;
                 Log.e("measuring " , "NEDED: " + stop);
+                recordingTime += stop;
+                if(recordingTime >= 50000){
+                    //Google Speech api has a time limit of 65 seconds of streaming
+                    //so generate a new stream after 50 seconds
+                    this.streamingClient = new GoogleSpeechConverter(this);
+                    recordingTime = 0;
+                }
             } catch (Exception e) {
                 Log.e(MainActivity.LOG_TAF, "Recognition error. Stopping. Details: " + e.getMessage());
             }

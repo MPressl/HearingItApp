@@ -8,11 +8,12 @@ import de.dhbw.studienarbeit.hearItApp.R;
 import de.dhbw.studienarbeit.hearItApp.printer.glassUpARPrinter.GlassUpAgentVersionSupport;
 
 /**
- * Created by root on 12/11/16.
+ * Configuration Handler, ensures that the
+ * glassUp agent is configured before sending a message
  */
 
 public class ConfigurationHandle extends Handler {
-    public static final int	MSG_WHAT_SEND_CONFIG	= 1;
+    public static final int MSG_WHAT_SEND_CONFIG = 1;
 
     private GlassUpAgentVersionSupport agent;
 

@@ -169,7 +169,7 @@ public class GlassUpPrinter extends AbstractPrinter {
 
         while(counter < messageBuffer.length()) {
 
-            if (messageBuffer.length() - (counter + 16) <= 0) {
+            if (messageBuffer.length() - (counter + 17) <= 0) {
                 //rest of buffer is smaller than one line, -> prepare buffer and send
                 //then break
                 this.linesToPrint.add(messageBuffer.substring(counter));
@@ -177,7 +177,7 @@ public class GlassUpPrinter extends AbstractPrinter {
             }
             //after 17 signs there is a space --> perfect line
             if (messageBuffer.charAt(counter + 17) == ' ') {
-                this.linesToPrint.add(messageBuffer.substring(counter, counter+18));
+                this.linesToPrint.add(messageBuffer.substring(counter, counter + 18));
                 counter += 18;
             } else {
                 //check next ' ' before 17

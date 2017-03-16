@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by mpressl on 2/28/2017.
+ * TextRecorder enables a EditText within the MainActivity and
+ * takes the entered text as dummy input to display it on the
+ * AR device using the selected AR-Printer
  */
 
 public class TextRecorder implements IRecorder {

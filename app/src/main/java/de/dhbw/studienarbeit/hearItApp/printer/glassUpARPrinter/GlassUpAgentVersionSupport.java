@@ -15,7 +15,13 @@ import glassup.service.GlassUpAgentInterface;
 import glassup.service.GlassUpEvent;
 
 /**
- * Created by root on 1/30/17.
+ * GlassUpAgentVersionSupport
+ * the GlassUpAgent is a class from the GlassUp SDK. It connects
+ * an application to the GlassUp Device.
+ * This reimplementation fixes a bug within the SDK.
+ * Intents have to be called explicit since Android 4.x. The SDK
+ * calls intents not explicit what makes the application running on 4.x and higher
+ * crash.
  */
 
 public class GlassUpAgentVersionSupport {
@@ -55,6 +61,7 @@ public class GlassUpAgentVersionSupport {
             this.registerToAgentBroadcast();
             this.registerToServiceBroadcast();
             Intent i = new Intent("glassup.service.action.CONNECTION_STATUS");
+            //BUGFIX:
             i.setPackage("glassup.service");
             i.putExtra("appId", this.context.getPackageName());
             this.context.startService(i);
@@ -63,6 +70,7 @@ public class GlassUpAgentVersionSupport {
 
         public void onResume() {
             Intent i = new Intent("glassup.service.action.CONNECTION_STATUS");
+            //BUGFIX:
             i.setPackage("glassup.service");
             i.putExtra("appId", this.context.getPackageName());
             this.context.startService(i);
@@ -108,6 +116,7 @@ public class GlassUpAgentVersionSupport {
                 Log.d("GlassUpAgent", "sendConfig ---:> THE APPs is already configured!!");
             } else {
                 Intent intent = new Intent("glassup.service.action.SEND_AGENT_CONFIGURATION");
+                //BUGFIX:
                 intent.setPackage("glassup.service");
                 intent.putExtra("appId", this.context.getPackageName());
                 intent.putExtra("images", bitmaps);
@@ -158,6 +167,7 @@ public class GlassUpAgentVersionSupport {
                 Log.d("GlassUpAgent", "sendGraphicsAndText ---:> THE APPs is !NOT! configured, can\'t send text!!!");
             } else {
                 Intent intent = new Intent("glassup.service.action.SEND_AGENT_CONTENT");
+                //BUGFIX:
                 intent.setPackage("glassup.service");
                 intent.putExtra("appId", this.context.getPackageName());
                 intent.putExtra("contentId", contentId);

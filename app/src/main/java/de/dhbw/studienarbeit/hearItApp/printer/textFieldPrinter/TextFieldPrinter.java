@@ -46,7 +46,6 @@ public class TextFieldPrinter extends AbstractPrinter {
 
     @Override
     public void shutdown() {
-
         this.printerField.setVisibility(View.INVISIBLE);
         this.label.setVisibility(View.INVISIBLE);
     }

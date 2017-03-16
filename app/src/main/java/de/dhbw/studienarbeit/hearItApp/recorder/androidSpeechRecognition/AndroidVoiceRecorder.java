@@ -10,7 +10,9 @@ import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
 
 /**
- * Created by root on 12/14/16.
+ * AndroidVoiceRecorder using the Android own Speech Recognition service
+ * the service works asynchronus. An Intent is called, the speech is recorded
+ * converted into text and the result is received by the MainActivity
  */
 
 public class AndroidVoiceRecorder implements IRecorder {
@@ -21,6 +23,10 @@ public class AndroidVoiceRecorder implements IRecorder {
         this.context = context;
     }
 
+    /**
+     * creates the Android recognition intent
+     */
+    @Override
     public void startRecording() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "de-DE");

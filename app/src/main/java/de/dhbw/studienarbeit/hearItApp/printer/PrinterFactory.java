@@ -6,12 +6,17 @@ import de.dhbw.studienarbeit.hearItApp.printer.glassUpARPrinter.GlassUpPrinter;
 import de.dhbw.studienarbeit.hearItApp.printer.textFieldPrinter.TextFieldPrinter;
 
 /**
- * Created by mpressl on 3/3/2017.
+ * Factory class for AR device printers
  */
 
 public class PrinterFactory {
 
-
+    /**
+     * method returns a new AR device printer depending on the given mode
+     * @param printerMode
+     * @param mainActivity
+     * @return
+     */
     public static AbstractPrinter generate(int printerMode, MainActivity mainActivity) {
 
         switch(printerMode){
