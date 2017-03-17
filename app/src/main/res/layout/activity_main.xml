@@ -21,6 +21,15 @@
         android:weightSum="1">
 
         <TextView
+            android:id="@+id/label_internet_connection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.04"
+            android:fontFamily="sans-serif"
+            android:text="Internet Connection: "
+            android:textSize="14sp" />
+
+        <TextView
             android:text="Please enter a Text to display through printer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -42,9 +51,10 @@
             android:id="@+id/label_text_printer" />
 
         <EditText
+            android:id="@+id/edit_printer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
+            ndroid:inputType="textMultiLine"
             android:ems="10"
             android:id="@+id/edit_printer"
             android:layout_weight="0.88" />
@@ -77,6 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spinner_printer" />
+
     </LinearLayout>
 
 

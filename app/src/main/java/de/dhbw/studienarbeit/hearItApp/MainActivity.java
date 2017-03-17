@@ -16,6 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import de.dhbw.studienarbeit.hearItApp.printer.AbstractPrinter;
+import java.util.ArrayList;
+
+import de.dhbw.studienarbeit.hearItApp.InternetConnection.ConnectionCheck;
 import de.dhbw.studienarbeit.hearItApp.printer.PrinterFactory;
 import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 import de.dhbw.studienarbeit.hearItApp.recorder.RecorderFactory;
@@ -32,6 +35,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private int RECORD_MODE;
     private int PRINTER_MODE;
+
+    private TextView label_internet_connection;
+    private ConnectionCheck connectionCheck;
 
     private boolean isRecording;
 
@@ -51,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initialize_Components();
+        startConnectionChecks();
+
+
     }
     /**
      * initializing gui components
@@ -66,7 +75,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ((EditText) findViewById(R.id.edit_recorder)).setVisibility(View.INVISIBLE);
         ((TextView) findViewById(R.id.label_text_recorder)).setVisibility(View.INVISIBLE);
 
-        //init the spinner to select a printer. take entries from map in Constants
+        //Andi start
+        label_internet_connection = ((TextView)findViewById(R.id.label_internet_connection));
+        //Andi end
+
         this.spinner_printer = (Spinner) findViewById(R.id.spinner_printer);
         final String[] printerArray = Constants.PRINTER_MAP.keySet().toArray(
                 new String[Constants.PRINTER_MAP.keySet().size()]);
@@ -244,7 +256,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected  void onPause(){
         super.onPause();
-      // this.arPrinter.onPause();
     }
     @Override
     protected void onResume(){
@@ -305,4 +316,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return false;
     }
+}
+    //Andi start
+    public void startConnectionChecks(){
+        this.connectionCheck = new ConnectionCheck(this);
+        new Thread(this.connectionCheck).start();
+    }
+    //Andi end
 }
