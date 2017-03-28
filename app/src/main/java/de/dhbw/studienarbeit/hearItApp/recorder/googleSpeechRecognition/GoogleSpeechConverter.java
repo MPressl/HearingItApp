@@ -181,7 +181,7 @@ public class GoogleSpeechConverter implements
         } catch (RuntimeException e){
             Log.e(MainActivity.LOG_TAF, "Error while recognizing speech. Stopping."
                     + e.getMessage());
-
+ 
             requestObserver.onError(e);
             throw e;
         }

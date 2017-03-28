@@ -168,16 +168,16 @@ public class VoiceRecorder implements IRecorder{
                 streamingClient.recognizeBytes(byteBuffer, read);
                 long stop = System.currentTimeMillis() - start;
                 Log.e("measuring " , "NEDED: " + stop);
-                recordingTime += stop;
-                if(recordingTime >= 50000){
+                //recordingTime += stop;
+                //if(recordingTime >= 50000){
                     //Google Speech api has a time limit of 65 seconds of streaming
                     //so generate a new stream after 50 seconds
-                    this.streamingClient = new GoogleSpeechConverter(this);
-                    recordingTime = 0;
-                }
+                //    this.streamingClient = new GoogleSpeechConverter(this);
+                //    recordingTime = 0;
+             //   }
             } catch (Exception e) {
                 Log.e(MainActivity.LOG_TAF, "Recognition error. Stopping. Details: " + e.getMessage());
-            }
+           }
         }
     }
 

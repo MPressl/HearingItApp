@@ -3,8 +3,12 @@ package de.dhbw.studienarbeit.hearItApp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,7 +18,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import de.dhbw.studienarbeit.hearItApp.soundAnimation.SoundAnimationView;
 import de.dhbw.studienarbeit.hearItApp.printer.AbstractPrinter;
 import java.util.ArrayList;
 import de.dhbw.studienarbeit.hearItApp.printer.PrinterFactory;
@@ -30,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final String APP_NAME = "Hearing";
     public static final String LOG_TAF = "HearItApp";
 
-
     private int RECORD_MODE;
     private int PRINTER_MODE;
 
@@ -41,6 +44,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private ListView lstVSideMenu;
     private ArrayAdapter<String> adaptMenu;
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
+    private MenuItem languageSelectionItem;
+    private NavigationView navigationMenu;
+
+    private int languageId; //1 = German, 2 = English, 3 = France, 4 = Spain
+
+    private SoundAnimationView soundAnimationView;
 
     private Button btnSpeech;
     private Spinner spinner_recorder;
@@ -59,7 +70,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private boolean initialize_Components(){
 
-        generate_Menu();
+       // generate_Menu();
+        generateNavMenu();
 
         ((EditText) findViewById(R.id.edit_printer)).setVisibility(View.INVISIBLE);
         ((TextView)findViewById(R.id.label_text_printer)).setVisibility(View.INVISIBLE);
@@ -115,11 +127,59 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * generates the side menu
      */
-    private void generate_Menu(){
-        String[] menuItems = {"Language..."};
+    /*private void generate_Menu(){
+        final String[] menuItems = {"language..."};
         this.lstVSideMenu = (ListView) findViewById(R.id.navList);
         this.adaptMenu =  new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menuItems);
         this.lstVSideMenu.setAdapter(adaptMenu);
+        lstVSideMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                System.out.println("hallo");
+            }
+        });
+    }*/
+
+
+    private void generateNavMenu(){
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open_nav_menu, R.string.close_nav_menu);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        navigationMenu = (NavigationView) findViewById(R.id.navigation_view);
+        navigationMenu.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                new LanguageDialoge().onCreateDialog(getIntent().getExtras(), MainActivity.this).show();
+                return false;
+            }
+        });
+
+
+
+        /*languageSelectionItem = (MenuItem) findViewById(R.id.language_selection);
+        languageSelectionItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                System.out.println("Hallo");
+                return false;
+            }
+        });
+        navigationMenu = (NavigationView) findViewById(R.id.navigation_view);*/
+    }
+
+    public void createSoundAnimationView(){
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     /**
@@ -315,4 +375,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //animate a canvas depending on each single db value
 
     }
+
+    //Andi start
+    public void setLanguageId(int languageId){
+        this.languageId = languageId;
+        showToast("Language-ID: " + Integer.toString(languageId));
+    }
+    //Andi end
+
 }
