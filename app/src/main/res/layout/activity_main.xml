@@ -26,7 +26,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.04"
             android:fontFamily="sans-serif"
-            android:text="Internet Connection: "
             android:textSize="14sp" />
 
         <TextView
@@ -54,9 +53,8 @@
             android:id="@+id/edit_printer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            ndroid:inputType="textMultiLine"
+            android:inputType="textMultiLine"
             android:ems="10"
-            android:id="@+id/edit_printer"
             android:layout_weight="0.88" />
 
         <Button

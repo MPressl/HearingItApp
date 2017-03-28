@@ -41,10 +41,7 @@ public class Constants {
 
     public static final String PRINTER_TEXT_FIELD_TEXT = "Print To Local Text Field";
     public static final String PRINTER_GLASSUP_AR_TEXT = "GlassUp AR Glass Printer";
-    //Andi start
-    public static final int PRINTER_TEXT_FIELD= 5;
-    public static final String PRINTER_TEXT_FIELD_TEXT = "TextField Printer";
-    //Andi end
+
     public static final LinkedHashMap<String, Integer> PRINTER_MAP = createPrinterMap();
 
     /**

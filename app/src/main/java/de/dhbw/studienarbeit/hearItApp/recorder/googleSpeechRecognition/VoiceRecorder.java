@@ -1,4 +1,4 @@
-package de.dhbw.studienarbeit.hearItApp.recorder.nativeVoiceRecorder;
+package de.dhbw.studienarbeit.hearItApp.recorder.googleSpeechRecognition;
 
 import android.media.AudioFormat;
 import android.media.AudioRecord;
@@ -14,6 +14,7 @@ import java.security.GeneralSecurityException;
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
 import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 import de.dhbw.studienarbeit.hearItApp.recorder.ISpeechToTextConverter;
+import de.dhbw.studienarbeit.hearItApp.recorder.googleSpeechRecognition.ConnectionCheck;
 import de.dhbw.studienarbeit.hearItApp.recorder.googleSpeechRecognition.GoogleSpeechConverter;
 
 /**
@@ -68,17 +69,12 @@ public class VoiceRecorder implements IRecorder{
      */
     private void initializeSpeechConverter() {
 
-            ConnectivityManager connManager = (ConnectivityManager) this.mainView
-                    .getSystemService(MainActivity.CONNECTIVITY_SERVICE);
-
-            NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-
-            if (!mWifi.isConnected()) {
-                mainView.showToast("Sorry. You need a working WIFI connection, " +
+            ConnectionCheck check = new ConnectionCheck(this);
+            if(!check.evaluateNetworkConnection()){
+                mainView.showToast("Sorry. Your internet connection is to slow " +
                         "to use the Google Conversion Service.");
                 this.initialized = false;
                 return;
-
             }
         try{
             streamingClient = new GoogleSpeechConverter(VoiceRecorder.this);
@@ -191,4 +187,6 @@ public class VoiceRecorder implements IRecorder{
     }
 
     public boolean isInitialize(){ return this.initialized; }
+
+    public boolean isRecording(){ return this.isRecording; }
 }

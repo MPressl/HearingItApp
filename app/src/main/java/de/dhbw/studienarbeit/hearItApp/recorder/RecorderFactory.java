@@ -7,7 +7,7 @@ import de.dhbw.studienarbeit.hearItApp.MainActivity;
 
 import de.dhbw.studienarbeit.hearItApp.recorder.androidSpeechRecognition.AndroidVoiceRecorder;
 
-import de.dhbw.studienarbeit.hearItApp.recorder.nativeVoiceRecorder.VoiceRecorder;
+import de.dhbw.studienarbeit.hearItApp.recorder.googleSpeechRecognition.VoiceRecorder;
 import de.dhbw.studienarbeit.hearItApp.recorder.textFieldRecorder.TextRecorder;
 
 /**

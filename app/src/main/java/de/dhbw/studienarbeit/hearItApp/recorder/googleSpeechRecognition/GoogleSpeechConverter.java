@@ -28,7 +28,6 @@ import java.util.concurrent.TimeUnit;
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
 
 import de.dhbw.studienarbeit.hearItApp.recorder.ISpeechToTextConverter;
-import de.dhbw.studienarbeit.hearItApp.recorder.nativeVoiceRecorder.VoiceRecorder;
 import io.grpc.Channel;
 import io.grpc.Deadline;
 import io.grpc.ManagedChannel;
@@ -76,8 +75,10 @@ public class GoogleSpeechConverter implements
      */
     public GoogleSpeechConverter(VoiceRecorder recorder)
             throws InterruptedException, IOException, GeneralSecurityException {
-
+        //start internet connectivity checking thread
         this.recorder = recorder;
+        new Thread(new ConnectionCheck(this.recorder)).start();
+
         // Required to support Android 4.x.x (patches for OpenSSL from Google-Play-Services)
         try {
             ProviderInstaller.installIfNeeded(recorder.getMainView().getApplicationContext());
@@ -177,9 +178,10 @@ public class GoogleSpeechConverter implements
                             .setAudioContent(ByteString.copyFrom(buffer, 0, size))
                             .build();
             requestObserver.onNext(request);
-            requestObserver.onCompleted();
-        } catch (RuntimeException e) {
-            Log.e(MainActivity.LOG_TAF, "Error while recognizing speech. Stopping." + e.getMessage());
+        } catch (RuntimeException e){
+            Log.e(MainActivity.LOG_TAF, "Error while recognizing speech. Stopping."
+                    + e.getMessage());
+
             requestObserver.onError(e);
             throw e;
         }
