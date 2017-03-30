@@ -9,6 +9,8 @@ import android.util.Log;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.security.GeneralSecurityException;
 
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
@@ -145,7 +147,7 @@ public class VoiceRecorder implements IRecorder{
      */
     private void readAudioInput() {
 
-        byte[] buffer = new byte[VoiceRecorder.MIN_BUFFER_SIZE];
+        byte[] byteBuffer = new byte[VoiceRecorder.MIN_BUFFER_SIZE];
 
         this.androidRecord.startRecording();
         this.isRecording = true;
@@ -153,14 +155,17 @@ public class VoiceRecorder implements IRecorder{
         while (this.isRecording) {
             long start = System.currentTimeMillis();
             // gets the voice output from microphone to byte format
-            int read = this.androidRecord.read(buffer, 0, buffer.length);
+            short[] shortBuffer = new short[VoiceRecorder.MIN_BUFFER_SIZE / 2];
+            int read = this.androidRecord.read(shortBuffer, 0, shortBuffer.length);
             if(read < 0){
                Log.e(MainActivity.LOG_TAF,
                         "Error while reading data from MIC: " + read);
                 continue;
             }
             try {
-                streamingClient.recognizeBytes(buffer, read);
+                this.mainView.showSoundAnimation(shortBuffer);
+                byteBuffer = this.convertShortToByte(shortBuffer);
+                streamingClient.recognizeBytes(byteBuffer, read);
                 long stop = System.currentTimeMillis() - start;
                 Log.e("measuring " , "NEDED: " + stop);
                 recordingTime += stop;
@@ -175,6 +180,25 @@ public class VoiceRecorder implements IRecorder{
             }
         }
     }
+
+    /**
+     * Splits an array of 16 bit shorts into an array of 8bit bytes
+     * Little Endian Style, Low Nibble, High Nibble, Low Nibble, High Nibble
+     * @param buffer
+     * @return
+     */
+    private byte[] convertShortToByte(short[] buffer) {
+        byte[] byteBuffer = new byte[buffer.length * 2];
+        for (int i = 0; i < buffer.length; i++) {
+            //take low nibble from short and add it to array
+            byteBuffer[i * 2] = (byte) (buffer[i] & 0x00FF);
+            //take the high nibble of the short and add it to array
+            byteBuffer[(i * 2) + 1] = (byte) (buffer[i] >> 8);
+        }
+        return byteBuffer;
+
+    }
+
 
     public void shutdown(){
         this.androidRecord.release();

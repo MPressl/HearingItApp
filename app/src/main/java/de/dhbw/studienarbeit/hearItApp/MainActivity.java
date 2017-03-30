@@ -304,4 +304,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return false;
     }
+
+    public void showSoundAnimation(short[] audioInput) {
+        //show canvas to animate incoming audio
+
+        //first convert byte buffer into shortbuffer of length = byteBuffer.length /2
+
+        //loop through shortBuffer and calculate the db valueos for each short value (sample)
+
+        //animate a canvas depending on each single db value
+
+    }
 }
