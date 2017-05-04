@@ -78,9 +78,8 @@ public class GoogleSpeechConverter implements
             throws InterruptedException, IOException, GeneralSecurityException {
         //start internet connectivity checking thread
         this.recorder = recorder;
-        new Thread(
-                new ConnectionCheck(this.recorder)).start();
-
+        new Thread(new ConnectionCheck(this.recorder)).start();
+//TODO: NEEDED??
         // Required to support Android 4.x.x (patches for OpenSSL from Google-Play-Services)
         try {
             ProviderInstaller.installIfNeeded(recorder.getMainView().getApplicationContext());
@@ -100,6 +99,7 @@ public class GoogleSpeechConverter implements
             return;
         }
         //create channel and speech stub
+//TODO: catch thrown exceptions!
         Channel channel = createChannel();
         this.speechRPCStub = SpeechGrpc.newStub(channel);
         this.speechRPCStub.withDeadline(Deadline.after(2, TimeUnit.HOURS));

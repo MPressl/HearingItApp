@@ -77,16 +77,9 @@ public class VoiceRecorder implements IRecorder{
      * Method initializes a new Speech to Text conversion client
      */
     private void initializeSpeechConverter() {
-
-            ConnectionCheck check = new ConnectionCheck(this);
-            if(!check.evaluateNetworkConnection()){
-                mainView.showToast("Sorry. Your internet connection is to slow " +
-                        "to use the Google Conversion Service.");
-                this.initialized = false;
-                return;
-            }
         try{
             streamingClient = new GoogleSpeechConverter(VoiceRecorder.this);
+//TODO: initialized varibale needed?
             initialized = true;
 
         } catch (InterruptedException e) {
