@@ -49,6 +49,12 @@ public class SoundAnimationThread extends Thread {
                 }
             }
 
+            try {
+                this.sleep(1000/100);  //100FPS
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
         }
     }
 

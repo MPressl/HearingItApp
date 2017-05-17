@@ -8,6 +8,8 @@ import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
+import de.dhbw.studienarbeit.hearItApp.MainActivity;
+
 /**
  * Created by Andi on 28.03.2017.
  */
@@ -21,6 +23,9 @@ public class SoundAnimationView extends SurfaceView implements SurfaceHolder.Cal
 
     private SoundAnimationThread soundAnimationThread;
     private SoundAnimation soundAnimation;
+
+    private int newScalingValue = 0;
+    private int actualScalingValue = 0;
 
     private int testCounter = 0;
     private boolean updateAddition = true;
@@ -56,7 +61,7 @@ public class SoundAnimationView extends SurfaceView implements SurfaceHolder.Cal
     public void draw(Canvas canvas) {
         super.draw(canvas);
 
-        canvas.drawColor(Color.WHITE);
+        canvas.drawColor(Color.rgb(218, 227, 243));
         soundAnimation.draw(canvas);
     }
 
@@ -73,7 +78,30 @@ public class SoundAnimationView extends SurfaceView implements SurfaceHolder.Cal
             animationStartValueSet = true;
         }
 
-        if(!updateAddition) {
+        newScalingValue = MainActivity.SOUND_ANIMATION_SCALING_VALUE;
+
+        /*if(newScalingValue!=actualScalingValue){
+            int difScalingValue = newScalingValue-actualScalingValue;
+            if(difScalingValue>=0) {
+                for (int j = 1; j < 5; j++) {   // In Vier Schleifenwiederholungen.. Flüssiger Übergang..
+                    soundAnimation.setRadius((SURFACE_HEIGTH / 60) * newScalingValue - difScalingValue * (j / 4));
+                }
+            }
+            else {
+                for (int j = 1; j < 15; j++) {   // In Vier Schleifenwiederholungen.. Flüssiger Übergang..
+                    soundAnimation.setRadius((SURFACE_HEIGTH / 60) * newScalingValue + difScalingValue * (j / 4));
+                }
+            }
+        }*/
+        if(MainActivity.SOUND_ANIMATION_SCALING_VALUE > 5) {
+            soundAnimation.setRadius((SURFACE_HEIGTH / 60) * (MainActivity.SOUND_ANIMATION_SCALING_VALUE+MainActivity.SOUND_ANIMATION_SCALING_VALUE/5));
+        }
+        else {
+            soundAnimation.setRadius(0);
+        }
+
+        actualScalingValue = newScalingValue;
+        /*if(!updateAddition) {
             soundAnimation.update(0, 0, -8);
             testCounter++;
             if(testCounter>58){
@@ -88,8 +116,10 @@ public class SoundAnimationView extends SurfaceView implements SurfaceHolder.Cal
                 testCounter=0;
                 updateAddition = false;
             }
-        }
+        }*/
     }
+
+
 
 
     @Override

@@ -1,10 +1,13 @@
 package de.dhbw.studienarbeit.hearItApp.recorder.googleSpeechRecognition;
 
+import android.content.Context;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.support.annotation.ColorRes;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import java.io.FileNotFoundException;
@@ -14,6 +17,7 @@ import java.nio.ByteOrder;
 import java.security.GeneralSecurityException;
 
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
+import de.dhbw.studienarbeit.hearItApp.R;
 import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 import de.dhbw.studienarbeit.hearItApp.recorder.ISpeechToTextConverter;
 import de.dhbw.studienarbeit.hearItApp.recorder.googleSpeechRecognition.ConnectionCheck;
@@ -38,6 +42,8 @@ public class VoiceRecorder implements IRecorder{
     /** parent activity**/
     private MainActivity mainView;
 
+    private Context context;
+
     private AudioRecord androidRecord;
 
     private boolean isRecording;
@@ -53,9 +59,10 @@ public class VoiceRecorder implements IRecorder{
      * and the conversion client
      * @param mainView
      */
-    public VoiceRecorder(MainActivity mainView){
+    public VoiceRecorder(MainActivity mainView, Context context){
 
         this.mainView = mainView;
+        this.context = context;
         VoiceRecorder.MIN_BUFFER_SIZE = AudioRecord.getMinBufferSize(VoiceRecorder.SAMPLING,
                 VoiceRecorder.RECORDER_CHANNELS,VoiceRecorder.RECORDER_AUDIO_ENCODING) * 2;
 
@@ -105,7 +112,10 @@ public class VoiceRecorder implements IRecorder{
             Log.e(MainActivity.LOG_TAF, "Recorder not initialized. Cannot start recording");
             return;
         }
-        this.mainView.getSpeechBtn().setText("Recording... Please Speak Now.");
+        //this.mainView.getSpeechBtn().setText("Recording... Please Speak Now.");
+        this.mainView.getSpeechBtn().setBackgroundResource(R.drawable.mic_start_recording_recording_circle);
+        this.mainView.getTxtViewRecInfo().setText("Recording...");
+        this.mainView.getTxtViewRecInfo().setTextColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
 
         //initialize stream
         this.writeFileThread = new Thread(new Runnable() {
@@ -126,6 +136,10 @@ public class VoiceRecorder implements IRecorder{
         if(!this.isRecording){
             return;
         }
+        this.mainView.getSpeechBtn().setBackgroundResource(R.drawable.mic_start_recording_not_recording_circle);
+        this.mainView.getTxtViewRecInfo().setText("Press the button!");
+        this.mainView.getTxtViewRecInfo().setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
+        MainActivity.SOUND_ANIMATION_SCALING_VALUE = 0;
         // stops the recording activity
         Log.i(MainActivity.LOG_TAF, "VoiceRecorder Stopping the record.");
         this.isRecording = false;

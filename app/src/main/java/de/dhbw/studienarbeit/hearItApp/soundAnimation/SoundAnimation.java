@@ -22,7 +22,7 @@ public class SoundAnimation {
 
     public void draw(Canvas canvas){
         Paint paint = new Paint();
-        paint.setColor(Color.RED);
+        paint.setColor(Color.parseColor("#335696"));
         paint.setStyle(Paint.Style.FILL);
         //paint.setShadowLayer(40, 5, -5, Color.BLACK);
         canvas.drawCircle(centerX-radius, centerY, radius-radius/2, paint);
@@ -42,5 +42,9 @@ public class SoundAnimation {
         this.centerX+=centerXChange;
         this.centerY+=centerYChange;
         this.radius+=radiusChange;
+    }
+
+    public void setRadius(int newRadius){
+        radius+=(newRadius-radius)/5;
     }
 }

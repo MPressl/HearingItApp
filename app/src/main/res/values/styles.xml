@@ -6,6 +6,37 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+    <!--<style name="custom_actionbar_style" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/custom_style</item>
+    </style>
+
+    <style name="custom_style" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/background_action_bar</item>
+    </style>-->
+
+    <style name="AppTheme.Spinner">
+        <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItem</item>
+
+      <!--  <item name="android:spinnerStyle">@style/spinnerStyle</item> -->
+    </style>
+
+
+
+    <!--<style name="spinnerStyle">
+        <item name="android:background">@drawable/border_text</item>
+    </style>-->
+
+    <style name="SpinnerItem">
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:paddingRight">16dp</item>
+    </style>
+
+    <style name="SpinnerDropDownItem">
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:paddingRight">16dp</item>
     </style>
 
 </resources>

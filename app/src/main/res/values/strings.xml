@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HearViaAndroidSpeech</string>
+    <string name="app_name">Hearing it</string>
     <string name="buttonText">Start recording</string>
     <string name="open_nav_menu">Open</string>
     <string name="close_nav_menu">Close</string>

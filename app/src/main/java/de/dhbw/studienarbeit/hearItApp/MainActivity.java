@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static final String APP_NAME = "Hearing";
     public static final String LOG_TAF = "HearItApp";
 
+    public static int SOUND_ANIMATION_SCALING_VALUE = 0;
+
     private int RECORD_MODE;
     private int PRINTER_MODE;
 
@@ -53,7 +56,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private SoundAnimationView soundAnimationView;
 
-    private Button btnSpeech;
+    private TextView txtViewRecInfo;
+    private EditText editPrinter;
+    private ImageButton btnSpeech;
     private Spinner spinner_recorder;
     private Spinner spinner_printer;
     
@@ -73,18 +78,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
        // generate_Menu();
         generateNavMenu();
 
-        ((EditText) findViewById(R.id.edit_printer)).setVisibility(View.INVISIBLE);
+        //((EditText) findViewById(R.id.edit_printer)).setVisibility(View.INVISIBLE);
+        editPrinter = ((EditText) findViewById(R.id.edit_printer));
         ((TextView)findViewById(R.id.label_text_printer)).setVisibility(View.INVISIBLE);
 
         ((EditText) findViewById(R.id.edit_recorder)).setVisibility(View.INVISIBLE);
         ((TextView) findViewById(R.id.label_text_recorder)).setVisibility(View.INVISIBLE);
+
+        txtViewRecInfo = (TextView)findViewById(R.id.label_recording_information);
 
         this.spinner_printer = (Spinner) findViewById(R.id.spinner_printer);
         final String[] printerArray = Constants.PRINTER_MAP.keySet().toArray(
                 new String[Constants.PRINTER_MAP.keySet().size()]);
 
         ArrayAdapter adapt_printer = new ArrayAdapter(
-                this,android.R.layout.simple_spinner_item,  printerArray);
+                this,R.layout.spinner_item,  printerArray);
 
         this.spinner_printer.setAdapter(adapt_printer);
         this.spinner_printer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -104,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final String[] recorderArray = Constants.RECORDER_MAP.keySet().toArray(
                 new String[Constants.RECORDER_MAP.keySet().size()]);
         ArrayAdapter adapt_recorder = new ArrayAdapter(
-                this,android.R.layout.simple_spinner_item,  recorderArray);
+                this,R.layout.spinner_item,  recorderArray);
         this.spinner_recorder.setAdapter(adapt_recorder);
         this.spinner_recorder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -118,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         //button to start recording
-        this.btnSpeech = (Button) findViewById(R.id.btnStartSpeech);
+        this.btnSpeech = (ImageButton) findViewById(R.id.btnStartSpeech);
         this.btnSpeech.setOnClickListener(this);
 
         return true;
@@ -203,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             this.recorder.shutdown();
         }
 
-        this.recorder = RecorderFactory.generate(mode, this);
+        this.recorder = RecorderFactory.generate(mode, this, getApplicationContext());
 
         if(this.recorder == null) {
             //if null is record (because recorder cannot be initialized, the standard text recorder
@@ -340,7 +348,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * getter for the start and stop speech button
      * @return start/stop speech button
      */
-    public Button getSpeechBtn(){return this.btnSpeech;}
+    public ImageButton getSpeechBtn(){return this.btnSpeech;}
+
+    public TextView getTxtViewRecInfo(){return txtViewRecInfo;}
 
     /**
      * method is called when the stopp button is pressed
@@ -355,7 +365,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    btnSpeech.setText("Start Speech Recording");
+                   // btnSpeech.setText("Start Speech Recording");
                 }
             });
             this.recorder.stopRecording();
@@ -367,14 +377,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void showSoundAnimation(short[] audioInput) {
         //show canvas to animate incoming audio
+        int scalingValue = calculatePowerDb(audioInput, 0, audioInput.length)+60; // Loud Voice = -10, quiet Voice = -60
+        if(scalingValue<0) scalingValue= -scalingValue;
+        if(scalingValue>200) scalingValue = 0;//to prevent negative values
+        SOUND_ANIMATION_SCALING_VALUE = scalingValue;
+        System.out.println("Time (mili): " + System.nanoTime()/1000000 + "ms , Value: " + scalingValue);
 
-        //first convert byte buffer into shortbuffer of length = byteBuffer.length /2
 
         //loop through shortBuffer and calculate the db valueos for each short value (sample)
 
         //animate a canvas depending on each single db value
-
     }
+
+    private static final float MAX_16_BIT = 32768;
+    private static final float FUDGE = 0.6f;
+
+    public int calculatePowerDb(short[] sdata, int off, int samples)
+    {
+        double sum = 0;
+        double sqsum = 0;
+        for (int i = 0; i < samples; i++)
+        {
+            final long v = sdata[off + i];
+            sum += v;
+            sqsum += v * v;
+        }
+        double power = (sqsum - sum * sum / samples) / samples;
+
+        power /= MAX_16_BIT * MAX_16_BIT;
+
+        double result = Math.log10(power) * 10f + FUDGE;
+
+        return (int)result;
+    }
+
 
     //Andi start
     public void setLanguageId(int languageId){

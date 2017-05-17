@@ -6,6 +6,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.telephony.TelephonyManager;
 import android.util.Log;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
@@ -47,7 +48,17 @@ public class ConnectionCheck implements Runnable {
     public void run() {
 
         while(true) {
+            this.recorder.getMainView().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    ViewGroup.LayoutParams params = label_internet_connection.getLayoutParams();
+                    params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+                    label_internet_connection.setLayoutParams(params);
+                }
+            });
+
             setTextLabelInternetConnection("");
+
             if(evaluateNetworkConnection())
             {
                 setTextLabelInternetConnection(this.connection_strentgh_actual

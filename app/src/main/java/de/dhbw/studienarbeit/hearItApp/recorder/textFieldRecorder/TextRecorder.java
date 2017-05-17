@@ -1,6 +1,9 @@
 package de.dhbw.studienarbeit.hearItApp.recorder.textFieldRecorder;
 
+import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -19,16 +22,22 @@ import java.util.Arrays;
 
 public class TextRecorder implements IRecorder {
     MainActivity parent;
+    private Context context;
 
     EditText edit_recorder_input;
 
     TextView label_recorder_input;
 
-    public TextRecorder(MainActivity parent){
+    public TextRecorder(MainActivity parent, Context context){
         this.parent = parent;
+        this.context = context;
 
         this.edit_recorder_input = (EditText) this.parent.findViewById(R.id.edit_recorder);
         this.edit_recorder_input.setVisibility(View.VISIBLE);
+
+        ViewGroup.LayoutParams params = edit_recorder_input.getLayoutParams();
+        params.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        edit_recorder_input.setLayoutParams(params);
 
         this.label_recorder_input = (TextView) this.parent.findViewById(R.id.label_text_recorder);
         this.label_recorder_input.setVisibility(View.VISIBLE);
@@ -36,17 +45,31 @@ public class TextRecorder implements IRecorder {
 
     @Override
     public void startRecording() {
-        this.parent.getSpeechBtn().setText("Printing Text...");
+        //this.parent.getSpeechBtn().setText("Printing Text...");
         String result = this.edit_recorder_input.getText().toString();
         this.parent.receiveResult(result);
+
+        this.parent.getSpeechBtn().setBackgroundResource(R.drawable.mic_start_recording_recording_circle);
+        this.parent.getTxtViewRecInfo().setText("Recording...");
+        this.parent.getTxtViewRecInfo().setTextColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
     }
 
     @Override
-    public void stopRecording() {}
+    public void stopRecording() {
+        this.parent.getSpeechBtn().setBackgroundResource(R.drawable.mic_start_recording_not_recording_circle);
+        this.parent.getTxtViewRecInfo().setText("Press the button!");
+        this.parent.getTxtViewRecInfo().setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
+    }
 
     @Override
     public void shutdown() {
         this.edit_recorder_input.setVisibility(View.INVISIBLE);
+
+
+        ViewGroup.LayoutParams params = edit_recorder_input.getLayoutParams();
+        params.height = 0;
+        edit_recorder_input.setLayoutParams(params);
+
         this.label_recorder_input.setVisibility(View.INVISIBLE);
     }
 }

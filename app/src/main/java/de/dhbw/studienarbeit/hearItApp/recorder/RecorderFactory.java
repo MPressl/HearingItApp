@@ -1,5 +1,6 @@
 package de.dhbw.studienarbeit.hearItApp.recorder;
 
+import android.content.Context;
 import android.util.Log;
 
 import de.dhbw.studienarbeit.hearItApp.Constants;
@@ -24,12 +25,12 @@ public class RecorderFactory {
      * @param mainView
      * @return Recorder
      */
-    public static IRecorder generate(int type, MainActivity mainView){
+    public static IRecorder generate(int type, MainActivity mainView, Context context){
         switch (type) {
 
             case Constants.RECORDER_NATIVE_MIC:
 
-                VoiceRecorder recorder = new VoiceRecorder(mainView);
+                VoiceRecorder recorder = new VoiceRecorder(mainView, context);
 
                 if(!recorder.isInitialize()){
 
@@ -46,7 +47,7 @@ public class RecorderFactory {
                 return new AndroidVoiceRecorder(mainView);
 
             default:
-                return new TextRecorder(mainView);
+                return new TextRecorder(mainView, context);
         }
     }
 }
