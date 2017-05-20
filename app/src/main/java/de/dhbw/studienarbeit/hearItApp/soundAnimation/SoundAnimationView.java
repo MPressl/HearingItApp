@@ -9,6 +9,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
+import de.dhbw.studienarbeit.hearItApp.R;
 
 /**
  * Created by Andi on 28.03.2017.
@@ -37,13 +38,10 @@ public class SoundAnimationView extends SurfaceView implements SurfaceHolder.Cal
        /* this.setZOrderOnTop(true);
         this.getHolder().setFormat(PixelFormat.TRANSLUCENT);*/
 
+        //this.setBackgroundColor(getResources().getColor(R.color.generalBackground));
         soundAnimation = new SoundAnimation(0, 0, 0);
 
-        soundAnimationThread = new SoundAnimationThread(getHolder(), this);
-        soundAnimationThread.setRunning(true);
-        soundAnimationThread.start();
-
-
+        startThread();
     }
 
     public SoundAnimationView(Context context){
@@ -144,5 +142,11 @@ public class SoundAnimationView extends SurfaceView implements SurfaceHolder.Cal
 
     public int getSurfaceWidth() {
         return SURFACE_WIDTH;
+    }
+
+    public void startThread(){
+        soundAnimationThread = new SoundAnimationThread(getHolder(), this);
+        soundAnimationThread.setRunning(true);
+        soundAnimationThread.start();
     }
 }

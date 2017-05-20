@@ -3,7 +3,6 @@ package de.dhbw.studienarbeit.hearItApp.recorder.androidSpeechRecognition;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.speech.RecognizerIntent;
-import android.support.v7.app.AppCompatActivity;
 
 import de.dhbw.studienarbeit.hearItApp.Constants;
 import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
@@ -17,10 +16,10 @@ import de.dhbw.studienarbeit.hearItApp.MainActivity;
 
 public class AndroidVoiceRecorder implements IRecorder {
 
-    private MainActivity context;
+    private MainActivity parent;
 
     public AndroidVoiceRecorder(MainActivity context){
-        this.context = context;
+        this.parent = context;
     }
 
     /**
@@ -31,20 +30,32 @@ public class AndroidVoiceRecorder implements IRecorder {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "de-DE");
         try {
-            this.context.startActivityForResult(intent,Constants.RESULT_SPEECH);
+            this.parent.startActivityForResult(intent,Constants.RESULT_SPEECH);
+            this.parent.setRecordingModeStyle();
         } catch (ActivityNotFoundException a) {
-            this.context.showToast("Opps! Your device doesn't support Speech to Text");
+            this.parent.showToast("Opps! Your device doesn't support Speech to Text");
         }
     }
 
     @Override
     public void stopRecording() {
+        this.parent.setNotRecordingModeStyle();
         return;
     }
 
     @Override
     public void shutdown() {
         return;
+    }
+
+    @Override
+    public MainActivity getMainView() {
+        return parent;
+    }
+
+    @Override
+    public boolean isRecording() {
+        return false;
     }
 
 }

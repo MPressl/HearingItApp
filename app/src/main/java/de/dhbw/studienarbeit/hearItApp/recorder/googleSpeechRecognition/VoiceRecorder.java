@@ -112,11 +112,8 @@ public class VoiceRecorder implements IRecorder{
             Log.e(MainActivity.LOG_TAF, "Recorder not initialized. Cannot start recording");
             return;
         }
-        //this.mainView.getSpeechBtn().setText("Recording... Please Speak Now.");
-        this.mainView.getSpeechBtn().setBackgroundResource(R.drawable.mic_start_recording_recording_circle);
-        this.mainView.getTxtViewRecInfo().setText("Recording...");
-        this.mainView.getTxtViewRecInfo().setTextColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
-
+        //this.mainView.getSpeechBtn().setText("Recording... Please Speak Now."
+        this.mainView.setRecordingModeStyle();
         //initialize stream
         this.writeFileThread = new Thread(new Runnable() {
             public void run() {
@@ -136,10 +133,7 @@ public class VoiceRecorder implements IRecorder{
         if(!this.isRecording){
             return;
         }
-        this.mainView.getSpeechBtn().setBackgroundResource(R.drawable.mic_start_recording_not_recording_circle);
-        this.mainView.getTxtViewRecInfo().setText("Press the button!");
-        this.mainView.getTxtViewRecInfo().setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
-        MainActivity.SOUND_ANIMATION_SCALING_VALUE = 0;
+        this.mainView.setNotRecordingModeStyle();
         // stops the recording activity
         Log.i(MainActivity.LOG_TAF, "VoiceRecorder Stopping the record.");
         this.isRecording = false;

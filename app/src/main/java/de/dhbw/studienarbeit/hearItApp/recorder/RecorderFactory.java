@@ -8,6 +8,7 @@ import de.dhbw.studienarbeit.hearItApp.MainActivity;
 
 import de.dhbw.studienarbeit.hearItApp.recorder.androidSpeechRecognition.AndroidVoiceRecorder;
 
+import de.dhbw.studienarbeit.hearItApp.recorder.googleSpeechRecognition.TestGoogleRecorder;
 import de.dhbw.studienarbeit.hearItApp.recorder.googleSpeechRecognition.VoiceRecorder;
 import de.dhbw.studienarbeit.hearItApp.recorder.textFieldRecorder.TextRecorder;
 
@@ -27,6 +28,19 @@ public class RecorderFactory {
      */
     public static IRecorder generate(int type, MainActivity mainView, Context context){
         switch (type) {
+
+            case Constants.RECORDER_TEST_GOOGLE:
+                TestGoogleRecorder recorder_test = new TestGoogleRecorder(mainView, context);
+                if(!recorder_test.isInitialize()){
+
+                    // if selected recorder cannot be initialized find the index of the
+                    // text field recorder and select it
+                    Log.e(MainActivity.LOG_TAF, "Could not initialize the native recorder with " +
+                            "the selected streaming client.");
+                    return null;
+                }
+
+                return recorder_test;
 
             case Constants.RECORDER_NATIVE_MIC:
 

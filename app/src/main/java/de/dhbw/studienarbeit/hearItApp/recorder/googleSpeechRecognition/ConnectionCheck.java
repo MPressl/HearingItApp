@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
 import de.dhbw.studienarbeit.hearItApp.R;
+import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 
 
 /**
@@ -19,7 +20,7 @@ import de.dhbw.studienarbeit.hearItApp.R;
 
 public class ConnectionCheck implements Runnable {
 
-    private VoiceRecorder recorder;
+    private IRecorder recorder;
     private ConnectivityManager cm;
 
     private final String CONNECTION_STRENGTH_STRING = "Connection Strength: ";
@@ -35,7 +36,7 @@ public class ConnectionCheck implements Runnable {
 
     private TextView label_internet_connection;
 
-    public ConnectionCheck(VoiceRecorder recorder) {
+    public ConnectionCheck(IRecorder recorder) {
         this.recorder = recorder;
         if(recorder == null){
             Log.e(MainActivity.LOG_TAF, "Cannot do connection checks. given recorder is null.");

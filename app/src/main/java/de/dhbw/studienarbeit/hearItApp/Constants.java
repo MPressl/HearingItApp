@@ -13,11 +13,14 @@ public class Constants {
     /** Factory options for speech recognition **/
     public static final int RECORDER_NATIVE_MIC = 0;
     public static final int RECORDER_ANDROID_VOICE_CLIENT = 1;
+    public static final int RECORDER_TEST_GOOGLE = 2;
     public static final int RECORDER_TEXT_FIELD_CLIENT = 999;
 
     public static final String RECORDER_NATIVE_MIC_TEXT = "Google Cloud Recorder";
     public static final String RECORDER_ANDROID_VOICE_CLIENT_TEXT = "Android Voice Recorder";
     public static final String RECORDER_TEXT_FIELD_CLIENT_TEXT = "Text Field Recorder";
+    public static final String RECORDER_TEST_GOOGLE_TEXT = "Test Google Speech Streaming";
+
 
     public static final LinkedHashMap<String, Integer> RECORDER_MAP = createRecorderMap();
 
@@ -32,6 +35,7 @@ public class Constants {
         map.put(RECORDER_ANDROID_VOICE_CLIENT_TEXT, RECORDER_ANDROID_VOICE_CLIENT);
         map.put(RECORDER_NATIVE_MIC_TEXT, RECORDER_NATIVE_MIC);
         map.put(RECORDER_TEXT_FIELD_CLIENT_TEXT, RECORDER_TEXT_FIELD_CLIENT);
+        map.put(RECORDER_TEST_GOOGLE_TEXT, RECORDER_TEST_GOOGLE);
         return map;
     }
 

@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,6 +27,8 @@ import java.util.ArrayList;
 import de.dhbw.studienarbeit.hearItApp.printer.PrinterFactory;
 import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 import de.dhbw.studienarbeit.hearItApp.recorder.RecorderFactory;
+
+import static com.google.android.gms.analytics.internal.zzy.v;
 
 /**
  * Main Activity controlling the user interaction. Selecting a recorder and printer
@@ -114,6 +118,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ArrayAdapter adapt_recorder = new ArrayAdapter(
                 this,R.layout.spinner_item,  recorderArray);
         this.spinner_recorder.setAdapter(adapt_recorder);
+
         this.spinner_recorder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -381,7 +386,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(scalingValue<0) scalingValue= -scalingValue;
         if(scalingValue>200) scalingValue = 0;//to prevent negative values
         SOUND_ANIMATION_SCALING_VALUE = scalingValue;
-        System.out.println("Time (mili): " + System.nanoTime()/1000000 + "ms , Value: " + scalingValue);
+        //System.out.println("Time (mili): " + System.nanoTime()/1000000 + "ms , Value: " + scalingValue);
 
 
         //loop through shortBuffer and calculate the db valueos for each short value (sample)
@@ -409,6 +414,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         double result = Math.log10(power) * 10f + FUDGE;
 
         return (int)result;
+    }
+
+    public void setRecordingModeStyle(){
+        this.btnSpeech.setBackgroundResource(R.drawable.mic_start_recording_recording_circle);
+        this.spinner_printer.setEnabled(false);
+        this.spinner_recorder.setEnabled(false);
+        this.txtViewRecInfo.setText("Recording...");
+        this.txtViewRecInfo.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark));
+
+    }
+
+    public void setNotRecordingModeStyle(){
+        this.btnSpeech.setBackgroundResource(R.drawable.mic_start_recording_not_recording_circle);
+        this.spinner_printer.setEnabled(true);
+        this.spinner_recorder.setEnabled(true);
+        this.txtViewRecInfo.setText("Press the button!");
+        this.txtViewRecInfo.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
+        MainActivity.SOUND_ANIMATION_SCALING_VALUE = 0;
     }
 
 

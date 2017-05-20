@@ -1,5 +1,7 @@
 package de.dhbw.studienarbeit.hearItApp.recorder;
 
+import de.dhbw.studienarbeit.hearItApp.MainActivity;
+
 /**
  * Interface for Recorders
  */
@@ -20,4 +22,8 @@ public interface IRecorder {
      * stops the audio record if still running and frees all resources
      */
     void shutdown();
+
+    MainActivity getMainView();
+
+    boolean isRecording();
 }

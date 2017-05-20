@@ -27,6 +27,7 @@ import java.util.concurrent.TimeUnit;
 
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
 
+import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 import de.dhbw.studienarbeit.hearItApp.recorder.ISpeechToTextConverter;
 import io.grpc.Channel;
 import io.grpc.Deadline;
@@ -50,7 +51,7 @@ public class GoogleSpeechConverter implements
     private static final List<String> OAUTH2_SCOPES =
             Arrays.asList("https://www.googleapis.com/auth/cloud-platform");
 
-    private VoiceRecorder recorder;
+    private IRecorder recorder;
 
     private SpeechGrpc.SpeechStub speechRPCStub;
 
@@ -73,11 +74,12 @@ public class GoogleSpeechConverter implements
      * @throws IOException
      * @throws GeneralSecurityException
      */
-    public GoogleSpeechConverter(VoiceRecorder recorder)
+    public GoogleSpeechConverter(IRecorder recorder)
             throws InterruptedException, IOException, GeneralSecurityException {
         //start internet connectivity checking thread
         this.recorder = recorder;
-        new Thread(new ConnectionCheck(this.recorder)).start();
+        new Thread(
+                new ConnectionCheck(this.recorder)).start();
 
         // Required to support Android 4.x.x (patches for OpenSSL from Google-Play-Services)
         try {

@@ -49,16 +49,13 @@ public class TextRecorder implements IRecorder {
         String result = this.edit_recorder_input.getText().toString();
         this.parent.receiveResult(result);
 
-        this.parent.getSpeechBtn().setBackgroundResource(R.drawable.mic_start_recording_recording_circle);
-        this.parent.getTxtViewRecInfo().setText("Recording...");
-        this.parent.getTxtViewRecInfo().setTextColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
+        this.parent.setRecordingModeStyle();
     }
 
     @Override
     public void stopRecording() {
-        this.parent.getSpeechBtn().setBackgroundResource(R.drawable.mic_start_recording_not_recording_circle);
-        this.parent.getTxtViewRecInfo().setText("Press the button!");
-        this.parent.getTxtViewRecInfo().setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
+        this.parent.setNotRecordingModeStyle();
+
     }
 
     @Override
@@ -71,5 +68,15 @@ public class TextRecorder implements IRecorder {
         edit_recorder_input.setLayoutParams(params);
 
         this.label_recorder_input.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public MainActivity getMainView() {
+        return this.parent;
+    }
+
+    @Override
+    public boolean isRecording() {
+        return false;
     }
 }
