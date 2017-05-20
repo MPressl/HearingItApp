@@ -165,7 +165,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         navigationMenu.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-                new LanguageDialoge().onCreateDialog(getIntent().getExtras(), MainActivity.this).show();
+                if(!isRecording) {
+                    new LanguageDialoge().onCreateDialog(getIntent().getExtras(), MainActivity.this).show();
+                }
+                else {
+                    showToast("Cant switch language while recording!");
+                }
                 return false;
             }
         });
