@@ -61,4 +61,17 @@ public class Constants {
         return map;
     }
 
+
+    /**
+     * Language Constants
+     */
+    //german
+    public static final int LANGUAGE_GERMAN = 1;
+    //english
+    public static final int LANGUAGE_ENGLISH = 2;
+    //france
+    public static final int LANGUAGE_FRANCE = 3;
+    //spain
+    public static final int LANGUAGE_SPAIN = 4;
+
 }

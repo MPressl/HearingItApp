@@ -39,7 +39,7 @@ public class ConnectionCheck implements Runnable {
     public ConnectionCheck(IRecorder recorder) {
         this.recorder = recorder;
         if(recorder == null){
-            Log.e(MainActivity.LOG_TAF, "Cannot do connection checks. given recorder is null.");
+            Log.e(MainActivity.LOG_TAG, "Cannot do connection checks. given recorder is null.");
         }
         this.label_internet_connection = (TextView) this.recorder.getMainView().findViewById(R.id.label_internet_connection);
         cm = (ConnectivityManager) this.recorder.getMainView().getSystemService(Context.CONNECTIVITY_SERVICE);

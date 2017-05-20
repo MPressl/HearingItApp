@@ -17,6 +17,7 @@ public class SoundAnimationThread extends Thread {
 
 
     public SoundAnimationThread(SurfaceHolder surfaceHolder, SoundAnimationView soundAnimationView){
+        this.setName("SoundAnimationDrawer");
         this.surfaceHolder = surfaceHolder;
         this.soundAnimationView = soundAnimationView;
     }

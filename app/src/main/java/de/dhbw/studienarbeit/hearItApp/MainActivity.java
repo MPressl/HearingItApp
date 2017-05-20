@@ -1,6 +1,7 @@
 package de.dhbw.studienarbeit.hearItApp;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.NavigationView;
@@ -14,16 +15,14 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import de.dhbw.studienarbeit.hearItApp.soundAnimation.SoundAnimationView;
 import de.dhbw.studienarbeit.hearItApp.printer.AbstractPrinter;
-import java.util.ArrayList;
 import de.dhbw.studienarbeit.hearItApp.printer.PrinterFactory;
 import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 import de.dhbw.studienarbeit.hearItApp.recorder.RecorderFactory;
@@ -37,9 +36,7 @@ import static com.google.android.gms.analytics.internal.zzy.v;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     public static final String APP_NAME = "Hearing";
-    public static final String LOG_TAF = "HearItApp";
-
-    public static int SOUND_ANIMATION_SCALING_VALUE = 0;
+    public static final String LOG_TAG = "HearItApp";
 
     private int RECORD_MODE;
     private int PRINTER_MODE;
@@ -49,14 +46,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private AbstractPrinter arPrinter;
     private IRecorder recorder;
 
-    private ListView lstVSideMenu;
-    private ArrayAdapter<String> adaptMenu;
     private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle actionBarDrawerToggle;
-    private MenuItem languageSelectionItem;
+    private ActionBarDrawerToggle actionBarDrawerToggle;;
     private NavigationView navigationMenu;
 
-    private int languageId; //1 = German, 2 = English, 3 = France, 4 = Spain
+    private int languageId = Constants.LANGUAGE_GERMAN;
 
     private SoundAnimationView soundAnimationView;
 
@@ -79,10 +73,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private boolean initialize_Components(){
 
-       // generate_Menu();
         generateNavMenu();
 
-        //((EditText) findViewById(R.id.edit_printer)).setVisibility(View.INVISIBLE);
         editPrinter = ((EditText) findViewById(R.id.edit_printer));
         ((TextView)findViewById(R.id.label_text_printer)).setVisibility(View.INVISIBLE);
 
@@ -90,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ((TextView) findViewById(R.id.label_text_recorder)).setVisibility(View.INVISIBLE);
 
         txtViewRecInfo = (TextView)findViewById(R.id.label_recording_information);
+        this.txtViewRecInfo.setText("Start Speech Recognition!");
 
         this.spinner_printer = (Spinner) findViewById(R.id.spinner_printer);
         final String[] printerArray = Constants.PRINTER_MAP.keySet().toArray(
@@ -133,6 +126,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //button to start recording
         this.btnSpeech = (ImageButton) findViewById(R.id.btnStartSpeech);
         this.btnSpeech.setOnClickListener(this);
+
+        this.soundAnimationView = (SoundAnimationView) findViewById(R.id.sound_animation_view);
 
         return true;
     }
@@ -212,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(this.isRecording){
             //if recording at the moment the recorder cannot be changed
-            Log.e(LOG_TAF, "Cannot change recorder while recording. Stop the record first.");
+            Log.e(LOG_TAG, "Cannot change recorder while recording. Stop the record first.");
             return;
         }
         this.RECORD_MODE = mode;
@@ -221,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             this.recorder.shutdown();
         }
 
-        this.recorder = RecorderFactory.generate(mode, this, getApplicationContext());
+        this.recorder = RecorderFactory.generate(mode, this);
 
         if(this.recorder == null) {
             //if null is record (because recorder cannot be initialized, the standard text recorder
@@ -239,7 +234,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             this.spinner_recorder.setSelection(textFieldIndex);
 
         }else {
-            Log.i(LOG_TAF, "Selected recorder: id: " + RECORD_MODE +
+            Log.i(LOG_TAG, "Selected recorder: id: " + RECORD_MODE +
                     " Name: " + name);
         }
     }
@@ -253,7 +248,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     private void setPrinterMode(int mode, String name){
         if(this.isRecording){
-            Log.e(LOG_TAF, "Cannot change printer while recording. Stop the record first.");
+            Log.e(LOG_TAG, "Cannot change printer while recording. Stop the record first.");
             return;
         }
         this.PRINTER_MODE = mode;
@@ -261,7 +256,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             this.arPrinter.shutdown();
         }
         this.arPrinter = PrinterFactory.generate(mode, this);
-        Log.i(LOG_TAF, "Selected printer: id: " + PRINTER_MODE +
+        Log.i(LOG_TAG, "Selected printer: id: " + PRINTER_MODE +
                 " Name: " + name);
 
     }
@@ -273,15 +268,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(requestCode){
             //Result of android recognition intent requested by AndroidVoiceRecorder
             case Constants.RESULT_SPEECH:
-
                 if(resultCode == RESULT_OK && data != null){
                     this.receiveResult(data
                         .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
                 }else{
                     this.showToast("couldn't parse speech to text");
                 }
-                this.isRecording = false;
-                this.arPrinter.stopPrinting();
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    Log.e(LOG_TAG, "Error while sleeping");
+                }
+                this.notifyStopRecord();
                 break;
             default:
                 this.showToast("Intent request code unknown");
@@ -304,9 +302,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     if(this.isRecording){
                         this.notifyStopRecord();
                     }else {
-                        this.isRecording = true;
-                        this.recorder.startRecording();
-                        this.arPrinter.startPrinting();
+                        this.startRecord();
                     }
                     break;
                 default:
@@ -354,13 +350,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    /**
-     * getter for the start and stop speech button
-     * @return start/stop speech button
-     */
-    public ImageButton getSpeechBtn(){return this.btnSpeech;}
-
-    public TextView getTxtViewRecInfo(){return txtViewRecInfo;}
+    public void startRecord() {
+        this.isRecording = true;
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                upDateView();
+            }
+        });
+        this.soundAnimationView.startDrawingThread();
+        this.arPrinter.startPrinting();
+        this.recorder.startRecording();
+    }
 
     /**
      * method is called when the stopp button is pressed
@@ -375,14 +376,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                   // btnSpeech.setText("Start Speech Recording");
+                   upDateView();
                 }
             });
             this.recorder.stopRecording();
+            this.soundAnimationView.stopDrawingThread();
             this.arPrinter.stopPrinting();
             return true;
         }
         return false;
+    }
+
+    private void upDateView() {
+        if(isRecording){
+            this.btnSpeech.setBackgroundResource(R.drawable.mic_start_recording_recording_circle);
+            this.txtViewRecInfo.setText("Recording...");
+            this.txtViewRecInfo.setTextColor(ContextCompat.getColor(
+                    getApplicationContext(), R.color.colorPrimaryDark));
+            this.spinner_recorder.setEnabled(false);
+            this.spinner_printer.setEnabled(false);
+        }else{
+            this.btnSpeech.setBackgroundResource(R.drawable.mic_start_recording_not_recording_circle);
+            this.txtViewRecInfo.setText("Start Speech Recognition!");
+            this.txtViewRecInfo.setTextColor(ContextCompat.getColor(
+                    getApplicationContext(), R.color.colorPrimary));
+            this.spinner_recorder.setEnabled(true);
+            this.spinner_printer.setEnabled(true);
+        }
     }
 
     public void showSoundAnimation(short[] audioInput) {
@@ -390,8 +410,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int scalingValue = calculatePowerDb(audioInput, 0, audioInput.length)+60; // Loud Voice = -10, quiet Voice = -60
         if(scalingValue<0) scalingValue= -scalingValue;
         if(scalingValue>200) scalingValue = 0;//to prevent negative values
-        SOUND_ANIMATION_SCALING_VALUE = scalingValue;
-        //System.out.println("Time (mili): " + System.nanoTime()/1000000 + "ms , Value: " + scalingValue);
+        this.soundAnimationView.setScalingValue( scalingValue );
 
 
         //loop through shortBuffer and calculate the db valueos for each short value (sample)
@@ -399,11 +418,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //animate a canvas depending on each single db value
     }
 
-    private static final float MAX_16_BIT = 32768;
-    private static final float FUDGE = 0.6f;
+
 
     public int calculatePowerDb(short[] sdata, int off, int samples)
     {
+       float max_16_bit = 32768;
+        final float fudge = 0.6f;
         double sum = 0;
         double sqsum = 0;
         for (int i = 0; i < samples; i++)
@@ -414,31 +434,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         double power = (sqsum - sum * sum / samples) / samples;
 
-        power /= MAX_16_BIT * MAX_16_BIT;
+        power /= max_16_bit * max_16_bit;
 
-        double result = Math.log10(power) * 10f + FUDGE;
+        double result = Math.log10(power) * 10f + fudge;
 
         return (int)result;
     }
-
-    public void setRecordingModeStyle(){
-        this.btnSpeech.setBackgroundResource(R.drawable.mic_start_recording_recording_circle);
-        this.spinner_printer.setEnabled(false);
-        this.spinner_recorder.setEnabled(false);
-        this.txtViewRecInfo.setText("Recording...");
-        this.txtViewRecInfo.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimaryDark));
-
-    }
-
-    public void setNotRecordingModeStyle(){
-        this.btnSpeech.setBackgroundResource(R.drawable.mic_start_recording_not_recording_circle);
-        this.spinner_printer.setEnabled(true);
-        this.spinner_recorder.setEnabled(true);
-        this.txtViewRecInfo.setText("Press the button!");
-        this.txtViewRecInfo.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary));
-        MainActivity.SOUND_ANIMATION_SCALING_VALUE = 0;
-    }
-
 
     //Andi start
     public void setLanguageId(int languageId){
@@ -446,5 +447,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         showToast("Language-ID: " + Integer.toString(languageId));
     }
     //Andi end
+    public String getSpokenLanguage() {
+        switch(this.languageId){
+            case Constants.LANGUAGE_ENGLISH:
+                return "en-US";
+            case Constants.LANGUAGE_FRANCE:
+                return "fr-FR";
+            case Constants.LANGUAGE_GERMAN:
+                return "de-DE";
+            default:
+                return "es-ES";
+        }
+    }
 
+    public ImageButton getSpeechBtn() {
+        return btnSpeech;
+    }
 }

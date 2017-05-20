@@ -57,15 +57,15 @@ public abstract class AbstractPrinter implements  IPrinter{
                 String newMessage = this.messageBuffer.poll(500, TimeUnit.MILLISECONDS);
                 if (newMessage != null) {
                     if(!this.printMessage(newMessage)){
-                        Log.e(MainActivity.LOG_TAF, "Failed to print message: " + newMessage);
+                        Log.e(MainActivity.LOG_TAG, "Failed to print message: " + newMessage);
                     }
                 }
             }catch(InterruptedException e){
-                Log.e(MainActivity.LOG_TAF, "Interrupted while " +
+                Log.e(MainActivity.LOG_TAG, "Interrupted while " +
                         "polling new message from printer queue");
             }
         }
-        Log.d(MainActivity.LOG_TAF, "Done printing messages");
+        Log.d(MainActivity.LOG_TAG, "Done printing messages");
     }
 
     /**

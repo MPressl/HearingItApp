@@ -4,24 +4,17 @@ import android.content.Context;
 import android.media.AudioFormat;
 import android.media.AudioRecord;
 import android.media.MediaRecorder;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.support.annotation.ColorRes;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.security.GeneralSecurityException;
 
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
 import de.dhbw.studienarbeit.hearItApp.R;
 import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 import de.dhbw.studienarbeit.hearItApp.recorder.ISpeechToTextConverter;
-import de.dhbw.studienarbeit.hearItApp.recorder.googleSpeechRecognition.ConnectionCheck;
-import de.dhbw.studienarbeit.hearItApp.recorder.googleSpeechRecognition.GoogleSpeechConverter;
 
 /**
  * Native Voice Recorder
@@ -42,8 +35,6 @@ public class VoiceRecorder implements IRecorder{
     /** parent activity**/
     private MainActivity mainView;
 
-    private Context context;
-
     private AudioRecord androidRecord;
 
     private boolean isRecording;
@@ -59,10 +50,9 @@ public class VoiceRecorder implements IRecorder{
      * and the conversion client
      * @param mainView
      */
-    public VoiceRecorder(MainActivity mainView, Context context){
+    public VoiceRecorder(MainActivity mainView){
 
         this.mainView = mainView;
-        this.context = context;
         VoiceRecorder.MIN_BUFFER_SIZE = AudioRecord.getMinBufferSize(VoiceRecorder.SAMPLING,
                 VoiceRecorder.RECORDER_CHANNELS,VoiceRecorder.RECORDER_AUDIO_ENCODING) * 2;
 
@@ -83,16 +73,16 @@ public class VoiceRecorder implements IRecorder{
             initialized = true;
 
         } catch (InterruptedException e) {
-            Log.e(MainActivity.LOG_TAF, "Interrupted while initializing " +
+            Log.e(MainActivity.LOG_TAG, "Interrupted while initializing " +
                     "the channel to google speech api");
         } catch (GeneralSecurityException e) {
-            Log.e(MainActivity.LOG_TAF, e.getMessage());
+            Log.e(MainActivity.LOG_TAG, e.getMessage());
         } catch (IOException e) {
             if (e.getClass() == FileNotFoundException.class) {
-                Log.e(MainActivity.LOG_TAF, "No authentication key for google " +
+                Log.e(MainActivity.LOG_TAG, "No authentication key for google " +
                         "Cloud found, channel not created");
             } else {
-                Log.e(MainActivity.LOG_TAF, e.getMessage());
+                Log.e(MainActivity.LOG_TAG, e.getMessage());
             }
         }
 
@@ -102,15 +92,13 @@ public class VoiceRecorder implements IRecorder{
     @Override
     public void startRecording() {
         if(!initialized){
-            Log.e(MainActivity.LOG_TAF, "Recorder not initialized. Cannot start recording");
+            Log.e(MainActivity.LOG_TAG, "Recorder not initialized. Cannot start recording");
             return;
         }
-        //this.mainView.getSpeechBtn().setText("Recording... Please Speak Now."
-        this.mainView.setRecordingModeStyle();
         //initialize stream
         this.writeFileThread = new Thread(new Runnable() {
             public void run() {
-                Log.i(MainActivity.LOG_TAF, "starting recording write to file thread");
+                Log.i(MainActivity.LOG_TAG, "starting recording write to file thread");
                 try {
                     readAudioInput();
                 }catch( Exception e){
@@ -126,9 +114,8 @@ public class VoiceRecorder implements IRecorder{
         if(!this.isRecording){
             return;
         }
-        this.mainView.setNotRecordingModeStyle();
         // stops the recording activity
-        Log.i(MainActivity.LOG_TAF, "VoiceRecorder Stopping the record.");
+        Log.i(MainActivity.LOG_TAG, "VoiceRecorder Stopping the record.");
         this.isRecording = false;
         if (null != this.androidRecord) {
             this.androidRecord.stop();
@@ -137,7 +124,7 @@ public class VoiceRecorder implements IRecorder{
         }
         //notify the main activity that recording stopped (if the call came from the conversion client
         if(this.mainView.notifyStopRecord()){
-            Log.d(MainActivity.LOG_TAF, "Notified main activity about unexpected recorder stop");
+            Log.d(MainActivity.LOG_TAG, "Notified main activity about unexpected recorder stop");
         }
     }
 
@@ -159,7 +146,7 @@ public class VoiceRecorder implements IRecorder{
             short[] shortBuffer = new short[VoiceRecorder.MIN_BUFFER_SIZE / 2];
             int read = this.androidRecord.read(shortBuffer, 0, shortBuffer.length);
             if(read < 0){
-               Log.e(MainActivity.LOG_TAF,
+               Log.e(MainActivity.LOG_TAG,
                         "Error while reading data from MIC: " + read);
                 continue;
             }
@@ -177,7 +164,7 @@ public class VoiceRecorder implements IRecorder{
                 //    recordingTime = 0;
              //   }
             } catch (Exception e) {
-                Log.e(MainActivity.LOG_TAF, "Recognition error. Stopping. Details: " + e.getMessage());
+                Log.e(MainActivity.LOG_TAG, "Recognition error. Stopping. Details: " + e.getMessage());
            }
         }
     }

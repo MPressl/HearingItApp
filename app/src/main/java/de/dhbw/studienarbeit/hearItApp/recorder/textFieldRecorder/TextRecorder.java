@@ -22,15 +22,13 @@ import java.util.Arrays;
 
 public class TextRecorder implements IRecorder {
     MainActivity parent;
-    private Context context;
 
     EditText edit_recorder_input;
 
     TextView label_recorder_input;
 
-    public TextRecorder(MainActivity parent, Context context){
+    public TextRecorder(MainActivity parent){
         this.parent = parent;
-        this.context = context;
 
         this.edit_recorder_input = (EditText) this.parent.findViewById(R.id.edit_recorder);
         this.edit_recorder_input.setVisibility(View.VISIBLE);
@@ -45,28 +43,19 @@ public class TextRecorder implements IRecorder {
 
     @Override
     public void startRecording() {
-        //this.parent.getSpeechBtn().setText("Printing Text...");
         String result = this.edit_recorder_input.getText().toString();
         this.parent.receiveResult(result);
-
-        this.parent.setRecordingModeStyle();
     }
-
     @Override
     public void stopRecording() {
-        this.parent.setNotRecordingModeStyle();
-
     }
 
     @Override
     public void shutdown() {
         this.edit_recorder_input.setVisibility(View.INVISIBLE);
-
-
         ViewGroup.LayoutParams params = edit_recorder_input.getLayoutParams();
         params.height = 0;
         edit_recorder_input.setLayoutParams(params);
-
         this.label_recorder_input.setVisibility(View.INVISIBLE);
     }
 

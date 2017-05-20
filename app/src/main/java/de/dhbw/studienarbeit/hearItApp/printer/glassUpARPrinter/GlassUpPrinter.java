@@ -87,7 +87,7 @@ public class GlassUpPrinter extends AbstractPrinter {
             this.configHandler.sendEmptyMessage(1);
         }else{
             /*Already configured*/
-            Log.d(MainActivity.LOG_TAF,"App Already configured");
+            Log.d(MainActivity.LOG_TAG,"App Already configured");
             Toast.makeText(this.mainView.getApplicationContext(), "App already configured", Toast.LENGTH_LONG).show();
         }
     }

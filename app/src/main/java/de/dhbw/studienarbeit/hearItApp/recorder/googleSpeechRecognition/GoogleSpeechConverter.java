@@ -144,6 +144,7 @@ public class GoogleSpeechConverter implements
                     RecognitionConfig.newBuilder()
                             .setEncoding(RecognitionConfig.AudioEncoding.LINEAR16)
                             .setSampleRate(VoiceRecorder.SAMPLING)
+                            .setLanguageCode(this.recorder.getMainView().getSpokenLanguage())
                             .build();
 
             StreamingRecognitionConfig streamingConfig =
@@ -181,7 +182,7 @@ public class GoogleSpeechConverter implements
                             .build();
             requestObserver.onNext(request);
         } catch (RuntimeException e){
-            Log.e(MainActivity.LOG_TAF, "Error while recognizing speech. Stopping."
+            Log.e(MainActivity.LOG_TAG, "Error while recognizing speech. Stopping."
                     + e.getMessage());
  
             requestObserver.onError(e);
@@ -191,7 +192,7 @@ public class GoogleSpeechConverter implements
 
     @Override
     public void onNext(StreamingRecognizeResponse response) {
-        Log.d(MainActivity.LOG_TAF,"Received response from google speech: " +
+        Log.d(MainActivity.LOG_TAG,"Received response from google speech: " +
                 TextFormat.printToString(response));
 
         List<StreamingRecognitionResult> results = response.getResultsList();
@@ -206,14 +207,14 @@ public class GoogleSpeechConverter implements
 
     @Override
     public void onError(Throwable error) {
-        Log.e(MainActivity.LOG_TAF,"Error while Google Speech Conversion. Details: "
+        Log.e(MainActivity.LOG_TAG,"Error while Google Speech Conversion. Details: "
                 + error.getMessage());
         this.recorder.stopRecording();
     }
 
     @Override
     public void onCompleted() {
-        Log.e(MainActivity.LOG_TAF,"Speech Streaming Client Completed.");
+        Log.e(MainActivity.LOG_TAG,"Speech Streaming Client Completed.");
     }
 
 

@@ -18,8 +18,8 @@ public class AndroidVoiceRecorder implements IRecorder {
 
     private MainActivity parent;
 
-    public AndroidVoiceRecorder(MainActivity context){
-        this.parent = context;
+    public AndroidVoiceRecorder(MainActivity parent){
+        this.parent = parent;
     }
 
     /**
@@ -28,10 +28,9 @@ public class AndroidVoiceRecorder implements IRecorder {
     @Override
     public void startRecording() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "de-DE");
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, this.parent.getSpokenLanguage());
         try {
             this.parent.startActivityForResult(intent,Constants.RESULT_SPEECH);
-            this.parent.setRecordingModeStyle();
         } catch (ActivityNotFoundException a) {
             this.parent.showToast("Opps! Your device doesn't support Speech to Text");
         }
@@ -39,7 +38,6 @@ public class AndroidVoiceRecorder implements IRecorder {
 
     @Override
     public void stopRecording() {
-        this.parent.setNotRecordingModeStyle();
         return;
     }
 

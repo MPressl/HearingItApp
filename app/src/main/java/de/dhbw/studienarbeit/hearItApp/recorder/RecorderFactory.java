@@ -26,16 +26,16 @@ public class RecorderFactory {
      * @param mainView
      * @return Recorder
      */
-    public static IRecorder generate(int type, MainActivity mainView, Context context){
+    public static IRecorder generate(int type, MainActivity mainView){
         switch (type) {
 
             case Constants.RECORDER_TEST_GOOGLE:
-                TestGoogleRecorder recorder_test = new TestGoogleRecorder(mainView, context);
+                TestGoogleRecorder recorder_test = new TestGoogleRecorder(mainView);
                 if(!recorder_test.isInitialize()){
 
                     // if selected recorder cannot be initialized find the index of the
                     // text field recorder and select it
-                    Log.e(MainActivity.LOG_TAF, "Could not initialize the native recorder with " +
+                    Log.e(MainActivity.LOG_TAG, "Could not initialize the native recorder with " +
                             "the selected streaming client.");
                     return null;
                 }
@@ -44,13 +44,13 @@ public class RecorderFactory {
 
             case Constants.RECORDER_NATIVE_MIC:
 
-                VoiceRecorder recorder = new VoiceRecorder(mainView, context);
+                VoiceRecorder recorder = new VoiceRecorder(mainView);
 
                 if(!recorder.isInitialize()){
 
                     // if selected recorder cannot be initialized find the index of the
                     // text field recorder and select it
-                    Log.e(MainActivity.LOG_TAF, "Could not initialize the native recorder with " +
+                    Log.e(MainActivity.LOG_TAG, "Could not initialize the native recorder with " +
                             "the selected streaming client.");
                     return null;
                 }
@@ -61,7 +61,7 @@ public class RecorderFactory {
                 return new AndroidVoiceRecorder(mainView);
 
             default:
-                return new TextRecorder(mainView, context);
+                return new TextRecorder(mainView);
         }
     }
 }

@@ -24,16 +24,16 @@ public class LanguageDialoge extends DialogFragment {
                     public void onClick(DialogInterface dialog, int which) {
                         switch(which) {
                             case 0:
-                                setLanguage(1); //German
+                                setLanguage(Constants.LANGUAGE_GERMAN);
                                 break;
                             case 1:
-                                setLanguage(2);  //English
+                                setLanguage(Constants.LANGUAGE_ENGLISH);
                                 break;
                             case 2:
-                                setLanguage(3);  //France
+                                setLanguage(Constants.LANGUAGE_FRANCE);
                                 break;
                             case 3:
-                                setLanguage(4);  //Spain
+                                setLanguage(Constants.LANGUAGE_SPAIN);
                                 break;
                             default: break;
                         }

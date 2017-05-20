@@ -17,42 +17,32 @@ import de.dhbw.studienarbeit.hearItApp.R;
 
 public class SoundAnimationView extends SurfaceView implements SurfaceHolder.Callback {
 
+
     public static int SURFACE_WIDTH;
     public static int SURFACE_HEIGTH;
 
     private boolean animationStartValueSet = false;
+    private int sound_animation_scaling_value = 0;
 
     private SoundAnimationThread soundAnimationThread;
     private SoundAnimation soundAnimation;
 
-    private int newScalingValue = 0;
-    private int actualScalingValue = 0;
+    public SoundAnimationView(Context context, AttributeSet attrs) {
+        super(context, attrs);
 
-    private int testCounter = 0;
-    private boolean updateAddition = true;
-
-
-    public SoundAnimationView(Context context, AttributeSet attributeSet) {
-        super(context);
-
-       /* this.setZOrderOnTop(true);
-        this.getHolder().setFormat(PixelFormat.TRANSLUCENT);*/
-
-        //this.setBackgroundColor(getResources().getColor(R.color.generalBackground));
+       this.setZOrderOnTop(true);
+        this.getHolder().setFormat(PixelFormat.TRANSLUCENT);
         soundAnimation = new SoundAnimation(0, 0, 0);
-
-        startThread();
     }
 
-    public SoundAnimationView(Context context){
-        super(context);
-    }
+    public SoundAnimationView(Context context) {
+        super(context);}
 
     public SoundAnimationView(Context context, AttributeSet attrs, int defStyleAttr){
-        super(context);
+        super(context, attrs, defStyleAttr);
     }
     public SoundAnimationView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes){
-        super(context);
+        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     @Override
@@ -76,7 +66,7 @@ public class SoundAnimationView extends SurfaceView implements SurfaceHolder.Cal
             animationStartValueSet = true;
         }
 
-        newScalingValue = MainActivity.SOUND_ANIMATION_SCALING_VALUE;
+        //newScalingValue = MainActivity.sound_animation_scaling_value;
 
         /*if(newScalingValue!=actualScalingValue){
             int difScalingValue = newScalingValue-actualScalingValue;
@@ -91,14 +81,15 @@ public class SoundAnimationView extends SurfaceView implements SurfaceHolder.Cal
                 }
             }
         }*/
-        if(MainActivity.SOUND_ANIMATION_SCALING_VALUE > 5) {
-            soundAnimation.setRadius((SURFACE_HEIGTH / 60) * (MainActivity.SOUND_ANIMATION_SCALING_VALUE+MainActivity.SOUND_ANIMATION_SCALING_VALUE/5));
+        if(this.sound_animation_scaling_value > 5) {
+            soundAnimation.setRadius((SURFACE_HEIGTH / 60) * (this.sound_animation_scaling_value
+                    + this.sound_animation_scaling_value / 5));
         }
         else {
             soundAnimation.setRadius(0);
         }
 
-        actualScalingValue = newScalingValue;
+        //actualScalingValue = newScalingValue;
         /*if(!updateAddition) {
             soundAnimation.update(0, 0, -8);
             testCounter++;
@@ -144,9 +135,16 @@ public class SoundAnimationView extends SurfaceView implements SurfaceHolder.Cal
         return SURFACE_WIDTH;
     }
 
-    public void startThread(){
-        soundAnimationThread = new SoundAnimationThread(getHolder(), this);
-        soundAnimationThread.setRunning(true);
-        soundAnimationThread.start();
+    public void startDrawingThread() {
+        this.soundAnimationThread = new SoundAnimationThread(getHolder(), this);
+        this.soundAnimationThread.setRunning(true);
+        this.soundAnimationThread.start();
+    }
+    public void stopDrawingThread() {
+        this.soundAnimationThread.setRunning(false);
+    }
+
+    public void setScalingValue(int value) {
+        this.sound_animation_scaling_value = value;
     }
 }
