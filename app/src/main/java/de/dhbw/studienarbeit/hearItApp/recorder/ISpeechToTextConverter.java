@@ -2,6 +2,8 @@ package de.dhbw.studienarbeit.hearItApp.recorder;
 
 /**
  * Interface for Speech to Text Conversion Clients
+ *
+ *  Created by Martin
  */
 
 public interface ISpeechToTextConverter {

@@ -4,6 +4,8 @@ import java.util.LinkedHashMap;
 
 /**
  * Global Project Constatnts
+ *
+ *  Created by Martin
  */
 
 public class Constants {
@@ -19,7 +21,7 @@ public class Constants {
     public static final String RECORDER_NATIVE_MIC_TEXT = "Google Cloud Recorder";
     public static final String RECORDER_ANDROID_VOICE_CLIENT_TEXT = "Android Voice Recorder";
     public static final String RECORDER_TEXT_FIELD_CLIENT_TEXT = "Text Field Recorder";
-    public static final String RECORDER_TEST_GOOGLE_TEXT = "Test Google Speech Streaming";
+   // public static final String RECORDER_TEST_GOOGLE_TEXT = "Test Google Speech Streaming";
 
 
     public static final LinkedHashMap<String, Integer> RECORDER_MAP = createRecorderMap();
@@ -35,7 +37,7 @@ public class Constants {
         map.put(RECORDER_ANDROID_VOICE_CLIENT_TEXT, RECORDER_ANDROID_VOICE_CLIENT);
         map.put(RECORDER_NATIVE_MIC_TEXT, RECORDER_NATIVE_MIC);
         map.put(RECORDER_TEXT_FIELD_CLIENT_TEXT, RECORDER_TEXT_FIELD_CLIENT);
-        map.put(RECORDER_TEST_GOOGLE_TEXT, RECORDER_TEST_GOOGLE);
+       // map.put(RECORDER_TEST_GOOGLE_TEXT, RECORDER_TEST_GOOGLE);
         return map;
     }
 
@@ -44,7 +46,7 @@ public class Constants {
     public static final int PRINTER_TEXT_FILED = 1;
 
     public static final String PRINTER_TEXT_FIELD_TEXT = "Print To Local Text Field";
-    public static final String PRINTER_GLASSUP_AR_TEXT = "GlassUp AR Glass Printer";
+    public static final String PRINTER_GLASSUP_AR_TEXT = "GlassUp AR Device";
 
     public static final LinkedHashMap<String, Integer> PRINTER_MAP = createPrinterMap();
 

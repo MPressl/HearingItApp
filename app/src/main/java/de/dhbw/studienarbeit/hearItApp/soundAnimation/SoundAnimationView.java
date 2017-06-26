@@ -9,7 +9,6 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
-import de.dhbw.studienarbeit.hearItApp.R;
 
 /**
  * Created by Andi on 28.03.2017.

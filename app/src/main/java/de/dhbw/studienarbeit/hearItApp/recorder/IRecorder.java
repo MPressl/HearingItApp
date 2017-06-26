@@ -4,6 +4,8 @@ import de.dhbw.studienarbeit.hearItApp.MainActivity;
 
 /**
  * Interface for Recorders
+ *
+ *  Created by Martin Created by Martin Created by Martin Created by Martin Created by Martin Created by Martin
  */
 
 public interface IRecorder {

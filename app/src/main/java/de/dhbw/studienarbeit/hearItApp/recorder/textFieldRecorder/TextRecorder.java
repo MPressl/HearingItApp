@@ -18,6 +18,8 @@ import java.util.Arrays;
  * TextRecorder enables a EditText within the MainActivity and
  * takes the entered text as dummy input to display it on the
  * AR device using the selected AR-Printer
+ *
+ *  Created by Martin
  */
 
 public class TextRecorder implements IRecorder {

@@ -20,6 +20,7 @@ import com.google.protobuf.TextFormat;
 import java.io.IOException;
 import java.io.InputStream;
 import java.security.GeneralSecurityException;
+import java.sql.Connection;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -41,6 +42,8 @@ import io.grpc.stub.StreamObserver;
 /**
  * GoogleSpeechConverter uses the Google Cloud Speech api
  * for synchronus live speech to text conversion
+ *
+ * Created by Martin
  */
 
 public class GoogleSpeechConverter implements
@@ -63,44 +66,39 @@ public class GoogleSpeechConverter implements
 
     private final Integer PORT = 443;
 
-    private boolean isInititalized;
+    private boolean isInitialized;
+
+    private Thread chkConStrength;
 
     /**
      * Constructor:
      * creates a channel to the google cloud service account
      * and then creates a rpc stub to call cloud functions for speech recognition
+     * @throws IOException, GeneralSecurityException, if channel init fails
      * @param recorder
-     * @throws InterruptedException
-     * @throws IOException
-     * @throws GeneralSecurityException
      */
-    public GoogleSpeechConverter(IRecorder recorder)
-            throws InterruptedException, IOException, GeneralSecurityException {
+    public GoogleSpeechConverter(IRecorder recorder) throws IOException, GeneralSecurityException {
         //start internet connectivity checking thread
         this.recorder = recorder;
-        new Thread(new ConnectionCheck(this.recorder)).start();
-//TODO: NEEDED??
+        this.chkConStrength = new Thread(new ConnectionCheck(this.recorder));
+        this.chkConStrength.start();
         // Required to support Android 4.x.x (patches for OpenSSL from Google-Play-Services)
         try {
             ProviderInstaller.installIfNeeded(recorder.getMainView().getApplicationContext());
         } catch (GooglePlayServicesRepairableException e) {
-
-            // Indicates that Google Play services is out of date, disabled, etc.
-            e.printStackTrace();
             // Prompt the user to install/update/enable Google Play services.
             GooglePlayServicesUtil.showErrorNotification(
                     e.getConnectionStatusCode(), recorder.getMainView().getApplicationContext());
             return;
-
         } catch (GooglePlayServicesNotAvailableException e) {
             // Indicates a non-recoverable error; the ProviderInstaller is not able
             // to install an up-to-date Provider.
-            e.printStackTrace();
+            Log.e(MainActivity.LOG_TAG, "Fatal error while GoogleSpeechRecognizer initialisation");
             return;
         }
         //create channel and speech stub
-//TODO: catch thrown exceptions!
-        Channel channel = createChannel();
+        Channel channel = null;
+        channel = createChannel();
         this.speechRPCStub = SpeechGrpc.newStub(channel);
         this.speechRPCStub.withDeadline(Deadline.after(2, TimeUnit.HOURS));
     }
@@ -171,9 +169,9 @@ public class GoogleSpeechConverter implements
     @Override
     public void recognizeBytes(byte[] buffer, int size){
 
-        if (!this.isInititalized) {
+        if (!this.isInitialized) {
             this.initializeStreaming();
-            this.isInititalized = true;
+            this.isInitialized = true;
         }
         try {
             StreamingRecognizeRequest request =
@@ -220,6 +218,10 @@ public class GoogleSpeechConverter implements
 
     @Override
     public void setStreamInitialized(boolean streamInitialized) {
-        this.isInititalized = streamInitialized;
+        this.isInitialized = streamInitialized;
+    }
+
+    public void shutdown(){
+        this.chkConStrength.interrupt();
     }
 }

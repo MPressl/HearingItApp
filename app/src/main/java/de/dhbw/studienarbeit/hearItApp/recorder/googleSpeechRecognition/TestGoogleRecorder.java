@@ -19,7 +19,7 @@ import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 import de.dhbw.studienarbeit.hearItApp.recorder.ISpeechToTextConverter;
 
 /**
- * Created by Andi on 19.05.2017.
+ *  Created by Martin
  */
 
 public class TestGoogleRecorder implements IRecorder{
@@ -34,8 +34,6 @@ public class TestGoogleRecorder implements IRecorder{
         try {
             this.converter = new GoogleSpeechConverter(this);
             initialized = true;
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (GeneralSecurityException e) {

@@ -1,7 +1,6 @@
 package de.dhbw.studienarbeit.hearItApp;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.NavigationView;
@@ -11,7 +10,6 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,21 +19,21 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import de.dhbw.studienarbeit.hearItApp.connector.AbstractConnector;
+import de.dhbw.studienarbeit.hearItApp.connector.IConnector;
 import de.dhbw.studienarbeit.hearItApp.soundAnimation.SoundAnimationView;
-import de.dhbw.studienarbeit.hearItApp.printer.AbstractPrinter;
-import de.dhbw.studienarbeit.hearItApp.printer.PrinterFactory;
+import de.dhbw.studienarbeit.hearItApp.connector.ConnectorFactory;
 import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 import de.dhbw.studienarbeit.hearItApp.recorder.RecorderFactory;
-
-import static com.google.android.gms.analytics.internal.zzy.v;
 
 /**
  * Main Activity controlling the user interaction. Selecting a recorder and printer
  * and setting other options is controlled from here
+ *
+ * Created by Martin
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    public static final String APP_NAME = "Hearing";
     public static final String LOG_TAG = "HearItApp";
 
     private int RECORD_MODE;
@@ -43,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private boolean isRecording;
 
-    private AbstractPrinter arPrinter;
+    private AbstractConnector arPrinter;
     private IRecorder recorder;
 
     private DrawerLayout drawerLayout;
@@ -54,11 +52,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private SoundAnimationView soundAnimationView;
 
+    private TextView arConnectionLabel;
     private TextView txtViewRecInfo;
     private EditText editPrinter;
     private ImageButton btnSpeech;
     private Spinner spinner_recorder;
     private Spinner spinner_printer;
+
+    private boolean isARConnected=true;
+    private boolean isRecorderConnected=true;
     
 
     @Override
@@ -74,8 +76,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private boolean initialize_Components(){
 
         generateNavMenu();
-
-        editPrinter = ((EditText) findViewById(R.id.edit_printer));
+        this.arConnectionLabel = (TextView) findViewById(R.id.label_ar_device_connection);
+        this.editPrinter = ((EditText) findViewById(R.id.edit_printer));
         ((TextView)findViewById(R.id.label_text_printer)).setVisibility(View.INVISIBLE);
 
         ((EditText) findViewById(R.id.edit_recorder)).setVisibility(View.INVISIBLE);
@@ -132,23 +134,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
-    /**
-     * generates the side menu
-     */
-    /*private void generate_Menu(){
-        final String[] menuItems = {"language..."};
-        this.lstVSideMenu = (ListView) findViewById(R.id.navList);
-        this.adaptMenu =  new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menuItems);
-        this.lstVSideMenu.setAdapter(adaptMenu);
-        lstVSideMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                System.out.println("hallo");
-            }
-        });
-    }*/
-
-
     private void generateNavMenu(){
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open_nav_menu, R.string.close_nav_menu);
@@ -169,22 +154,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return false;
             }
         });
-
-
-
-        /*languageSelectionItem = (MenuItem) findViewById(R.id.language_selection);
-        languageSelectionItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                System.out.println("Hallo");
-                return false;
-            }
-        });
-        navigationMenu = (NavigationView) findViewById(R.id.navigation_view);*/
-    }
-
-    public void createSoundAnimationView(){
-
     }
 
     @Override
@@ -241,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * Select the printer mode. This method is called when the user selects a printer
-     * through the spinner. The method calls the PrinterFactory.
+     * through the spinner. The method calls the ConnectorFactory.
      *
      * @param mode
      * @param name
@@ -255,7 +224,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(arPrinter != null) {
             this.arPrinter.shutdown();
         }
-        this.arPrinter = PrinterFactory.generate(mode, this);
+        this.arPrinter = ConnectorFactory.generate(mode, this);
         Log.i(LOG_TAG, "Selected printer: id: " + PRINTER_MODE +
                 " Name: " + name);
 
@@ -322,7 +291,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume(){
         super.onResume();
-       // this.gPrinter.onResume();
     }
 
     /**
@@ -460,7 +428,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public ImageButton getSpeechBtn() {
-        return btnSpeech;
+    /**
+     * Method is called when connection status of a module is changed
+     * (GlassUp connect/disconnect or connection speed
+     * reached for google streaming)
+     * @param itm
+     * @param connected
+     */
+    public void updateConnectionStatus(Object itm, boolean connected) {
+        if(itm instanceof IRecorder){
+            this.isRecorderConnected = connected;
+        }else if (itm instanceof IConnector){
+            this.isARConnected = connected;
+            if(!this.isARConnected){
+                this.arConnectionLabel.setText("Selected AR device not connected.");
+            }else{
+                this.arConnectionLabel.setText("AR device connected.");
+            }
+        }
+        btnSpeech.setEnabled(isARConnected && isRecorderConnected);
     }
 }

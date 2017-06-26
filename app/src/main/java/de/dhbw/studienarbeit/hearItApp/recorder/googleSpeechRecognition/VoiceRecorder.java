@@ -12,7 +12,6 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
-import de.dhbw.studienarbeit.hearItApp.R;
 import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 import de.dhbw.studienarbeit.hearItApp.recorder.ISpeechToTextConverter;
 
@@ -20,6 +19,8 @@ import de.dhbw.studienarbeit.hearItApp.recorder.ISpeechToTextConverter;
  * Native Voice Recorder
  * Uses the AndroidRecord to record bytes from the microphone and sends the recorded bytes
  * to a ISpeechToTextConverter implementation to convert the speech to text
+ *
+ *  Created by Martin
  */
 
 public class VoiceRecorder implements IRecorder{
@@ -69,12 +70,7 @@ public class VoiceRecorder implements IRecorder{
     private void initializeSpeechConverter() {
         try{
             streamingClient = new GoogleSpeechConverter(VoiceRecorder.this);
-//TODO: initialized varibale needed?
             initialized = true;
-
-        } catch (InterruptedException e) {
-            Log.e(MainActivity.LOG_TAG, "Interrupted while initializing " +
-                    "the channel to google speech api");
         } catch (GeneralSecurityException e) {
             Log.e(MainActivity.LOG_TAG, e.getMessage());
         } catch (IOException e) {
@@ -153,7 +149,7 @@ public class VoiceRecorder implements IRecorder{
             try {
                 this.mainView.showSoundAnimation(shortBuffer);
                 byteBuffer = this.convertShortToByte(shortBuffer);
-                streamingClient.recognizeBytes(byteBuffer, read);
+                this.streamingClient.recognizeBytes(byteBuffer, read);
                 long stop = System.currentTimeMillis() - start;
                 Log.e("measuring " , "NEDED: " + stop);
                 //recordingTime += stop;
@@ -191,6 +187,7 @@ public class VoiceRecorder implements IRecorder{
     public void shutdown(){
         this.androidRecord.release();
         this.androidRecord = null;
+        ((GoogleSpeechConverter)this.streamingClient).shutdown();
         return;
     }
 

@@ -48,7 +48,7 @@ public class ConnectionCheck implements Runnable {
     @Override
     public void run() {
 
-        while(true) {
+        while(!Thread.currentThread().isInterrupted()) {
             this.recorder.getMainView().runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
@@ -58,31 +58,20 @@ public class ConnectionCheck implements Runnable {
                 }
             });
 
-            setTextLabelInternetConnection("");
+            this.setTextLabelInternetConnection("");
 
             if(evaluateNetworkConnection())
             {
-                setTextLabelInternetConnection(this.connection_strentgh_actual
+                this.setTextLabelInternetConnection(this.connection_strentgh_actual
                         + " Streaming Speech reached");
-
-                this.recorder.getMainView().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        recorder.getMainView().getSpeechBtn().setEnabled(true);
-                    }
-                });
+                this.recorder.getMainView().updateConnectionStatus(this.recorder, true);
             }else{
-                setTextLabelInternetConnection(this.connection_strentgh_actual
+                this.setTextLabelInternetConnection(this.connection_strentgh_actual
                         + " to low for speech streaming");
                 if(this.recorder.isRecording()){
                     this.recorder.stopRecording();
                 }
-                this.recorder.getMainView().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        recorder.getMainView().getSpeechBtn().setEnabled(false);
-                    }
-                });
+                this.recorder.getMainView().updateConnectionStatus(this.recorder, false);
             }
             try {
                 Thread.sleep(4000);
@@ -90,6 +79,9 @@ public class ConnectionCheck implements Runnable {
                 e.printStackTrace();
             }
         }
+        this.setTextLabelInternetConnection("");
+        this.recorder.getMainView().updateConnectionStatus(this.recorder, true);
+
     }
 
 
@@ -125,34 +117,34 @@ public class ConnectionCheck implements Runnable {
                     return false;
                 case TelephonyManager.NETWORK_TYPE_EVDO_0:
                     this.connection_strentgh_actual =this.CONNECTION_STRENGTH_STRING + "400-1000 kbps";
-                    return true;
+                    return false;
                 case TelephonyManager.NETWORK_TYPE_EVDO_A:
                     this.connection_strentgh_actual = this.CONNECTION_STRENGTH_STRING +"600-1400 kbps";
-                    return true;
+                    return false;
                 case TelephonyManager.NETWORK_TYPE_GPRS:
                     this.connection_strentgh_actual = this.CONNECTION_STRENGTH_STRING + "100 kbps";
                     return false;
                 case TelephonyManager.NETWORK_TYPE_HSDPA:
                     this.connection_strentgh_actual = this.CONNECTION_STRENGTH_STRING + "2-14 Mbps";
-                    return true;
+                    return false;
                 case TelephonyManager.NETWORK_TYPE_HSPA:
                     this.connection_strentgh_actual = this.CONNECTION_STRENGTH_STRING + "0.7-1.7 Mbps";
-                    return true;
+                    return false;
                 case TelephonyManager.NETWORK_TYPE_HSUPA:
                     this.connection_strentgh_actual = this.CONNECTION_STRENGTH_STRING + "1-23 Mbps";
-                    return true;
+                    return false;
                 case TelephonyManager.NETWORK_TYPE_UMTS:
                     this.connection_strentgh_actual = this.CONNECTION_STRENGTH_STRING + "0.4-7 Mbps";
-                    return true;
+                    return false;
                 case ConnectionCheck.NETWORK_TYPE_EHRPD:
                     this.connection_strentgh_actual = this.CONNECTION_STRENGTH_STRING + "1-2 Mbps";
-                    return true;
+                    return false;
                 case ConnectionCheck.NETWORK_TYPE_EVDO_B:
                     this.connection_strentgh_actual = this.CONNECTION_STRENGTH_STRING + "5Mbps";
-                    return true;
+                    return false;
                 case ConnectionCheck.NETWORK_TYPE_HSPAP:
                     this.connection_strentgh_actual = this.CONNECTION_STRENGTH_STRING + "10-20 Mbps";
-                    return true;
+                    return false;
                 case ConnectionCheck.NETWORK_TYPE_IDEN:
                     this.connection_strentgh_actual = this.CONNECTION_STRENGTH_STRING + "25kbps";
                 return false;

@@ -14,6 +14,8 @@ import de.dhbw.studienarbeit.hearItApp.recorder.textFieldRecorder.TextRecorder;
 
 /**
  * Factory class for recorders
+ *
+ *  Created by Martin
  */
 
 public class RecorderFactory {

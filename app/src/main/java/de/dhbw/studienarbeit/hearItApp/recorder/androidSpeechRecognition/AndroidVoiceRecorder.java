@@ -12,6 +12,8 @@ import de.dhbw.studienarbeit.hearItApp.MainActivity;
  * AndroidVoiceRecorder using the Android own Speech Recognition service
  * the service works asynchronus. An Intent is called, the speech is recorded
  * converted into text and the result is received by the MainActivity
+ *
+ *  Created by Martin
  */
 
 public class AndroidVoiceRecorder implements IRecorder {
