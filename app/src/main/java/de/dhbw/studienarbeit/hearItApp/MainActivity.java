@@ -2,6 +2,7 @@ package de.dhbw.studienarbeit.hearItApp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.speech.RecognizerIntent;
 import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
@@ -26,13 +27,16 @@ import de.dhbw.studienarbeit.hearItApp.connector.ConnectorFactory;
 import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 import de.dhbw.studienarbeit.hearItApp.recorder.RecorderFactory;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 /**
  * Main Activity controlling the user interaction. Selecting a recorder and printer
  * and setting other options is controlled from here
  *
  * Created by Martin
  */
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
 
     public static final String LOG_TAG = "HearItApp";
 
@@ -45,7 +49,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private IRecorder recorder;
 
     private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle actionBarDrawerToggle;;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
+    ;
     private NavigationView navigationMenu;
 
     private int languageId = Constants.LANGUAGE_GERMAN;
@@ -59,31 +64,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Spinner spinner_recorder;
     private Spinner spinner_printer;
 
-    private boolean isARConnected=true;
-    private boolean isRecorderConnected=true;
-    
+    private boolean isARConnected = true;
+    private boolean isRecorderConnected = true;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         initialize_Components();
     }
+
     /**
      * initializing gui components
+     *
      * @return success
      */
-    private boolean initialize_Components(){
+    private boolean initialize_Components() {
 
         generateNavMenu();
         this.arConnectionLabel = (TextView) findViewById(R.id.label_ar_device_connection);
         this.editPrinter = ((EditText) findViewById(R.id.edit_printer));
-        ((TextView)findViewById(R.id.label_text_printer)).setVisibility(View.INVISIBLE);
+        ((TextView) findViewById(R.id.label_text_printer)).setVisibility(View.INVISIBLE);
 
         ((EditText) findViewById(R.id.edit_recorder)).setVisibility(View.INVISIBLE);
         ((TextView) findViewById(R.id.label_text_recorder)).setVisibility(View.INVISIBLE);
 
-        txtViewRecInfo = (TextView)findViewById(R.id.label_recording_information);
+        txtViewRecInfo = (TextView) findViewById(R.id.label_recording_information);
         this.txtViewRecInfo.setText("Start Speech Recognition!");
 
         this.spinner_printer = (Spinner) findViewById(R.id.spinner_printer);
@@ -91,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 new String[Constants.PRINTER_MAP.keySet().size()]);
 
         ArrayAdapter adapt_printer = new ArrayAdapter(
-                this,R.layout.spinner_item,  printerArray);
+                this, R.layout.spinner_item, printerArray);
 
         this.spinner_printer.setAdapter(adapt_printer);
         this.spinner_printer.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -99,11 +107,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selected = parent.getItemAtPosition(position).toString();
                 int mode = Constants.PRINTER_MAP.get(selected);
-                setPrinterMode( mode, selected );
+                setPrinterMode(mode, selected);
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
         //init the spinner to select a recorder. take entries from map in Constants
@@ -111,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final String[] recorderArray = Constants.RECORDER_MAP.keySet().toArray(
                 new String[Constants.RECORDER_MAP.keySet().size()]);
         ArrayAdapter adapt_recorder = new ArrayAdapter(
-                this,R.layout.spinner_item,  recorderArray);
+                this, R.layout.spinner_item, recorderArray);
         this.spinner_recorder.setAdapter(adapt_recorder);
 
         this.spinner_recorder.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -122,7 +131,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {}
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
         });
 
         //button to start recording
@@ -134,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
-    private void generateNavMenu(){
+    private void generateNavMenu() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open_nav_menu, R.string.close_nav_menu);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -145,13 +155,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         navigationMenu.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
-                if(!isRecording) {
-                    new LanguageDialoge().onCreateDialog(getIntent().getExtras(), MainActivity.this).show();
+
+                switch (item.getItemId()) {
+                    case R.id.language_selection:
+                        if (!isRecording) {
+                            new LanguageDialoge().onCreateDialog(getIntent().getExtras(), MainActivity.this).show();
+                        } else {
+                            showToast("Cant switch language while recording!");
+                        }
+                        return false;
+
+                    case R.id.about_us:
+                        Intent intent = new Intent(getApplicationContext(), AboutUsActivity.class);
+                        startActivity(intent);
+                        return false;
+
+                    default:
+                        return false;
+
                 }
-                else {
-                    showToast("Cant switch language while recording!");
-                }
-                return false;
             }
         });
     }
@@ -172,37 +194,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @param mode
      * @param name
      */
-    private void setRecorderMode(int mode, String name){
+    private void setRecorderMode(int mode, String name) {
 
-        if(this.isRecording){
+        if (this.isRecording) {
             //if recording at the moment the recorder cannot be changed
             Log.e(LOG_TAG, "Cannot change recorder while recording. Stop the record first.");
             return;
         }
         this.RECORD_MODE = mode;
 
-        if(recorder != null) {
+        if (recorder != null) {
             this.recorder.shutdown();
         }
 
         this.recorder = RecorderFactory.generate(mode, this);
 
-        if(this.recorder == null) {
+        if (this.recorder == null) {
             //if null is record (because recorder cannot be initialized, the standard text recorder
             // is selected
             String[] recorders = Constants.RECORDER_MAP.keySet()
                     .toArray(new String[Constants.RECORDER_MAP.keySet().size()]);
             int textFieldIndex = 0;
-            for(int i = 0 ; i < recorders.length ; ++i){
+            for (int i = 0; i < recorders.length; ++i) {
                 //get the index of the text recorder within the array
-                if(recorders[i].equals(Constants.RECORDER_TEXT_FIELD_CLIENT_TEXT)){
+                if (recorders[i].equals(Constants.RECORDER_TEXT_FIELD_CLIENT_TEXT)) {
                     textFieldIndex = i;
                     break;
                 }
             }
             this.spinner_recorder.setSelection(textFieldIndex);
 
-        }else {
+        } else {
             Log.i(LOG_TAG, "Selected recorder: id: " + RECORD_MODE +
                     " Name: " + name);
         }
@@ -215,13 +237,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * @param mode
      * @param name
      */
-    private void setPrinterMode(int mode, String name){
-        if(this.isRecording){
+    private void setPrinterMode(int mode, String name) {
+        if (this.isRecording) {
             Log.e(LOG_TAG, "Cannot change printer while recording. Stop the record first.");
             return;
         }
         this.PRINTER_MODE = mode;
-        if(arPrinter != null) {
+        if (arPrinter != null) {
             this.arPrinter.shutdown();
         }
         this.arPrinter = ConnectorFactory.generate(mode, this);
@@ -231,16 +253,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        switch(requestCode){
+        switch (requestCode) {
             //Result of android recognition intent requested by AndroidVoiceRecorder
             case Constants.RESULT_SPEECH:
-                if(resultCode == RESULT_OK && data != null){
+                if (resultCode == RESULT_OK && data != null) {
                     this.receiveResult(data
-                        .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
-                }else{
+                            .getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS).get(0));
+                } else {
                     this.showToast("couldn't parse speech to text");
                 }
                 try {
@@ -258,38 +280,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-            if(this.arPrinter == null ){
-                this.showToast("Please select a printer first.");
-                return;
-            }
-            if(this.recorder == null){
-                this.showToast("Please select a recorder first.");
-                return;
-            }
-            switch(view.getId()){
-                case R.id.btnStartSpeech:
-                    if(this.isRecording){
-                        this.notifyStopRecord();
-                    }else {
-                        this.startRecord();
-                    }
-                    break;
-                default:
-                    showToast("unknown View");
-                    break;
-            }
+        if (this.arPrinter == null) {
+            this.showToast("Please select a printer first.");
+            return;
+        }
+        if (this.recorder == null) {
+            this.showToast("Please select a recorder first.");
+            return;
+        }
+        switch (view.getId()) {
+            case R.id.btnStartSpeech:
+                if (this.isRecording) {
+                    this.notifyStopRecord();
+                } else {
+                    this.startRecord();
+                }
+                break;
+            default:
+                showToast("unknown View");
+                break;
+        }
     }
 
     @Override
-    public void onDestroy(){
+    public void onDestroy() {
         super.onDestroy();
     }
+
     @Override
-    protected  void onPause(){
+    protected void onPause() {
         super.onPause();
     }
+
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
     }
 
@@ -298,14 +322,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      *
      * @param result
      */
-    public void receiveResult(String result){
+    public void receiveResult(String result) {
         this.arPrinter.addToMessageBuffer(result);
     }
 
     /**
      * method displays a Toast message to the user
      */
-    public void showToast(String msg){
+    public void showToast(String msg) {
         final String message = msg;
         this.runOnUiThread(new Runnable() {
             @Override
@@ -339,12 +363,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * is already false and the method will return without doing anything
      */
     public boolean notifyStopRecord() {
-        if(this.isRecording) {
+        if (this.isRecording) {
             this.isRecording = false;
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                   upDateView();
+                    upDateView();
                 }
             });
             this.recorder.stopRecording();
@@ -355,15 +379,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
-    private void upDateView() {
-        if(isRecording){
+    public void upDateView() {
+        if (isRecording) {
             this.btnSpeech.setBackgroundResource(R.drawable.mic_start_recording_recording_circle);
             this.txtViewRecInfo.setText("Recording...");
             this.txtViewRecInfo.setTextColor(ContextCompat.getColor(
                     getApplicationContext(), R.color.colorPrimaryDark));
             this.spinner_recorder.setEnabled(false);
             this.spinner_printer.setEnabled(false);
-        }else{
+        } else {
             this.btnSpeech.setBackgroundResource(R.drawable.mic_start_recording_not_recording_circle);
             this.txtViewRecInfo.setText("Start Speech Recognition!");
             this.txtViewRecInfo.setTextColor(ContextCompat.getColor(
@@ -375,10 +399,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void showSoundAnimation(short[] audioInput) {
         //show canvas to animate incoming audio
-        int scalingValue = calculatePowerDb(audioInput, 0, audioInput.length)+60; // Loud Voice = -10, quiet Voice = -60
-        if(scalingValue<0) scalingValue= -scalingValue;
-        if(scalingValue>200) scalingValue = 0;//to prevent negative values
-        this.soundAnimationView.setScalingValue( scalingValue );
+        int scalingValue = calculatePowerDb(audioInput, 0, audioInput.length) + 60; // Loud Voice = -10, quiet Voice = -60
+        if (scalingValue < 0) scalingValue = -scalingValue;
+        if (scalingValue > 200) scalingValue = 0;//to prevent negative values
+        this.soundAnimationView.setScalingValue(scalingValue);
 
 
         //loop through shortBuffer and calculate the db valueos for each short value (sample)
@@ -387,15 +411,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
-    public int calculatePowerDb(short[] sdata, int off, int samples)
-    {
-       float max_16_bit = 32768;
+    public int calculatePowerDb(short[] sdata, int off, int samples) {
+        float max_16_bit = 32768;
         final float fudge = 0.6f;
         double sum = 0;
         double sqsum = 0;
-        for (int i = 0; i < samples; i++)
-        {
+        for (int i = 0; i < samples; i++) {
             final long v = sdata[off + i];
             sum += v;
             sqsum += v * v;
@@ -406,17 +427,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         double result = Math.log10(power) * 10f + fudge;
 
-        return (int)result;
+        return (int) result;
     }
 
     //Andi start
-    public void setLanguageId(int languageId){
+    public void setLanguageId(int languageId) {
         this.languageId = languageId;
         showToast("Language-ID: " + Integer.toString(languageId));
     }
+
     //Andi end
     public String getSpokenLanguage() {
-        switch(this.languageId){
+        switch (this.languageId) {
             case Constants.LANGUAGE_ENGLISH:
                 return "en-US";
             case Constants.LANGUAGE_FRANCE:
@@ -432,20 +454,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * Method is called when connection status of a module is changed
      * (GlassUp connect/disconnect or connection speed
      * reached for google streaming)
+     *
      * @param itm
      * @param connected
      */
     public void updateConnectionStatus(Object itm, boolean connected) {
-        if(itm instanceof IRecorder){
+        if (itm instanceof IRecorder) {
             this.isRecorderConnected = connected;
-        }else if (itm instanceof IConnector){
+        } else if (itm instanceof IConnector) {
             this.isARConnected = connected;
-            if(!this.isARConnected){
+            if (!this.isARConnected) {
                 this.arConnectionLabel.setText("Selected AR device not connected.");
-            }else{
+            } else {
                 this.arConnectionLabel.setText("AR device connected.");
             }
         }
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                updateRecordingButton();
+            }
+        });
+
+
+    }
+
+    public void updateRecordingButton() {
         btnSpeech.setEnabled(isARConnected && isRecorderConnected);
+        if (!(isARConnected && isRecorderConnected)) {
+            this.btnSpeech.setBackgroundResource(R.drawable.mic_disabled);
+            this.txtViewRecInfo.setText("Missing Connection!");
+            this.txtViewRecInfo.setTextColor(ContextCompat.getColor(
+                    getApplicationContext(), R.color.micDisabled));
+        }
+
     }
 }
+
