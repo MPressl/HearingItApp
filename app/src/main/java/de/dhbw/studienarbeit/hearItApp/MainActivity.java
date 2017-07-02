@@ -407,21 +407,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void upDateView() {
-        if (isRecording) {
-            this.btnSpeech.setBackgroundResource(R.drawable.mic_start_recording_recording_circle);
-            this.txtViewRecInfo.setText("Recording...");
-            this.txtViewRecInfo.setTextColor(ContextCompat.getColor(
-                    getApplicationContext(), R.color.colorPrimaryDark));
-            this.spinner_recorder.setEnabled(false);
-            this.spinner_printer.setEnabled(false);
-        } else {
-            this.btnSpeech.setBackgroundResource(R.drawable.mic_start_recording_not_recording_circle);
-            this.txtViewRecInfo.setText("Start Speech Recognition!");
-            this.txtViewRecInfo.setTextColor(ContextCompat.getColor(
-                    getApplicationContext(), R.color.colorPrimary));
-            this.spinner_recorder.setEnabled(true);
-            this.spinner_printer.setEnabled(true);
-        }
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                btnSpeech.setEnabled(isARConnected && isRecorderConnected);
+                if (!(isARConnected && isRecorderConnected)) {
+                    btnSpeech.setBackgroundResource(R.drawable.mic_disabled);
+                    txtViewRecInfo.setText("Missing Connection!");
+                    txtViewRecInfo.setTextColor(ContextCompat.getColor(
+                            getApplicationContext(), R.color.micDisabled));
+                }
+                else {
+                    if (isRecording) {
+                        setRecordingView();
+                    } else {
+                        setNotRecordingView();
+                    }
+                }
+            }
+        });
     }
 
     public void showSoundAnimation(short[] audioInput) {
@@ -496,25 +500,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 this.arConnectionLabel.setText("AR device connected.");
             }
         }
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                updateRecordingButton();
-            }
-        });
-
-
+        upDateView();
     }
 
-    public void updateRecordingButton() {
-        btnSpeech.setEnabled(isARConnected && isRecorderConnected);
-        if (!(isARConnected && isRecorderConnected)) {
-            this.btnSpeech.setBackgroundResource(R.drawable.mic_disabled);
-            this.txtViewRecInfo.setText("Missing Connection!");
-            this.txtViewRecInfo.setTextColor(ContextCompat.getColor(
-                    getApplicationContext(), R.color.micDisabled));
-        }
+    public void setNotRecordingView(){
+        this.btnSpeech.setBackgroundResource(R.drawable.mic_start_recording_not_recording_circle);
+        this.txtViewRecInfo.setText("Start Speech Recognition!");
+        this.txtViewRecInfo.setTextColor(ContextCompat.getColor(
+                getApplicationContext(), R.color.colorPrimary));
+        this.spinner_recorder.setEnabled(true);
+        this.spinner_printer.setEnabled(true);
+    }
 
+    public void setRecordingView(){
+        this.btnSpeech.setBackgroundResource(R.drawable.mic_start_recording_recording_circle);
+        this.txtViewRecInfo.setText("Recording...");
+        this.txtViewRecInfo.setTextColor(ContextCompat.getColor(
+                getApplicationContext(), R.color.colorPrimaryDark));
+        this.spinner_recorder.setEnabled(false);
+        this.spinner_printer.setEnabled(false);
     }
 }
 

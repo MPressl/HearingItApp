@@ -36,7 +36,6 @@ public class TextFieldConnector extends AbstractConnector {
         printerField.setLayoutParams(params);
 
         this.label.setVisibility(View.VISIBLE);
-        mainView.upDateView();
     }
 
     @Override
