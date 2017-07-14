@@ -8,13 +8,21 @@ import android.support.design.widget.NavigationView;
 import android.support.v7.app.AlertDialog;
 
 /**
- * Created by Andi on 28.03.2017.
+ * LanguageDialoge provides a selection of four languages,
+ * that can be used for speech-to-text-conversion by Google
+ *
+ * created by Andreas
  */
 
 public class LanguageDialoge extends DialogFragment {
 
     MainActivity parent;
 
+    /**
+     * onCreateDialog()
+     * builds a dialog window and
+     * sets the languages id depending on the selected language item
+     */
     public Dialog onCreateDialog(Bundle savedInstanceState, MainActivity parent) {
 
         this.parent = parent;

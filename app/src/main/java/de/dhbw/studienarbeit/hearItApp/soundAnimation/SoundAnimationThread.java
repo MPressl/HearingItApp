@@ -4,7 +4,9 @@ import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
 /**
- * Created by Andi on 28.03.2017.
+ * SoundAnimationThread is the Thread, that creates an animation of static shapes.
+ *
+ * created by Andreas
  */
 
 public class SoundAnimationThread extends Thread {
@@ -22,11 +24,21 @@ public class SoundAnimationThread extends Thread {
         this.soundAnimationView = soundAnimationView;
     }
 
+    /**
+     * setRunning()
+     * sets the boolean running true,
+     * its the condition for the while-loop in run()
+     */
     public void setRunning(boolean running)
     {
         this.running = running;
     }
 
+    /**
+     * run()
+     * frequently draws the SoundAnimation and updates the SurfaceView and
+     * the SoundAnimations parameters
+     */
     @Override
     public void run(){
 

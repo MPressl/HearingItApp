@@ -11,7 +11,10 @@ import android.view.SurfaceView;
 import de.dhbw.studienarbeit.hearItApp.MainActivity;
 
 /**
- * Created by Andi on 28.03.2017.
+ * SoundAnimationView is the surface, that is used for the animation
+ * drawn with Canvas-components
+ *
+ * created by Andreas
  */
 
 public class SoundAnimationView extends SurfaceView implements SurfaceHolder.Callback {
@@ -44,6 +47,10 @@ public class SoundAnimationView extends SurfaceView implements SurfaceHolder.Cal
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
+    /**
+     * draw()
+     * draws the background of the SurfaceView and calls the draw()-method of SoundAnimation
+     */
     @Override
     public void draw(Canvas canvas) {
         super.draw(canvas);
@@ -52,34 +59,25 @@ public class SoundAnimationView extends SurfaceView implements SurfaceHolder.Cal
         soundAnimation.draw(canvas);
     }
 
+    /**
+     * onDraw()
+     * gets the SurfaceViews dimensions by using the Canvas-object
+     */
     @Override
     public void onDraw(Canvas canvas){
         SURFACE_WIDTH = canvas.getWidth();
         SURFACE_HEIGTH = canvas.getHeight();
     }
 
+    /**
+     * update()
+     * updates the SoundAnimations parameters dependently on the recorded sounds loudness
+     */
     public void update(){
         if (!animationStartValueSet && SURFACE_WIDTH!=0){
-          //  soundAnimation.setStartValue(SURFACE_WIDTH / 2, SURFACE_HEIGTH, 400);
             soundAnimation.setStartValue(SURFACE_WIDTH / 2, SURFACE_HEIGTH, 0);
             animationStartValueSet = true;
         }
-
-        //newScalingValue = MainActivity.sound_animation_scaling_value;
-
-        /*if(newScalingValue!=actualScalingValue){
-            int difScalingValue = newScalingValue-actualScalingValue;
-            if(difScalingValue>=0) {
-                for (int j = 1; j < 5; j++) {   // In Vier Schleifenwiederholungen.. Flüssiger Übergang..
-                    soundAnimation.setRadius((SURFACE_HEIGTH / 60) * newScalingValue - difScalingValue * (j / 4));
-                }
-            }
-            else {
-                for (int j = 1; j < 15; j++) {   // In Vier Schleifenwiederholungen.. Flüssiger Übergang..
-                    soundAnimation.setRadius((SURFACE_HEIGTH / 60) * newScalingValue + difScalingValue * (j / 4));
-                }
-            }
-        }*/
         if(this.sound_animation_scaling_value > 5) {
             soundAnimation.setRadius((SURFACE_HEIGTH / 60) * (this.sound_animation_scaling_value
                     + this.sound_animation_scaling_value / 5));
@@ -87,24 +85,6 @@ public class SoundAnimationView extends SurfaceView implements SurfaceHolder.Cal
         else {
             soundAnimation.setRadius(0);
         }
-
-        //actualScalingValue = newScalingValue;
-        /*if(!updateAddition) {
-            soundAnimation.update(0, 0, -8);
-            testCounter++;
-            if(testCounter>58){
-                testCounter=0;
-                updateAddition = true;
-            }
-        }
-        else {
-            soundAnimation.update(0, 0, +8);
-            testCounter++;
-            if(testCounter>58){
-                testCounter=0;
-                updateAddition = false;
-            }
-        }*/
     }
 
 
@@ -134,6 +114,10 @@ public class SoundAnimationView extends SurfaceView implements SurfaceHolder.Cal
         return SURFACE_WIDTH;
     }
 
+    /**
+     * startDrawingThread()
+     * brings the SoundAnimationThread into being
+     */
     public void startDrawingThread() {
         this.soundAnimationThread = new SoundAnimationThread(getHolder(), this);
         this.soundAnimationThread.setRunning(true);

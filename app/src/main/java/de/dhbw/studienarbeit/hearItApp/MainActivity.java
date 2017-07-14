@@ -41,7 +41,7 @@ import static android.provider.AlarmClock.EXTRA_MESSAGE;
  * Main Activity controlling the user interaction. Selecting a recorder and printer
  * and setting other options is controlled from here
  *
- * Created by Martin
+ * Created by Martin and Andreas
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -152,6 +152,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
+    /**
+     * generateNavMenu()
+     * builds the navigationView and its necessary listener
+     * changes the default actionbar to the customized one
+     */
     private void generateNavMenu() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open_nav_menu, R.string.close_nav_menu);
@@ -406,6 +411,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return false;
     }
 
+
+    /**
+     * upDateView()
+     * changes the buttons background-image & functionality depending on the connection status
+     */
     public void upDateView() {
         runOnUiThread(new Runnable() {
             @Override
@@ -428,6 +438,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    /**
+     * showSoundAnimation()
+     * provides the db-value calculated of the transferred short-Array
+     */
     public void showSoundAnimation(short[] audioInput) {
         //show canvas to animate incoming audio
         int scalingValue = calculatePowerDb(audioInput, 0, audioInput.length) + 60; // Loud Voice = -10, quiet Voice = -60
@@ -442,6 +456,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    /**
+     * update()
+     * calculates the db-value of the transferred short-Array and its length
+     */
     public int calculatePowerDb(short[] sdata, int off, int samples) {
         float max_16_bit = 32768;
         final float fudge = 0.6f;
@@ -453,21 +471,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             sqsum += v * v;
         }
         double power = (sqsum - sum * sum / samples) / samples;
-
         power /= max_16_bit * max_16_bit;
-
         double result = Math.log10(power) * 10f + fudge;
-
         return (int) result;
     }
 
-    //Andi start
+
     public void setLanguageId(int languageId) {
         this.languageId = languageId;
         showToast("Language-ID: " + Integer.toString(languageId));
     }
 
-    //Andi end
+
     public String getSpokenLanguage() {
         switch (this.languageId) {
             case Constants.LANGUAGE_ENGLISH:
@@ -503,6 +518,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         upDateView();
     }
 
+    /**
+     * setNotRecordingView()
+     * designs the recording button in not recording style
+     */
     public void setNotRecordingView(){
         this.btnSpeech.setBackgroundResource(R.drawable.mic_start_recording_not_recording_circle);
         this.txtViewRecInfo.setText("Start Speech Recognition!");
@@ -512,6 +531,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.spinner_printer.setEnabled(true);
     }
 
+
+    /**
+     * setRecordingView()
+     * designs the recording button in recording style
+     */
     public void setRecordingView(){
         this.btnSpeech.setBackgroundResource(R.drawable.mic_start_recording_recording_circle);
         this.txtViewRecInfo.setText("Recording...");

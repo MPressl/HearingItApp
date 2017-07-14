@@ -15,7 +15,10 @@ import de.dhbw.studienarbeit.hearItApp.recorder.IRecorder;
 
 
 /**
- * Created by Andi on 15.03.2017.
+ * ConnectionCheck checks the availability of an internet-connection and its strength
+ * in regularly time gaps
+ *
+ * created by Andreas
  */
 
 public class ConnectionCheck implements Runnable {
@@ -45,6 +48,13 @@ public class ConnectionCheck implements Runnable {
         cm = (ConnectivityManager) this.recorder.getMainView().getSystemService(Context.CONNECTIVITY_SERVICE);
     }
 
+
+    /**
+     * run()
+     * is an overwritten method, that runs a while-loop, that regularly checks the
+     * internet connection and updates the internet connection label and
+     * the connection status of the main activity
+     */
     @Override
     public void run() {
 
@@ -84,7 +94,10 @@ public class ConnectionCheck implements Runnable {
 
     }
 
-
+    /**
+     * setTextLabelInternetConnection()
+     * updates the text of the internet-connection label
+     */
     private void setTextLabelInternetConnection (final String internetConnectionInfo){
         this.recorder.getMainView().runOnUiThread(new Runnable() {
             @Override
@@ -93,6 +106,10 @@ public class ConnectionCheck implements Runnable {
         });
     }
 
+    /**
+     * evaluateNetworkConnection()
+     * detects the network information status and returns the belonging internet speed
+     */
     public boolean evaluateNetworkConnection() {
         NetworkInfo ni = cm.getActiveNetworkInfo();
         if(ni == null){

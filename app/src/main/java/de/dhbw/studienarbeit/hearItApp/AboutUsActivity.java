@@ -8,8 +8,21 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * AboutUsActivity is an Activity that shows informations about the
+ * app-developers, their mail-address for contact and notes of thanks
+ * to their person in charge
+ *
+ * created by Andreas
+ */
+
 public class AboutUsActivity extends AppCompatActivity {
 
+    /**
+     * onCreate()
+     * changes the default actionbar to the customized one
+     * changes the actionbars header-label
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +40,10 @@ public class AboutUsActivity extends AppCompatActivity {
         findViewById(R.id.about_us_button).setVisibility(View.INVISIBLE);
     }
 
+    /**
+     * onOptionsItemSelected()
+     * switches back to MainActivity with a transition-effect
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

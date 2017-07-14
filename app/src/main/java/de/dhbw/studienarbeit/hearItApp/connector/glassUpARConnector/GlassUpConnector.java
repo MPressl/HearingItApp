@@ -132,7 +132,7 @@ public class GlassUpConnector extends AbstractConnector {
     @Override
     public void shutdown() {
         this.glassAgent.onDestroy();
-        this.mainView.upDateView();
+        this.mainView.updateConnectionStatus(this,true);
     }
 
     /**
